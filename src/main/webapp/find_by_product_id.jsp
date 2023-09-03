@@ -46,17 +46,17 @@ button:hover, a:hover {
 <body>
 	<h2 style="text-align: center">User Profile Card</h2>
 	<div class="card">
-	  <img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width: 100%">
+	  <img src="https://iili.io/HyDu9qP.webp" alt="image" style="width: 100%">
 		<%
 		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("productDetails");
-
+		
 			if (product != null) {
 		%>
 		<h1><%=product.getName()%></h1>
 		<% List<PriceEntity> price = product.getListOfPrices(); %>
 		<p> <%= price.get(0).getCurrentPrice() %> </p>
 		<s> <%= price.get(0).getActualPrice() %> </s>
-		<p> <%= price.get(0).getDiscount() %>
+		<p> <%= price.get(0).getDiscount() %> % </p>
 
 		<p>
 			<button>Add to cart</button>

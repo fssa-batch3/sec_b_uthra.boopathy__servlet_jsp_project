@@ -65,7 +65,7 @@ public class CreateUserServlet extends HttpServlet {
 		UserService userService = new UserService();
 		userService.create(user);
 		
-		response.sendRedirect(request.getContextPath()+"/user_records");
+		response.sendRedirect(request.getContextPath()+"/user/login");
 		
 		} catch (ValidationException e) {
 			e.printStackTrace();

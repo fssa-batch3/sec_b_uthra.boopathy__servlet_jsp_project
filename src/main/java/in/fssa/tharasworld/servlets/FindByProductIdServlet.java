@@ -18,7 +18,7 @@ import in.fssa.tharasworld.service.ProductService;
 /**
  * Servlet implementation class FindByProductId
  */
-@WebServlet("/product/details")
+@WebServlet({"/product/details", "/category/types/products/details"})
 public class FindByProductIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
