@@ -1,3 +1,6 @@
+<%@page import="in.fssa.tharasworld.service.TypeService"%>
+<%@page import="in.fssa.tharasworld.entity.TypeEntity"%>
+<%@page import="java.util.Set"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -26,6 +29,7 @@ label {
 
 input[type="text"],
 input[type="number"],
+input[type="url"],
 select,
 textarea {
     width: 95%; 
@@ -40,17 +44,15 @@ textarea {
 }
 
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: purple;
     color: #fff; 
     padding: 10px 20px;
     border: none; 
     border-radius: 3px;
-    cursor: pointer; 
+    cursor: pointer;
+    margin-left: 10rem; 
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3; 
-}
 
 </style>
 
@@ -63,22 +65,27 @@ button[type="submit"]:hover {
 
 	<form action="create" method = "post">
 	
+	
+		<label> Image url : <input type="url" name="img_url" required> </label>
+		
 		<label> Name : <input type="text" name="name" required> </label>
-		<label> Category : </label>
-		<select name="category">
-		<option value=""> </option>
-		</select>
 		<label> Type : </label>
 		<select name="type">
 		<option value=""> </option>
+			
+		<% TypeService typeService = new TypeService();
+		Set<TypeEntity> types = typeService.findAll(); 
+		for( TypeEntity type : types ) { %>
+		<option value="<%= type.getTypeId() %>" > <%= type.getTypeName() %> </option>
+		<% } %>
 		</select>
-		<label> Actual price : <input type="number" name="email" required> </label>
-		<label> Current price : <input type="number" name="phone_number" required> </label>
-		<label> Discount : <input type="number" name="password" required> </label>
+		<label> Actual price : <input type="number" name="actual_price" required> </label>
+		<label> Current price : <input type="number" name="current_price" required> </label>
+		<label> Discount : <input type="number" name="discount" required> </label>
 		<label> Description : </label>
-		 <textarea rows="5"></textarea>
+		 <textarea rows="5" name="description"></textarea>
 		
-		<button type="submit"> Submit </button>
+		<a href="product_list"> <button type="submit"> Submit </button> </a>
 		
 	</form>
 

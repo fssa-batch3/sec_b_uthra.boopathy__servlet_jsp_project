@@ -7,15 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon"
-	href="../assets/img/illustration/v-removebg-preview.png">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-	crossorigin="anonymous" referrerpolicy="no-referrer">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
 <style>
 *{
     margin: 0px;
@@ -70,6 +63,7 @@ h1{
     font-size: 50px;
     font-weight: normal;
     padding-left: 60px;
+    padding-top: 20px;
     color: white;
 }
 
@@ -640,15 +634,16 @@ footer{
 		<p> &#8277Partner OfferSign up for Thara's World Pay Later and get Thara's World Gift Card worth up to Rs. 500</p>
     </div>
     
-    <button class="add" data-add="product_uuid">ADD TO CART
-        <i class="fa fa-shopping-cart" style="font-size:24px;color:white;"></i>
-    </button>
-    <button class="buy">BUY NOW
-        <i class="fa fa-shopping-bag" style="font-size:24px;color:white;"></i>
-    </button>
-    <button class="wish">WISHLIST
-        <i class="fa fa-heart" style="font-size:24px;color:white;"></i>
-    </button>
+   <a href="edit_pdt_detail?pdt_id=<%= product.getPdtId() %>"> <button class="add" data-add="product_uuid">Edit Product detail  
+   <i class="fa-solid fa-pen-to-square"></i>  </button> </a>
+       
+   <a href="edit_pdt_price?pdt_id=<%= product.getPdtId() %>"> <button class="buy">Edit Price 
+   <i class="fa-solid fa-pen-to-square"></i>  </button> </a>
+   
+   <a href="delete?pdt_id=<%= product.getPdtId() %>"> <button class="wish"> Delete 
+    <i class="fa-solid fa-trash"  style="color:purple; 
+	position: relative; top: -11rem; left: -0.8rem; font-size: 20px; "></i>  </button> </a>
+    
     
 </div>
 		
@@ -662,6 +657,7 @@ footer{
 	<%
 	}
 	%>
+
 
 </body>
 </html>

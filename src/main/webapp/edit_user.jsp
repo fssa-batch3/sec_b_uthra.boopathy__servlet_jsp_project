@@ -55,22 +55,24 @@
 
 <h1> Update user </h1>
 
-	<% 
-
+<%
 		UserEntity user = (UserEntity) request.getAttribute("editUser");
-	
-	%>
 
-	<form action="update?id=<%=user.getId() %>" method = "post">
+			if (user != null) {
+		%>
+
+	<form action="update" method = "post">
 		<label> Name : <input type="text" name="name" required value=<%= user.getName() %>> </label>
 		<label> Email : <input type="text" name="email" disabled value=<%= user.getEmail() %>> </label>
 		<label> Phone number : <input type="number" name="phone_number" disabled value=<%= user.getPhoneNumber() %>> </label>
 		<label> Password : <input type="password" name="password" required value=<%=user.getPassword() %>> </label>
-		<label> Age : <input type="number" name="age" required value=<%= user.getAge() %>> </label>
+		<label> Age : <input type="number" name="age" required value=<%=user.getAge()%>> </label>
 		
-		<button type="submit"> Submit </button>
+	 <a href="category_list"> <button type="submit"> Submit </button> </a>
 		
 	</form>
+
+<% } %>
 
 </body>
 </html>

@@ -44,7 +44,7 @@ button:hover, a:hover {
 <body>
 	<h2 style="text-align: center">User Profile Card</h2>
 	<div class="card">
-		<img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width: 100%">
+		<img src="https://iili.io/J9BuLEN.md.png" alt="John" style="width: 100%">
 		<%
 		UserEntity user = (UserEntity) request.getAttribute("userDetails");
 
@@ -53,13 +53,14 @@ button:hover, a:hover {
 		<h1><%=user.getName()%></h1>
 		<p class="title"><%=user.getEmail()%></p>
 		<p><%=user.getPhoneNumber()%></p>
+		<p><%=user.getRole()%></p>
 		<div style="margin: 24px 0;">
 			<a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i
 				class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a>
 			<a href="#"><i class="fa fa-facebook"></i></a>
 		</div>
 		<p>
-			<button>Contact</button>
+		<a href="edit"> <button>Edit</button> </a>
 		</p>
 	</div>
 	<%

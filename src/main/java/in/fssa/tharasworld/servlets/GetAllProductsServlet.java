@@ -11,8 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.fssa.tharasworld.dto.ProductDetailDTO;
+import in.fssa.tharasworld.entity.CategoryEntity;
+import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
+import in.fssa.tharasworld.exception.ValidationException;
+import in.fssa.tharasworld.service.CategoryService;
 import in.fssa.tharasworld.service.ProductService;
+import in.fssa.tharasworld.service.UserService;
 
 
 /**
@@ -27,15 +32,41 @@ public class GetAllProductsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		Integer userIdObject = (Integer) request.getSession().getAttribute("userId");		
+		
+		if(userIdObject == null) {
+			
+			try {
+				Set<CategoryEntity> category = CategoryService.findAll();
+				request.setAttribute("categoryList", category);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/category_list.jsp");
+				dispatcher.forward(request, response);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
+			
+		} else {
+		
+		
 		try {
-			Set<ProductDetailDTO> product = ProductService.findAll();
+			
+			int userId = userIdObject.intValue();
+			
+			UserEntity user = UserService.findById(userId);
+			
+			Set<ProductDetailDTO> product = ProductService.findAllProductsBySellerId(userId);
 			request.setAttribute("productList", product);
+			request.setAttribute("userDetails", user);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/product_list.jsp");
 			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
 			e.printStackTrace();
+		} catch (ValidationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
+		}		
 		
 	}
 

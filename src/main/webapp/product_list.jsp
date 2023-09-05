@@ -65,7 +65,6 @@ h1{
     font-size: 50px;
     font-weight: normal;
     padding-left: 60px;
-    padding-top: 20px;
     color: white;
 }
 
@@ -96,9 +95,9 @@ h1{
 img{
     object-fit: unset;
     border-radius: 5px;
-    margin-top: 10px;
-    margin-left: 20px;
-}
+    margin-top: 20px;
+    margin-left: 50px;
+	}
 
 h3{
     font-size: 22px;
@@ -135,16 +134,6 @@ a{
     margin: 10px 0px 10px 0px;
 }
 
-/* Style for the edit icon */
-.products i.fa-pen-to-square {
-    position: relative;
-    top: -12rem; /* Adjust the top position as needed */
-    left: 15rem; /* Adjust the right position as needed */
-    font-size: 24px; /* Adjust the icon size as needed */
-    color: purple;
-    cursor: pointer;
-}
-
 .button-container {
     text-align: center;
     margin-bottom: 20px;
@@ -171,23 +160,16 @@ button:hover {
 </head>
 <body>
 
-<header id="userLogin">  
+	<%
+	String headerJSP = "";
+	if (request.getAttribute("userDetails") != null) {
+		headerJSP = "/after_login_header.jsp";
+	} else {
+		headerJSP = "/before_login_header.jsp";
+	}
+	%>
 
-<a href= "/products"> <img class="logo" src="https://iili.io/HybH2KN.png" alt="logo" /> </a>
-<h1> Thara's World </h1>
-  <div class="nav">
-     <ul>
-        <li> <a href= "#"><i class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
-        <li> <a href= "#"><i class="fa-sharp fa-solid fa-heart"></i></a></li> 
-        <li><a href= "#"><i class="fa-solid fa-bag-shopping"></i></a></li>
-        <li><a href="#"><i class="fa-solid fa-bell"></i></i></a></li>
-        <li><a href= "#" ><i id="profile" class="fa-solid fa-circle-user"></i> </a></li>
-        <li> <span class="login" id="logout"> Log out </span> </li>
-      </ul>
-  </div>
-
-
-</header>
+	<jsp:include page="<%=headerJSP%>" />
 
 <h1> Product List </h1> 
 
@@ -200,13 +182,11 @@ button:hover {
 <div class="thumbnail">  
 
 	<% for(ProductDetailDTO products : product) { %>
-	
-	<a href="product/details?pdt_id=<%= products.getPdtId() %>">
-	
+			
 	<div class="products"> 
-	<a href="product/edit?pdt_id=<%= products.getPdtId() %>"> <i class="fa-solid fa-pen-to-square"></i> </a>
-		<img src = "https://iili.io/HyDu9qP.webp" alt="image" height="200px" width="180px">
-		<h3> <%= products.getName() %> </h3>
+	
+		<img src = "<%= products.getImg() %>" alt="image" height="200px" width="180px">
+		<a href="product/details?pdt_id=<%= products.getPdtId() %>"> <h3> <%= products.getName() %> </h3> </a>
 		<% List<PriceEntity> priceList = products.getListOfPrices(); %>
         <% if (!priceList.isEmpty()) { %>
         <div class="price">
@@ -219,7 +199,6 @@ button:hover {
 
 	</div>
 	
-	</a>
 	
 	<% } %>
 

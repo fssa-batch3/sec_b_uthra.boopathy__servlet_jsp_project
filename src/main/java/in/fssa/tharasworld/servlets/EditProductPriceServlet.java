@@ -8,18 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import in.fssa.tharasworld.entity.UserEntity;
+import in.fssa.tharasworld.dto.ProductDetailDTO;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
-import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.service.ProductService;
 
 /**
- * Servlet implementation class EditUserServlet
+ * Servlet implementation class EditProductPriceServlet
  */
-@WebServlet("/user/edit")
-public class EditUserServlet extends HttpServlet {
+@WebServlet("/product/edit_pdt_price")
+public class EditProductPriceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -28,24 +27,12 @@ public class EditUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		RequestDispatcher rd = request.getRequestDispatcher("/edit_user.jsp");
-//		
-//		rd.forward(request, response);
-		
-	//	String userId = request.getParameter("id");
+		String pdtId = request.getParameter("pdt_id");
 		
 		try {
-
-			HttpSession session = request.getSession();
-			
-			Integer userId = (Integer) session.getAttribute("userId");
-			
-			UserEntity user = UserService.findById(userId);
-	   
-			
-		//	UserEntity user = UserService.findById(Integer.parseInt(userId));
-			request.setAttribute("editUser", user);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_user.jsp");
+			ProductDetailDTO product = ProductService.findByProductId(Integer.parseInt(pdtId));
+			request.setAttribute("editProductPrice", product);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_product_price.jsp");
 			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
 			e.printStackTrace();
@@ -54,7 +41,7 @@ public class EditUserServlet extends HttpServlet {
 		} catch (ValidationException e) {
 			e.printStackTrace();
 		} 
+		
 	}
-
 
 }

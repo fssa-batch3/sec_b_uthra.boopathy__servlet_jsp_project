@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class NewProductServlet
+ * Servlet implementation class IndexServlet
  */
-@WebServlet("/product/new")
-public class NewProductServlet extends HttpServlet {
+@WebServlet("/index")
+public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -21,10 +21,9 @@ public class NewProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/add_product.jsp");
-		
+		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
+		
 	}
-
 
 }

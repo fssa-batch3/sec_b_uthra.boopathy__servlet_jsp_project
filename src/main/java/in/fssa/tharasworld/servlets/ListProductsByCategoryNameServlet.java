@@ -12,39 +12,36 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.fssa.tharasworld.dto.ProductDetailDTO;
-import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.model.User;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
 
-
 /**
- * Servlet implementation class FindByProductId
+ * Servlet implementation class ListProductsByCategoryNameServlet
  */
-@WebServlet({"/category/types/products/details"})
-public class FindByProductIdServlet extends HttpServlet {
+@WebServlet("/category/products")
+public class ListProductsByCategoryNameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
-		
 		HttpSession session = request.getSession();
 		
 		Integer userIdObject = (Integer) session.getAttribute("userId");
 		if (userIdObject == null) {
-				
-			String productId = request.getParameter("pdt_id");
-				
+		
+			String categoryName = request.getParameter("search");
+			
 			try {
-				ProductDetailDTO product = ProductService.findByProductId(Integer.parseInt(productId));
-				request.setAttribute("productDetails", product);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/find_by_product_id.jsp");
+				Set<ProductDetailDTO> products = ProductService.findByCategoryName(categoryName);
+				request.setAttribute("ListProductsByCategoryName", products);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_type.jsp");
 				dispatcher.forward(request, response);
 			} catch (ServiceException e) {
 				e.printStackTrace();
@@ -53,30 +50,33 @@ public class FindByProductIdServlet extends HttpServlet {
 			} catch (ValidationException e) {
 				e.printStackTrace();
 			} 
-				
-		} else {
-			try {
-				int userId = userIdObject.intValue();
-				UserEntity user = UserService.findById(userId);
-				
-				System.out.println(userId);
+			
+	} else {
+		try {
+			int userId = userIdObject.intValue();
+			User user = UserService.findById(userId);
+			
+			System.out.println(userId);
 
-				String productId = request.getParameter("pdt_id");
-				
-				ProductDetailDTO product = ProductService.findByProductId(Integer.parseInt(productId));
-				request.setAttribute("productDetails", product);
-				request.setAttribute("userDetails", user);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/find_by_product_id.jsp");
-				dispatcher.forward(request, response);
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (ValidationException e) {
-				e.printStackTrace();
-			} 
+			String categoryName = request.getParameter("search");
+			
+			Set<ProductDetailDTO> products = ProductService.findByCategoryName(categoryName);
+			request.setAttribute("ListProductsByCategoryName", products);
+			request.setAttribute("userDetails", user);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_type.jsp");
+			dispatcher.forward(request, response);
+			
+			dispatcher.forward(request, response);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		} catch (ValidationException e) {
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
+	}		
+			
 	}
 
 

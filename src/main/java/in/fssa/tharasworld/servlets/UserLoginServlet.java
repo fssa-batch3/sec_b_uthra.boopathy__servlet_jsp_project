@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
@@ -27,7 +29,7 @@ public class UserLoginServlet extends HttpServlet {
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
 		    Long phoneNumber = Long.parseLong(request.getParameter("phone_number"));
@@ -40,9 +42,14 @@ public class UserLoginServlet extends HttpServlet {
 		    } else if (!password.equals(user.getPassword())) {
 		        System.out.println("Incorrect Phone number or Password:(");
 		    } else {
-		        System.out.println("Login Successfull:)");
 	            int id = user.getId();
-	            request.getSession().setAttribute("userId", id); 
+		        System.out.println("Login Successfull:)");
+
+//	            System.out.println(id);
+	            	
+	            HttpSession session = request.getSession();
+	            
+	            session.setAttribute("userId", id); 
 	            response.sendRedirect(request.getContextPath() + "/category_list");
 		    }
            

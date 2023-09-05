@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
@@ -34,9 +35,9 @@ public class UpdateUserServlet extends HttpServlet {
 			user.setName(request.getParameter("name"));
 		}
 		
-//		user.setEmail(request.getParameter("email"));
+//	user.setEmail(request.getParameter("email"));
 //		
-//		user.setPhoneNumber(Long.parseLong(request.getParameter("phone_number")));
+	//	user.setPhoneNumber(Long.parseLong(request.getParameter("phone_number")));
 		
 		if(request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
 			System.out.println("Name cannot be null or empty");
@@ -50,15 +51,16 @@ public class UpdateUserServlet extends HttpServlet {
 		
 		System.out.println(user.toString());
 		
+		HttpSession session = request.getSession();
+		
+		Integer userId = (Integer) session.getAttribute("userId");
+		
 		UserService userService = new UserService();
 		
-		String idParams = request.getParameter("id");
 		
-		int id = Integer.parseInt(idParams);
+		userService.update(userId, user);
 		
-		userService.update(id, user);
-		
-		response.sendRedirect(request.getContextPath()+"/user_records");
+		response.sendRedirect(request.getContextPath()+"/category_list");
 		
 		} catch (ValidationException e) {
 			e.printStackTrace();

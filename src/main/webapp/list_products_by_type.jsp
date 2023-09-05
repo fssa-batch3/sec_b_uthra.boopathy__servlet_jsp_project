@@ -1,3 +1,4 @@
+<%@page import="in.fssa.tharasworld.entity.UserEntity"%>
 <%@page import="in.fssa.tharasworld.entity.PriceEntity"%>
 <%@page import="java.util.List"%>
 <%@page import="in.fssa.tharasworld.dto.ProductDetailDTO"%>
@@ -152,26 +153,24 @@ a{
 
 <header id="userLogin">  
 
-<a href= "/products"> <img class="logo" src="https://iili.io/HybH2KN.png" alt="logo" /> </a>
-<h1> Thara's World </h1>
-  <div class="nav">
-     <ul>
-        <li> <a href= "#"><i class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
-        <li> <a href= "#"><i class="fa-sharp fa-solid fa-heart"></i></a></li> 
-        <li><a href= "#"><i class="fa-solid fa-bag-shopping"></i></a></li>
-        <li><a href="#"><i class="fa-solid fa-bell"></i></i></a></li>
-        <li><a href= "#" ><i id="profile" class="fa-solid fa-circle-user"></i> </a></li>
-        <li> <span class="login" id="logout"> Log out </span> </li>
-      </ul>
-  </div>
+	<%
+	String headerJSP = "";
+	if (request.getAttribute("userDetails") != null) {
+		headerJSP = "/after_login_header.jsp";
+	} else {
+		headerJSP = "/before_login_header.jsp";
+	}
+	%>
 
-
-</header>
+	<jsp:include page="<%=headerJSP%>" />
 
 
 <h1> Product List </h1> 
 
-<% Set<ProductDetailDTO> product =(Set<ProductDetailDTO>) request.getAttribute("ListOfProductsByType"); %>
+<%
+
+
+ Set<ProductDetailDTO> product =(Set<ProductDetailDTO>) request.getAttribute("ListOfProductsByType"); %>
 
 <section>
 
@@ -183,7 +182,7 @@ a{
 		
 	<div class="products"> 
 	
-		<img src = "https://iili.io/HyDu9qP.webp" alt="image" heigth="200px" width="180px">
+		<img src = "<%= products.getImg() %>" alt="image" heigth="200px" width="180px">
 		<h3> <%= products.getName() %> </h3>
 		<% List<PriceEntity> priceList = products.getListOfPrices(); %>
         <% if (!priceList.isEmpty()) { %>
@@ -204,6 +203,8 @@ a{
 </div>
 
 </section>
+
+
 
 </body>
 </html>

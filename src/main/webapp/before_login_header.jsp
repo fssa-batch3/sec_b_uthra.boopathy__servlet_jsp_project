@@ -1,8 +1,6 @@
 <%@page import="in.fssa.tharasworld.entity.UserEntity"%>
-<%@page import="java.util.Set"%>
-<%@page import="in.fssa.tharasworld.entity.TypeEntity"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +12,9 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
 <style>
-<
-style>
-<style>
+
     *{
     margin: 0px;
     font-family: 'Kreon', serif;
@@ -40,7 +37,7 @@ header div ul{
 }
 
 header div ul li{
-    padding-top: 20px;
+    padding-top: 35px;
     padding-left: 30px;
 }
 
@@ -72,7 +69,7 @@ h1{
 }
 
 .logo{
-    margin-top: 15px;
+    margin-top: 25px;
     margin-left: 50px;
     border-radius: 50px;
     width: 70px;
@@ -85,87 +82,27 @@ h1{
     cursor: pointer;
 }
 
-.thumbnail{
-    display: grid;
-    grid-template-columns: repeat(4, 280px);
-    justify-content: space-evenly;
-    grid-column-gap: 20px;
-    grid-row-gap: 30px;
-    margin: 40px 0px 0px 0px;
-}
 
-img{
-    object-fit: unset;
-    border-radius: 5px;
-    margin-left: 50px;
-    margin-top: 15px;
-}
-
-h3{
-    font-size: 22px;
-    font-weight: normal;
-    margin-top: 20px;
-    width: 250px;
-    text-align: center;
-    color: rgb(74, 3, 74);
-}
-
-a{
-    text-decoration: none;
-}
-
-
-.products:hover{
-    transform: scale(1.08);
-}
-
-.products{
-    border: 1px solid #f8f8f8;
-    background-color: #f8f8f8;
-    margin: 10px 0px 10px 0px;
-}</style>
+</style>
 
 </head>
 <body>
 
-	<%
-	String headerJSP = "";
-	if (request.getAttribute("userDetails") != null) {
-		headerJSP = "/after_login_header.jsp";
-	} else {
-		headerJSP = "/before_login_header.jsp";
-	}
-	%>
+	
 
-	<jsp:include page="<%=headerJSP%>" />
+<header id="userLogin">
 
-	<h1>Types</h1>
+<a href= "category_list"> <img class="logo" src= "https://iili.io/HybH2KN.png" alt="logo" /> </a>
+		<h1> Thara's World </h1>
+		  <div class="nav">
+		     <ul> 
+		        <li><a href = "user/create"><span class="login"> Sign up </span> </a> </li>
+		        <li> <a href= "user/login"><span class="login"> Login </span> </a></li>
+		      </ul>
+		  </div>
 
-	<%
-		Set<TypeEntity> types = (Set<TypeEntity>) request.getAttribute("types");
-			
-		%>
-	<section>
+</header>
 
-		<div class="thumbnail">
-
-		<%   for (TypeEntity type : types) {%>
-		
-			<a href="types/products?type_id=<%=type.getTypeId()%>">
-
-				<div class="products">
-
-					<img src="<%= type.getImg() %>" alt="image" height="200px" width="180px">
-					<h3>
-						<%=type.getTypeName()%>
-					</h3>
-
-				</div>
-
-			</a>
-		<%	}  %>
-		</div>
-	</section>
 
 </body>
 </html>

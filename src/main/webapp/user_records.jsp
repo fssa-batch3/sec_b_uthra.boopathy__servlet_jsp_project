@@ -59,7 +59,7 @@ tr:nth-child(even) {
 			<td> <%= users.getEmail() %> </td>
 			<td> <%= users.getPhoneNumber() %> </td>
 			<td> <%= users.getRole() %> </td>
-			<td> <a href="user_records/details?id=<%= users.getId() %>"> <button type="submit"> View </button> </a> </td>
+			<td> <a href="user/details?id=<%= users.getId() %>"> <button type="submit"> View </button> </a> </td>
 			<td> <a href="user/edit?id=<%= users.getId() %>"> <button type="submit"> Edit </button> </a> </td>
 			<td> <a href="user/delete?id=<%= users.getId()%>"> <button type="submit"> Delete </button> </a> </td>
 		</tr>

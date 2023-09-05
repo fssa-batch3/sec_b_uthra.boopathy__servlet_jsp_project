@@ -381,7 +381,7 @@ p{
       </div>
 
       <p>
-        Create new account <a href="user/new"> Sign up </a>
+        Create new account <a href="new"> Sign up </a>
       </p>
 
       <div>
