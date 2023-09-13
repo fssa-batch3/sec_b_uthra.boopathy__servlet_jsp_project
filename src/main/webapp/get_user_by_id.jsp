@@ -2,11 +2,15 @@
 <%@page import="in.fssa.tharasworld.service.UserService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page isELIgnored = "false" %>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> User profile </title>
 <style>
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -54,11 +58,9 @@ button:hover, a:hover {
 		<p class="title"><%=user.getEmail()%></p>
 		<p><%=user.getPhoneNumber()%></p>
 		<p><%=user.getRole()%></p>
-		<div style="margin: 24px 0;">
-			<a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i
-				class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a>
-			<a href="#"><i class="fa fa-facebook"></i></a>
-		</div>
+		
+		<a href="delete?id=${requestScope.userDetails.getId()}"> Delete Account </a>
+		
 		<p>
 		<a href="edit"> <button>Edit</button> </a>
 		</p>

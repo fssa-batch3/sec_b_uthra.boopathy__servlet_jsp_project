@@ -5,8 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> Edit user </title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -36,7 +39,7 @@
         font-size: 14px;
     }
     button {
-        background-color: #007BFF;
+        background-color: purple;
         color: #FFFFFF;
         border: none;
         border-radius: 3px;
@@ -45,7 +48,7 @@
         cursor: pointer;
     }
     button:hover {
-        background-color: #0056B3;
+        background-color: purple;
     }
 </style>
 
@@ -58,21 +61,40 @@
 <%
 		UserEntity user = (UserEntity) request.getAttribute("editUser");
 
-			if (user != null) {
+		
 		%>
+		
+				
+		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+
+
+		<% if(errorMsg != null && user!=null) { %>
+		
+		<script> alert("<%=errorMsg%>"); </script>
+		
+		<script>
+			doucument.getElementById("name").value = "<%= user.getName()%>";
+			doucument.getElementById("email").value = "<%= user.getEmail()%>";
+			doucument.getElementById("phonenumber").value = "<%= user.getPhoneNumber()%>";
+			doucument.getElementById("password").value = "<%= user.getPassword()%>";
+			doucument.getElementById("age").value = "<%= user.getAge()%>";		
+		</script>
+		
+		<% } %>
+		
 
 	<form action="update" method = "post">
-		<label> Name : <input type="text" name="name" required value=<%= user.getName() %>> </label>
-		<label> Email : <input type="text" name="email" disabled value=<%= user.getEmail() %>> </label>
-		<label> Phone number : <input type="number" name="phone_number" disabled value=<%= user.getPhoneNumber() %>> </label>
-		<label> Password : <input type="password" name="password" required value=<%=user.getPassword() %>> </label>
-		<label> Age : <input type="number" name="age" required value=<%=user.getAge()%>> </label>
+		<label> Name : <input type="text" id="name" name="name" required value=<%= user.getName() %>> </label>
+		<label> Email : <input type="text" id="email" name="email" disabled value=<%= user.getEmail() %>> </label>
+		<label> Phone number : <input type="number" id="phonenumber" name="phone_number" disabled value=<%= user.getPhoneNumber() %>> </label>
+		<label> Password : <input type="password" id="password" name="password" required value=<%=user.getPassword() %>> </label>
+		<label> Age : <input type="number" id="age" name="age" required value=<%=user.getAge()%>> </label>
 		
 	 <a href="category_list"> <button type="submit"> Submit </button> </a>
 		
 	</form>
 
-<% } %>
+
 
 </body>
 </html>

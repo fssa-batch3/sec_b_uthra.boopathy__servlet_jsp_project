@@ -1,6 +1,8 @@
 package in.fssa.tharasworld.servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +28,8 @@ public class UpdateUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserEntity user = new UserEntity();
+		int userId=0;
+		UserEntity returnUser = null;
 		
 		try {
 		
@@ -53,19 +57,27 @@ public class UpdateUserServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		Integer userId = (Integer) session.getAttribute("userId");
+		 userId = (Integer) session.getAttribute("userId");
 		
 		UserService userService = new UserService();
+		returnUser = UserService.findById(userId);
 		
 		
 		userService.update(userId, user);
 		
 		response.sendRedirect(request.getContextPath()+"/category_list");
 		
-		} catch (ValidationException e) {
+		} catch (ValidationException | ServiceException e) {
 			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
+			request.setAttribute("errorMessage", e.getMessage());
+			
+			
+			   
+			request.setAttribute("editUser", returnUser);
+			request.setAttribute("userId", userId);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_user.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 	}

@@ -12,8 +12,11 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
 	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
 	crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> Category List </title>
 
 <style>
 
@@ -162,7 +165,7 @@ a{
 	%>
 
 	<jsp:include page="<%=headerJSP%>" />
-
+<form action="category/products" method="get">
 
 <div class="search">
 
@@ -171,6 +174,8 @@ a{
 	<input type="search" name="search" placeholder="Search products by category name">
 
 </div>
+
+ 	</form>
 
 
 <% Set<CategoryEntity> category =(Set<CategoryEntity>) request.getAttribute("categoryList"); %>

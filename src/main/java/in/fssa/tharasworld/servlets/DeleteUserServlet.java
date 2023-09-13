@@ -47,13 +47,13 @@ public class DeleteUserServlet extends HttpServlet {
 				}
 
 				
-//			String idParams = request.getParameter("id");
-//			
-//			int id = Integer.parseInt(idParams);
-//			
-//			userService.delete(id); 
-//			
-//			response.sendRedirect(request.getContextPath() + "/user_records");
+			String idParams = request.getParameter("id");
+			
+			int id = Integer.parseInt(idParams);
+			
+			userService.delete(id); 
+			
+			response.sendRedirect(request.getContextPath() + "/index");
 			
 		} catch (ValidationException e) {
 			e.printStackTrace();

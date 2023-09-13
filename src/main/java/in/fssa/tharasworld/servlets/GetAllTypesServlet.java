@@ -81,10 +81,8 @@ public class GetAllTypesServlet extends HttpServlet {
 			} catch (ValidationException e) {
 				e.printStackTrace();
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (PersistenceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

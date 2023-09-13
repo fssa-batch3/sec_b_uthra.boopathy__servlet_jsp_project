@@ -6,8 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> Add product </title>
 <style>
 h1 {
     text-align: center;
@@ -62,16 +65,28 @@ button[type="submit"] {
 
 <h1> Add new product </h1>
 
+<% String error = (String) request.getAttribute("errorMessage"); %>
+
+<% if(error != null) { %>
+
+<script> 
+
+alert("<%=error%>");
+
+</script>
+
+<%} %>
+
 
 	<form action="create" method = "post">
 	
 	
-		<label> Image url : <input type="url" name="img_url" required> </label>
+		<label> Image url : <input type="url" name="img_url" placeholder="https://....." required> </label>
 		
-		<label> Name : <input type="text" name="name" required> </label>
+		<label> Name : <input type="text" name="name" placeholder="Abcde" required> </label>
 		<label> Type : </label>
-		<select name="type">
-		<option value=""> </option>
+		<select name="type" required>
+		<option value=""> Select type </option>
 			
 		<% TypeService typeService = new TypeService();
 		Set<TypeEntity> types = typeService.findAll(); 
@@ -79,11 +94,11 @@ button[type="submit"] {
 		<option value="<%= type.getTypeId() %>" > <%= type.getTypeName() %> </option>
 		<% } %>
 		</select>
-		<label> Actual price : <input type="number" name="actual_price" required> </label>
-		<label> Current price : <input type="number" name="current_price" required> </label>
-		<label> Discount : <input type="number" name="discount" required> </label>
+		<label> Actual price : <input type="number" name="actual_price" placeholder="Rs." required> </label>
+		<label> Current price : <input type="number" name="current_price" placeholder="Rs." required> </label>
+		<label> Discount : <input type="number" name="discount" placeholder="10 % off" required> </label>
 		<label> Description : </label>
-		 <textarea rows="5" name="description"></textarea>
+		 <textarea rows="5" name="description" placeholder="Breif detail about about the product....."></textarea>
 		
 		<a href="product_list"> <button type="submit"> Submit </button> </a>
 		

@@ -31,7 +31,9 @@ public class EditProductPriceServlet extends HttpServlet {
 		
 		try {
 			ProductDetailDTO product = ProductService.findByProductId(Integer.parseInt(pdtId));
+			
 			request.setAttribute("editProductPrice", product);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_product_price.jsp");
 			dispatcher.forward(request, response);
 		} catch (ServiceException e) {

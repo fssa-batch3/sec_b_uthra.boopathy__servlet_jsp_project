@@ -3,8 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> Register user </title>
 
 <style>
 *{
@@ -141,7 +144,7 @@ input[type="number"]{
     height: 30px;
     width: 200px;
     position: relative;
-    left: 120px;
+    left: 125px;
     outline: none;
 }
 
@@ -163,7 +166,7 @@ select {
     width: 200px;
     font-size: 18px;
     position: relative;
-    left: 110px;
+    left: 120px;
     outline: none;
 
 }
@@ -177,6 +180,15 @@ div p {
 
 </head>
 <body>
+
+<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+
+
+<% if(errorMsg != null) { %>
+
+<script> alert("<%=errorMsg%>"); </script>
+
+<% } %>
 	
 	 <section>
             <form role="form" action="create" method="post">

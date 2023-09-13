@@ -10,8 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> Edit product </title>
 <style>
 h1 {
     text-align: center;
@@ -71,29 +74,77 @@ button[type="submit"] {
 		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("editProduct");
 	
 	%>
+	
+	
+			<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+
+
+		<% if(errorMsg != null && product!=null) { %>
+		
+		<script> alert("<%=errorMsg%>"); </script>
+		
+		<script>
+			doucument.getElementById("image").value = "<%= product.getImg()%>";
+			doucument.getElementById("name").value = "<%= product.getName()%>";
+			
+			 <% TypeService typeService = new TypeService();
+	           TypeEntity typeName = typeService.findByTypeId(product.getTypeId()); %>
+			
+			doucument.getElementById("type").value = "<%= typeName.getTypeName()%>";
+			
+		    <%
+	        List<PriceEntity> prices = product.getListOfPrices();
+	        PriceEntity price = prices.get(0);
+	    %>
+			
+			doucument.getElementById("actual_price").value = "<%= price.getActualPrice()%>";
+			doucument.getElementById("current_price").value = "<%= price.getCurrentPrice()%>";
+			doucument.getElementById("discount").value = "<%= price.getDiscount()%>";
+			doucument.getElementById("description").value = "<%= product.getDescription()%>";
+		</script>
+		
+		<% } %>
 
 	<form action="update?pdt_id=<%= product.getPdtId() %>" method="post">
-    <label> Image url : <input type="url" name="img_url" required value="<%= product.getImg() %>"> </label>
-    <label> Name : <input type="text" name="name" required value="<%= product.getName() %>"> </label>
+   
+    <label> Image url : <input type="url" id="image" name="img_url" required value="<%= product.getImg() %>"> </label>
+   
+    <label> Name : <input type="text" id="name" name="name" required value="<%= product.getName() %>"> </label>
+   
     <label> Type : </label>
-    <select name="type">
+   
+    <select name="type" id="type">
+   
         <% TypeService typeService = new TypeService();
            TypeEntity typeName = typeService.findByTypeId(product.getTypeId()); %>
+   
         <option value="<%= product.getTypeId() %>"> <%= typeName.getTypeName() %> </option>
+   
         <% Set<TypeEntity> types = typeService.findAll(); 
-           for (TypeEntity type : types) { %>
+   
+        for (TypeEntity type : types) { %>
+   
             <option value="<%= type.getTypeId() %>"> <%= type.getTypeName() %> </option>
+        
         <% } %>
+    
     </select>
+    
     <%
         List<PriceEntity> prices = product.getListOfPrices();
         PriceEntity price = prices.get(0); // Assuming the first price in the list is relevant
     %>
-    <label> Actual price : <input type="number" name="actual_price" disabled value="<%= price.getActualPrice() %>"> </label>
-    <label> Current price : <input type="number" name="current_price" disabled value="<%= price.getCurrentPrice() %>"> </label>
-    <label> Discount : <input type="number" name="discount" disabled value="<%= price.getDiscount() %>"> </label>
+  
+    <label> Actual price : <input type="number" id="actual_price" name="actual_price" disabled value="<%= price.getActualPrice() %>"> </label>
+  
+    <label> Current price : <input type="number" id="current_price" name="current_price" disabled value="<%= price.getCurrentPrice() %>"> </label>
+  
+    <label> Discount : <input type="number" id="discount" name="discount" disabled value="<%= price.getDiscount() %>"> </label>
+  
     <label> Description : </label>
-    <textarea rows="5" name="description"><%= product.getDescription() %></textarea>
+  
+    <textarea rows="5" id="description" name="description"><%= product.getDescription() %></textarea>
+  
     <a href="product_list"> <button type="submit"> Submit </button> </a>
 </form>
 

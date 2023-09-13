@@ -7,8 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> List products by seller id </title>
 <style>
 *{
     margin: 0px;
@@ -641,8 +644,8 @@ footer{
    <i class="fa-solid fa-pen-to-square"></i>  </button> </a>
    
    <a href="delete?pdt_id=<%= product.getPdtId() %>"> <button class="wish"> Delete 
-    <i class="fa-solid fa-trash"  style="color:purple; 
-	position: relative; top: -11rem; left: -0.8rem; font-size: 20px; "></i>  </button> </a>
+    <i class="fa-solid fa-trash"  style="color:white; 
+	position: relative;left: 0.5rem; font-size: 20px; "></i>  </button> </a>
     
     
 </div>

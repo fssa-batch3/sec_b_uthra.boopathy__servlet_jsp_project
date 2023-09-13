@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.util.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -77,13 +78,14 @@ public class CreateProductServlet extends HttpServlet {
 		
 		response.sendRedirect(request.getContextPath()+"/product_list");
 		
-		} catch (ValidationException e) {
+		} catch (ValidationException | ServiceException e) {
 			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
+			request.setAttribute("errorMessage", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("/add_product.jsp");
+			
+			rd.forward(request, response);
 		}
-		
-		
+			
 	}
 
 }

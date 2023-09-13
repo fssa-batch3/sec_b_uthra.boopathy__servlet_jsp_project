@@ -1,16 +1,21 @@
 package in.fssa.tharasworld.servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.fssa.tharasworld.dto.ProductDetailDTO;
 import in.fssa.tharasworld.entity.PriceEntity;
+import in.fssa.tharasworld.entity.ProductEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.PriceService;
+import in.fssa.tharasworld.service.ProductService;
 
 /**
  * Servlet implementation class UpdateProductPriceServlet
@@ -26,6 +31,10 @@ public class UpdateProductPriceServlet extends HttpServlet {
 
 		PriceEntity price = new PriceEntity();
 		
+		int id = 0;
+		
+		ProductDetailDTO product = null;
+		
 		try {
 			
 			price.setActualPrice(Double.parseDouble(request.getParameter("actual_price")));
@@ -33,40 +42,32 @@ public class UpdateProductPriceServlet extends HttpServlet {
 			price.setCurrentPrice(Double.parseDouble(request.getParameter("current_price")));
 			
 			price.setDiscount(Double.parseDouble(request.getParameter("discount")));
-			
-//			product.setImg(request.getParameter("img_url"));
-//		
-//		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
-//			System.out.println("Name cannot be null or empty");
-//		} else {
-//			product.setName(request.getParameter("name"));
-//		}
-//		
-//
-//		if(request.getParameter("description") == null || request.getParameter("description").isEmpty()) {
-//			System.out.println("Description cannot be null or empty");
-//		} else {
-//			product.setDescription(request.getParameter("description"));
-//		}
-//		
-//		String typeId = request.getParameter("type");
-//		
-//		product.setTypeId(Integer.parseInt(typeId));
 		
 		PriceService priceService = new PriceService();
 		
 		String idParams = request.getParameter("pdt_id");
 		
-		int id = Integer.parseInt(idParams);
+		id = Integer.parseInt(idParams);
+		
+		product = ProductService.findByProductId(id);
+		
+		request.setAttribute("editProductPrice", product);
 		
 		priceService.update(id, price);
 		
 		response.sendRedirect(request.getContextPath()+"/product_list");
 		
-		} catch (ValidationException e) {
+		} catch (ValidationException | ServiceException e) {
 			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
+			
+			request.setAttribute("errorMessage", e.getMessage());
+			
+			request.setAttribute("editProductPrice", product);
+			
+			request.setAttribute("pdtId", id);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_product_price.jsp");
+			dispatcher.forward(request, response);
 		}
 		
 	}

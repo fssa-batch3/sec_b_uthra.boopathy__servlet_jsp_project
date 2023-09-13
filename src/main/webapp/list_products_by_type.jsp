@@ -14,12 +14,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
 	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
 	crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> List of products by type </title>
 
-<style>
-
-<style>
 <style>
     *{
     margin: 0px;
@@ -97,18 +97,19 @@ h1{
     margin: 40px 0px 0px 0px;
 }
 
+
 img{
     object-fit: unset;
     border-radius: 5px;
+    margin-top: 20px;
     margin-left: 50px;
-    margin-top: 15px;
-}
+	}
 
 h3{
     font-size: 22px;
     font-weight: normal;
     margin-top: 20px;
-	text-align: center;
+    text-align: center;
     width: 250px;
     color: rgb(74, 3, 74);
 }
@@ -116,10 +117,9 @@ h3{
 p{
     color: black;
     font-size: 20px;
+    text-align: center;
     word-spacing: 5px;
     margin-top: 10px;
-    margin-left: 20px; 
-    text-align: center;
 }
 
 s{
@@ -134,16 +134,12 @@ a{
     text-decoration: none;
 }
 
-.products:hover{
-    transform: scale(1.08);
-}
-
 .products{
     border: 1px solid #f8f8f8;
     background-color: #f8f8f8;
     margin: 10px 0px 10px 0px;
 }
-</style>
+
 
 </style>
 
@@ -187,9 +183,9 @@ a{
 		<% List<PriceEntity> priceList = products.getListOfPrices(); %>
         <% if (!priceList.isEmpty()) { %>
         <div class="price">
-       	  <p> <%= priceList.get(0).getCurrentPrice() %> 
-          <s> <%= priceList.get(0).getActualPrice() %> </s>
-          <span class="percent"> <%= priceList.get(0).getDiscount() %> </span>
+       	  <p> &#8377 <%= priceList.get(0).getCurrentPrice() %> 
+          <s> &#8377 <%= priceList.get(0).getActualPrice() %> </s>
+          <span class="percent"> <%= priceList.get(0).getDiscount() %> %off </span>
           </p>
         </div>
           <% } %>

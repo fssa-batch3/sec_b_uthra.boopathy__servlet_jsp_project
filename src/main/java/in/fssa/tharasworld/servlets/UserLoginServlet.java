@@ -36,7 +36,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		    String password = request.getParameter("password");
 		    UserService userService = new UserService();
 		    UserEntity user = userService.checkUserExistsWithPhoneNumber(phoneNumber);
-
+		    
 		    if (user == null) {
 		        System.out.println("User not found");
 		    } else if (!password.equals(user.getPassword())) {
@@ -45,12 +45,23 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	            int id = user.getId();
 		        System.out.println("Login Successfull:)");
 
-//	            System.out.println(id);
-	            	
+
+		        if(user.getRole().equalsIgnoreCase("seller")) {
+		        	
+		        	HttpSession session = request.getSession();
+		            
+		            session.setAttribute("userId", id); 
+		            session.setAttribute("userDetails", user);
+		            response.sendRedirect(request.getContextPath() + "/product_list");
+		        	
+		        } else {
+		        
 	            HttpSession session = request.getSession();
 	            
 	            session.setAttribute("userId", id); 
 	            response.sendRedirect(request.getContextPath() + "/category_list");
+	            
+		        }
 		    }
            
 		} catch (ServiceException e) {

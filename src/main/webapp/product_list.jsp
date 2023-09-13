@@ -12,6 +12,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
 	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
 	crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
 <title> Product lists </title>
 
@@ -190,9 +193,9 @@ button:hover {
 		<% List<PriceEntity> priceList = products.getListOfPrices(); %>
         <% if (!priceList.isEmpty()) { %>
         <div class="price">
-       	  <p id="original_price"> <%= priceList.get(0).getCurrentPrice() %> 
-          <s id="discount_price"> <%= priceList.get(0).getActualPrice() %> </s> 
-         <span class="percent"> <%= priceList.get(0).getDiscount() %> </span>
+       	  <p id="original_price"> &#8377 <%= priceList.get(0).getCurrentPrice() %> 
+          <s id="discount_price"> &#8377 <%= priceList.get(0).getActualPrice() %> </s> 
+         <span class="percent"> <%= priceList.get(0).getDiscount() %> %off </span>
          </p>
         </div>
           <% } %>

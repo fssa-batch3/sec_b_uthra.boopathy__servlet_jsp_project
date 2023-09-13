@@ -11,6 +11,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
 	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
 	crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 
@@ -101,7 +104,7 @@ h1 {
 						class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
 				<li><a href="#"><i class="fa-sharp fa-solid fa-heart"></i></a></li>
 				<li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
-				<li><a href="user/details"><i id="profile"
+				<li><a href="/tharasworldweb/user/details"><i id="profile"
 						class="fa-solid fa-circle-user"></i> </a></li>
 				<li><a href="user/logout"> <span class="login"
 						id="logout"> Log out </span></li>

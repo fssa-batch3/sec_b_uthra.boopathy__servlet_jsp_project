@@ -19,13 +19,11 @@ import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
 
 /**
- * Servlet implementation class ListProductsByCategoryNameServlet
+ * Servlet implementation class ListProductsByTypeName
  */
-@WebServlet("/category/products")
-public class ListProductsByCategoryNameServlet extends HttpServlet {
+@WebServlet("/type/products")
+public class ListProductsByTypeNameServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -36,12 +34,12 @@ public class ListProductsByCategoryNameServlet extends HttpServlet {
 		Integer userIdObject = (Integer) session.getAttribute("userId");
 		if (userIdObject == null) {
 		
-			String categoryName = request.getParameter("search");
+			String typeName = request.getParameter("search_type");
 			
 			try {
-				Set<ProductDetailDTO> products = ProductService.findByCategoryName(categoryName);
-				request.setAttribute("ListProductsByCategoryName", products);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_category_name.jsp");
+				Set<ProductDetailDTO> products = ProductService.findByTypeName(typeName);
+				request.setAttribute("ListProductsByTypeName", products);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_type_name.jsp");
 				dispatcher.forward(request, response);
 			} catch (ServiceException e) {
 				e.printStackTrace();
@@ -58,12 +56,12 @@ public class ListProductsByCategoryNameServlet extends HttpServlet {
 			
 			System.out.println(userId);
 
-			String categoryName = request.getParameter("search");
+			String typeName = request.getParameter("search_type");
 			
-			Set<ProductDetailDTO> products = ProductService.findByCategoryName(categoryName);
-			request.setAttribute("ListProductsByCategoryName", products);
+			Set<ProductDetailDTO> products = ProductService.findByTypeName(typeName);
+			request.setAttribute("ListProductsByTypeName", products);
 			request.setAttribute("userDetails", user);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_category_name.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_type_name.jsp");
 			dispatcher.forward(request, response);
 			
 			dispatcher.forward(request, response);
@@ -72,11 +70,11 @@ public class ListProductsByCategoryNameServlet extends HttpServlet {
 		} catch (ValidationException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}		
 			
 	}
-
 
 }

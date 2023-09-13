@@ -42,9 +42,10 @@ public class EditUserServlet extends HttpServlet {
 			
 			UserEntity user = UserService.findById(userId);
 	   
-			
-		//	UserEntity user = UserService.findById(Integer.parseInt(userId));
 			request.setAttribute("editUser", user);
+			
+			request.setAttribute("userId", userId);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_user.jsp");
 			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
