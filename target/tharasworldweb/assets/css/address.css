@@ -1,0 +1,275 @@
+*{
+    margin: 0px;
+    font-family: 'Kreon', serif;
+}
+
+header{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: purple;
+    height: 100px;
+}
+
+header div ul{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    list-style: none;
+    margin-left: 550px;
+}
+
+header div ul li{
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+header div ul li a{
+     text-decoration: none;
+     color: white;
+     font-size: 24px;
+}
+
+#count {
+    background-color: white;
+    color: purple;
+    font-size: 20px;
+    border-radius: 50%;
+    height: 20px;
+    width: 22px;
+    margin-top: -44px;
+    margin-left: 17px;
+    text-align: center;
+    font-weight: bold;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: normal;
+    padding-left: 60px;
+    padding-top: 20px;
+    color: white;
+}
+
+.logo{
+    margin-top: 15px;
+    margin-left: 50px;
+    border-radius: 50px;
+    height: 70px;
+    width: 70px;
+}
+
+.login{
+   font-size: 25px;
+   color: white;
+   cursor: pointer;
+}
+
+.menu {
+    display: none;
+}
+
+.arrow {
+    margin: 2rem;
+    font-size: 30px;
+}
+
+.arrow a {
+    color: black;
+}
+
+.add {
+    height: 40px;
+    width: 150px;
+    background-color: purple;
+    color: white;
+    font-size: 18px;
+    border: 0;
+    border-radius: 5px;
+    margin-left: 75rem;
+    cursor: pointer;
+}
+
+.container {
+    height: 20vh;
+    width: 70%;
+    margin-top: 30px;
+    margin-left: 200px;
+    background-color: whitesmoke;
+    border: 0;
+    border-radius: 8px;
+}
+
+h3 {
+    margin-left: 5rem;
+    margin-top: -1.5rem;
+}
+
+.address p {
+    padding-left: 10rem;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    justify-content: space-evenly;
+    grid-column-gap: 20px;
+    grid-row-gap: 30px;
+    margin: 40px 0px 0px 0px;}
+
+.add_card {
+    height: 20rem;
+    width: 20rem;
+    background-color: whitesmoke;
+    margin: 5rem -1rem;
+    border-radius: 8px;
+}
+
+h6 {
+    padding: 1rem 6rem;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.detail p {
+    font-size: 20px;
+    padding-top: .3px;
+    padding-left: 35px;
+    padding-right: 10px;
+}
+
+.detail {
+    height: 30px;
+    width: 100%;
+    scrollbar-width: none;
+}
+
+.detail::-webkit-scrollbar {
+    display: block;
+}
+
+.set {
+    height: 35px;
+    width: 150px;
+    background-color: purple;
+    color: white;
+    font-size: 18px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 7rem;
+    margin-left: 5.5rem;
+}  
+
+footer{
+    background-color: purple;
+    height: 310px;
+    margin-top: 150px;
+}
+
+.about{
+    margin: 60px 70px;
+    padding-top: 10px;
+    color: white;
+}
+
+.us{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 20px;
+    word-spacing: 5px;
+}
+
+.us a{
+    text-decoration: none;
+    color: white;
+}
+
+h4{
+    font-size: 25px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.contact{
+    font-size: 20px;
+    margin: 70px 0px;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contact div{
+    margin: 15px 0;
+    font-size: 23px;
+    color: white;
+}
+
+.con{
+    font-size: 23px;
+    position: relative;
+    top: 10px;
+    right: 5px;
+}
+
+.line{
+    border-right: 2px solid gray;
+    height: 190px;
+    position: relative;
+    top: 45px;
+    right: 40px;
+}
+
+.socials{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.socials div{
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    justify-content: center;
+    border: 0;
+}
+
+.insta{
+    background-image: linear-gradient(315deg, #7110d2, #de46a9);
+    color: white;
+}
+
+.fb{
+    background-color: #3b5998;
+    color: white;
+}
+
+.wa{
+    background-color: #25d366;
+    color: white;
+}
+
+.twiter{
+    background-color: #00acee;
+    color: white;
+}
+
+.collections img{
+    border-radius: 150px;
+    padding: 40px;
+}

@@ -1,0 +1,261 @@
+
+.arrow {
+    margin: 2rem;
+    font-size: 30px;
+}
+
+.arrow a {
+    color: black;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 100px;
+    margin-left: 350px;
+    margin-bottom: 200px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    height: 900px;
+    width: 800px;
+    box-shadow: 2px 4px 8px 2px rgba(6, 6, 6, 0.2), 3px 6px 20px 3px rgba(0, 0, 0, 0.19);
+}
+
+section h1{
+    color: black;
+    font-weight: bold;
+    font-size: 55px;
+    margin-left: 35px;
+}
+
+section img{
+    position: relative;
+    left: 110px;
+    top: 30px;
+}
+
+.btn-2 a{
+    text-decoration: none;
+    color: white;
+}
+
+.name{
+    font-weight: 200px;
+    font-size: 20px;
+    position: relative;
+    top: 60px;
+}
+
+.age{
+    font-weight: 200px;
+    font-size: 20px;
+    position: relative;
+    top: 95px;
+}
+
+.add{
+    font-weight: 200px;
+    font-size: 20px;
+    position: relative;
+    top: 120px;
+}
+
+.des{
+    font-weight: 200px;
+    font-size: 20px;
+    position: relative;
+    top: 200px;
+}
+
+.no{
+    font-weight: 200px;
+    font-size: 20px;
+    position: relative;
+    top: 155px;
+}
+
+.mail{
+    font-weight: 200px;
+    font-size: 20px;
+    position: relative;
+    top: 175px;
+}
+
+.pin {
+    font-size: 20px;
+    font-weight: 200px;
+    position: relative;
+    top: 140px;
+}
+
+.state {
+    font-size: 20px;
+    font-weight: 200px;
+    position: relative;
+    top: 140px;
+}
+
+input[type="email"]{
+    border: none;
+    height: 30px;
+    width: 225px;
+    font-size: 20px;
+    position: relative;
+    left: 98px;
+    outline: none;
+    background-color: white;
+}
+
+input[type="text"]{
+    height: 30px;
+    width: 200px;
+    border: none;
+    font-size: 20px;
+    position: relative;
+    left: 125px;
+    background-color: white;
+}
+
+input[type="number"]{
+    height: 30px;
+    width: 200px;
+    border: none;
+    font-size: 20px;
+    position: relative;
+    left: 47px;
+    outline: none;
+    background-color: white;
+}
+
+input[id="age"]{
+    height: 30px;
+    width: 200px;
+    font-size: 20px;
+    border: none;
+    position: relative;
+    left: 140px;
+    outline: none;
+}
+
+
+input[id="pincode"]{
+    height: 30px;
+    width: 218px;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    left: 185px;
+    outline: none;
+    font-size: 17px;
+
+}
+
+input[id="state"]{
+    height: 30px;
+    width: 218px;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    left: 185px;
+    outline: none;
+    font-size: 17px;
+}
+
+input[id="role"]{
+    height: 30px;
+    width: 200px;
+    border: none;
+    font-size: 20px;
+    position: relative;
+    left: 100px;
+    background-color: white;
+}
+
+textarea{
+    height: auto;
+    width: 100%;
+    background-color: white;
+    font-size: 20px;
+    position: relative;
+    left: 20px;
+    border: none;
+    top: 12px;
+    outline: none;
+    resize: none;
+}
+
+.c1{
+    margin-left: 165px;   
+}
+
+#gender{
+    border: none;
+    position: relative;
+    left: 110px;
+}
+
+select{
+    height: 37px;
+    width: 205px;
+    font-size: 20px;
+}
+
+.btn-1{
+    font-size: 18px;
+    position: relative;
+    left: 100px;
+    top: 250px;
+    align-content: space-between;
+    border-radius: 5px;
+    border: 1px solid purple;
+    color: white;
+    background-color: purple;
+    height: 35px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.btn-1 a{
+    text-decoration: none;
+    color: white;
+}
+
+.btn-2{
+    font-size: 18px;
+    position: relative;
+    left: 20px;
+    top: 250px;
+    align-content: space-between;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: gray;
+    height: 35px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.btn-3{
+    font-size: 18px;
+    position: relative;
+    left: 180px;
+    top: 250px;
+    align-content: space-between;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: gray;
+    height: 35px;
+    width: 100px;
+    cursor: pointer;
+}
+
+#des{
+    border: none;
+    position: relative;
+    left: 35px;
+}
+
+.menu{
+    display: none;
+}

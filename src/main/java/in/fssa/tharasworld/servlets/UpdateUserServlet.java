@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import in.fssa.tharasworld.entity.AddressEntity;
 import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
+import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.UserService;
 
 /**
@@ -28,6 +30,9 @@ public class UpdateUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserEntity user = new UserEntity();
+		
+		AddressEntity address = new AddressEntity();
+		
 		int userId=0;
 		UserEntity returnUser = null;
 		
@@ -39,17 +44,13 @@ public class UpdateUserServlet extends HttpServlet {
 			user.setName(request.getParameter("name"));
 		}
 		
-//	user.setEmail(request.getParameter("email"));
-//		
-	//	user.setPhoneNumber(Long.parseLong(request.getParameter("phone_number")));
-		
 		if(request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
 			System.out.println("Name cannot be null or empty");
 		} else {
 			user.setPassword(request.getParameter("password"));
 		}
 		
-			user.setAge(Integer.parseInt(request.getParameter("age")));
+		user.setAge(Integer.parseInt(request.getParameter("age")));
 	
 		user.setRole(request.getParameter("role"));
 		
@@ -57,7 +58,7 @@ public class UpdateUserServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		 userId = (Integer) session.getAttribute("userId");
+		 userId = (Integer) session.getAttribute("userId");	
 		
 		UserService userService = new UserService();
 		returnUser = UserService.findById(userId);
@@ -70,8 +71,6 @@ public class UpdateUserServlet extends HttpServlet {
 		} catch (ValidationException | ServiceException e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", e.getMessage());
-			
-			
 			   
 			request.setAttribute("editUser", returnUser);
 			request.setAttribute("userId", userId);

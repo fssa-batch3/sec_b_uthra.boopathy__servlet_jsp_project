@@ -36,7 +36,7 @@ public class GetAllCategoriesServlet extends HttpServlet {
 			try {
 				Set<CategoryEntity> category = CategoryService.findAll();
 				request.setAttribute("categoryList", category);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/category_list.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/front_page.jsp");
 				dispatcher.forward(request, response);
 			} catch (ServiceException e) {
 				e.printStackTrace();
@@ -50,7 +50,7 @@ public class GetAllCategoriesServlet extends HttpServlet {
 				Set<CategoryEntity> category = CategoryService.findAll();
 				request.setAttribute("categoryList", category);
 				request.setAttribute("userDetails", user);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/category_list.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/front_page.jsp");
 				dispatcher.forward(request, response);
 			} catch (ServiceException e) {
 				e.printStackTrace();

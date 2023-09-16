@@ -1,0 +1,266 @@
+*{
+    margin: 0px;
+    font-family: 'Kreon', serif;
+}
+
+header{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: purple;
+    height: 100px;
+}
+
+header div ul{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    list-style: none;
+    margin-left: 550px;
+}
+
+header div ul li{
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+header div ul li a{
+     text-decoration: none;
+     color: white;
+     font-size: 24px;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: normal;
+    padding-left: 60px;
+    padding-top: 20px;
+    color: white;
+}
+
+.logo{
+    margin-top: 15px;
+    margin-left: 50px;
+    border-radius: 50px;
+    height: 70px;
+    width: 70px;
+}
+
+.login{
+   font-size: 25px;
+   color: white;
+   cursor: pointer;
+}
+
+#count {
+    background-color: white;
+    color: purple;
+    font-size: 20px;
+    border-radius: 50%;
+    height: 20px;
+    width: 22px;
+    margin-top: -44px;
+    margin-left: 17px;
+    text-align: center;
+    font-weight: bold;
+}
+
+section{
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center; */
+    margin-top: 100px;
+    margin-left: 350px;
+    margin-bottom: 200px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    height: 750px;
+    width: 800px;
+    box-shadow: 2px 4px 8px 2px rgba(6, 6, 6, 0.2), 3px 6px 20px 3px rgba(0, 0, 0, 0.19);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+section h2{
+    color: black;
+    font-weight: bold;
+    font-size: 50px;
+    margin-top: 2rem;
+    margin-left: 15rem;
+}
+
+section i {
+    margin-left: 47rem;
+    margin-top: 2rem;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5rem;
+}
+
+img {
+    border-radius: 5px;
+    margin-left: 8rem;
+}
+
+.info{
+    /* margin-top: 1rem; */
+    margin-right: 20px;
+}
+
+section::-webkit-scrollbar {
+    width:min-content;
+}
+
+
+h5{
+    font-size: 25px;
+    color: maroon;
+    width: 330px;
+}
+
+.price {
+    display: flex;
+    font-size: 22px;
+}
+
+s {
+    color: gray;
+    padding-left: 7px;
+}
+
+.percent{
+    display: flex;
+    color: green;
+    padding-left: 7px;
+}
+
+.qty {
+    margin-top: 0.5rem;
+    font-size: 20px;
+} 
+
+footer{
+    background-color: purple;
+    height: 290px;
+    margin-top: 150px;
+}
+
+.about{
+    margin: 60px 70px;
+    padding-top: 10px;
+    color: white;
+}
+
+.us{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 20px;
+    word-spacing: 5px;
+}
+
+.us a{
+    text-decoration: none;
+    color: white;
+}
+
+.us p{
+   font-size: 20px;
+   font-weight: normal;
+   margin: 0;
+}
+
+h4{
+    font-size: 25px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.contact{
+    font-size: 20px;
+    margin: 70px 0px;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contact div{
+    margin: 15px 0;
+    font-size: 23px;
+    color: white;
+}
+
+.contact div p{
+    font-size: 20px;
+   font-weight: normal;
+   margin: 0;
+   color: white;
+}
+
+.con{
+    font-size: 23px;
+    position: relative;
+    top: 10px;
+    right: 5px;
+}
+
+.line{
+    border-right: 2px solid gray;
+    height: 190px;
+    margin: 60px;
+}
+
+.socials{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.socials div{
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    justify-content: center;
+    border: 0;
+}
+
+.insta{
+    background-image: linear-gradient(315deg, #7110d2, #de46a9);
+    color: white;
+}
+
+.fb{
+    background-color: #3b5998;
+    color: white;
+}
+
+.wa{
+    background-color: #25d366;
+    color: white;
+}
+
+.twiter{
+    background-color: #00acee;
+    color: white;
+}
+
+.menu{
+    display: none;
+}

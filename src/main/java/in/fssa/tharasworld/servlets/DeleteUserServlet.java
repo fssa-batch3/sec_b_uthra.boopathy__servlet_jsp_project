@@ -31,8 +31,11 @@ public class DeleteUserServlet extends HttpServlet {
 		try {
 			
 				UserService userService = new UserService();
-				String stringId = request.getParameter("id");
+				
 				HttpSession session = request.getSession(false);
+				
+				int stringId = (Integer) session.getAttribute("userId");
+				
 				if (session != null) {
 				    session.setAttribute("userId", 0);
 				    Object userIdAttribute = session.getAttribute("userId");
@@ -40,18 +43,18 @@ public class DeleteUserServlet extends HttpServlet {
 				    session.invalidate();
 				}
 			
-				if (stringId != null && !stringId.isEmpty()) {
-					int id = Integer.parseInt(stringId);
-					userService.delete(id);
-					response.sendRedirect(request.getContextPath() + "/index.jsp");
-				}
+//				if (stringId != null && !stringId.isEmpty()) {
+//					int id = Integer.parseInt(stringId);
+//					userService.delete(id);
+//					response.sendRedirect(request.getContextPath() + "/index.jsp");
+//				}
 
 				
-			String idParams = request.getParameter("id");
+//			String idParams = request.getParameter("id");
+//			
+//			int id = Integer.parseInt(idParams);
 			
-			int id = Integer.parseInt(idParams);
-			
-			userService.delete(id); 
+			userService.delete(stringId); 
 			
 			response.sendRedirect(request.getContextPath() + "/index");
 			

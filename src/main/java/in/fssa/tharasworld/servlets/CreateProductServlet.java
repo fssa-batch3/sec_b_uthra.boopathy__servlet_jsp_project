@@ -63,7 +63,9 @@ public class CreateProductServlet extends HttpServlet {
 		
 		price.setActualPrice(Double.parseDouble(request.getParameter("actual_price")));
 		
-		price.setCurrentPrice(Double.parseDouble(request.getParameter("current_price")));
+		Double currenPrice = Double.parseDouble(request.getParameter("actual_price"))-(Double.parseDouble(request.getParameter("actual_price")) * Double.parseDouble(request.getParameter("discount")))/100;
+		
+		price.setCurrentPrice(currenPrice);
 		
 		price.setDiscount(Double.parseDouble(request.getParameter("discount")));
 		

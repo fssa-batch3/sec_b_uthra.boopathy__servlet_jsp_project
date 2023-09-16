@@ -1,0 +1,333 @@
+*{
+    margin: 0px;
+    font-family: 'Kreon', serif;
+}
+
+header{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: purple;
+    height: 100px;
+}
+
+header div ul{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    list-style: none;
+    margin-left: 550px;
+}
+
+header div ul li{
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+header div ul li a{
+     text-decoration: none;
+     color: white;
+     font-size: 24px;
+}
+
+.menu{
+    display: none;
+}
+
+#count {
+    background-color: white;
+    color: purple;
+    font-size: 20px;
+    border-radius: 50%;
+    height: 20px;
+    width: 22px;
+    margin-top: -44px;
+    margin-left: 17px;
+    text-align: center;
+    font-weight: bold;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: normal;
+    padding-left: 60px;
+    padding-top: 20px;
+    color: white;
+}
+
+.logo{
+    height: 70px;
+    width: 70px;
+    margin-top: 15px;
+    margin-left: 50px;
+    border-radius: 50px;
+}
+
+.login{
+   font-size: 25px;
+   color: white;
+   cursor: pointer;
+}
+
+.arrow {
+    margin: 2rem;
+    font-size: 30px;
+}
+
+.arrow a {
+    color: black;
+}
+
+.container{
+    background-color: #F8F8F8;
+    border-radius: 5px;
+    width: 80%;
+    /* height: 45vh; */
+    margin-left: 160px;
+    margin-top: 10rem;
+    padding-bottom: 20px;
+}
+
+.not {
+    font-size: 50px;
+    color: black;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.add {
+    height: 35px;
+    width: 150px;
+    background-color: purple;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid purple;
+    margin-top: 3rem;
+    margin-left: 32rem;
+}
+
+span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+span i {
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.de{
+    margin-left: 1rem;
+}
+
+.pdt {
+    cursor: pointer;
+    margin-left: 50rem;
+    margin-top: 5rem;
+    font-size: 25px;
+}
+
+.id {
+    margin-left: 41rem;
+    margin-top: 5rem;
+    font-size: 23px;
+}
+
+.images p {
+    font-size: 25px;
+}
+
+.deliver{
+    display: flex;
+    align-content: space-evenly;
+    margin-left: 17rem;
+}
+
+
+.detail::-webkit-scrollbar {
+    display: none;
+}
+
+
+.detail{
+    background-color: white;
+    border-radius: 5px;
+    height: 200px;
+    width: 350px;
+    font-size: 17px;
+    margin-top: -10rem;
+    margin-left: -40px;
+    padding-top: 20px;
+    padding-left: 20px;
+    scrollbar-width: none;
+    overflow-y: scroll;
+} 
+
+#name {
+    font-size: 25px;
+    color: maroon;
+}
+
+.price {
+    display: flex;
+}
+
+#original_price {
+    color: darkgrey;
+    font-size: 22px;
+    margin-left: 1rem;
+}
+
+#discount_price{
+    font-size: 22px;
+}
+
+.percent {
+    font-size: 22px;
+    color: green;
+    margin-left: 1rem;
+}
+
+.cancel {
+    height: 35px;
+    width: 130px;
+    background-color: purple;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    margin-left: 950px;
+    margin-top: -30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.view {
+    height: 35px;
+    width: 130px;
+    background-color: purple;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    margin-left: 700px;
+    margin-top: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+footer{
+    background-color: purple;
+    height: 310px;
+    margin-top: 150px;
+}
+
+.about{
+    margin: 60px 70px;
+    padding-top: 10px;
+    color: white;
+}
+
+.us{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 20px;
+    word-spacing: 5px;
+}
+
+.us a{
+    text-decoration: none;
+    color: white;
+}
+
+.us p{
+   font-size: 20px;
+   font-weight: normal;
+   margin: 0;
+}
+
+h4{
+    font-size: 25px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.contact{
+    font-size: 20px;
+    margin: 70px 0px;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contact div{
+    margin: 15px 0;
+    font-size: 23px;
+    color: white;
+}
+
+.contact div p{
+    font-size: 20px;
+   font-weight: normal;
+   margin: 0;
+   color: white;
+}
+
+.con{
+    font-size: 23px;
+    position: relative;
+    top: 10px;
+    right: 5px;
+}
+
+.line{
+    border-right: 2px solid gray;
+    height: 190px;
+    margin: 60px;
+}
+
+.socials{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.socials div{
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    justify-content: center;
+    border: 0;
+}
+
+.insta{
+    background-image: linear-gradient(315deg, #7110d2, #de46a9);
+    color: white;
+}
+
+.fb{
+    background-color: #3b5998;
+    color: white;
+}
+
+.wa{
+    background-color: #25d366;
+    color: white;
+}
+
+.twiter{
+    background-color: #00acee;
+    color: white;
+} 

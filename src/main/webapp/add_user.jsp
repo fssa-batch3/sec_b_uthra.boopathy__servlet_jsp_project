@@ -7,176 +7,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/style-register.css">
+
 <title> Register user </title>
-
-<style>
-*{
-    margin: 0px;
-    font-family: 'Kreon', serif;
-}
-
-header{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    background-color: purple;
-    height: 100px;
-}
-
-header div ul{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    list-style: none;
-    margin-left: 550px;
-}
-
-header div ul li{
-    padding-top: 40px;
-    padding-left: 30px;
-}
-
-header div ul li a{
-     text-decoration: none;
-     color: white;
-     font-size: 24px;
-}
-
-.menu{
-    display: none;
-}
-
-h1{
-    font-size: 50px;
-    font-weight: normal;
-    padding-left: 60px;
-    padding-top: 20px;
-    color: white;
-}
-
-.logo{
-    margin-top: 15px;
-    margin-left: 50px;
-    border-radius: 50px;
-    height: 70px;
-    width: 70px;
-}
-
-.login{
-   font-size: 25px;
-   color: white;
-   cursor: pointer;
-}
-
-.menu{
-    display: none;
-}
-
-.register{
-    margin-left: 550px;
-    margin-top:150px;
-    border-radius: 15px;
-    border: 3px solid #fff;
-    background-color: #fff;
-    padding-top:30px;
-    padding-bottom:30px;
-    width:500px;
-    box-shadow: 5px 13px 20px #909090;
-}
-
-h2{
-    padding-top: 80px;
-    padding-left: 40px;
-}
-
-.register div{
-    padding-top: 30px;
-    padding-left: 70px;
-}
-
-button{
-    margin-top: 50px;
-    margin-left: 200px;
-    color: white;
-    border: 0px;
-    background-color: purple;
-    border-radius: 5px;
-    height: 35px;
-    width: 130px;
-    position: relative;
-    right: 10px;
-    top: px;
-    cursor: pointer;
-}
-
-button a{
-    color: white;
-    text-decoration: none;
-}
-
-input[type="text"]{
-    border: 1px solid gray;
-    border-radius: 3px;
-    height: 30px;
-    width: 200px;
-    position: relative;
-    left: 110px;
-    outline: none;
-}
-
-label{
-    font-size: 20px;
-}
-
-input[type="tel"]{
-    border: 1px solid gray;
-    border-radius: 3px;
-    height: 30px;
-    width: 200px;
-    position: relative;
-    left: 40px;
-    outline: none;
-}
-
-input[type="number"]{
-    border: 1px solid gray;
-    border-radius: 3px;
-    height: 30px;
-    width: 200px;
-    position: relative;
-    left: 125px;
-    outline: none;
-}
-
-input[type="password"]{
-    border: 1px solid gray;
-    border-radius: 3px;
-    height: 30px;
-    width: 200px;
-    font-size: 20px;
-    position: relative;
-    left: 23px;
-    outline: none;
-}
-
-select {
- 	border: 1px solid gray;
-    border-radius: 3px;
-    height: 30px;
-    width: 200px;
-    font-size: 18px;
-    position: relative;
-    left: 120px;
-    outline: none;
-
-}
-
-div p {
-    margin: 10px 40px 0px 150px;
-}
-
-</style>
-
 
 </head>
 <body>
@@ -197,17 +31,17 @@ div p {
                     <h2> SIGN UP : </h2>
                     <div>
                         <label> Name: </label>
-                        <input type="text" id="uname" name="name" required="true">
+                        <input type="text" id="uname" name="name" pattern="^[a-zA-Z ]+$" required="true">
                     </div>
                     
                     <div>
                         <label> Age: </label>
-                        <input type="number" id="uname" name="age" required="true">
+                        <input type="number" id="age" name="age" min="1" minlength="2" maxlength="3" required="true">
                     </div>
                     
                     <div>
                         <label> Email: </label>
-                        <input type="text" id="uname" name="email" required="true">
+                        <input type="text" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" required="true">
                     </div>
 
                     <div>
@@ -221,13 +55,19 @@ div p {
                         <p> (Pattern: Atleast 8 characters including uppercase, lowercase, number and special characters) </p>
                     </div>
                     
+                    <div class="form-group">
+							<label class="showLabel"> <input type="checkbox"
+								id="show"> Show Password
+							</label>
+						</div>
+                    
                     <div>
                         <label > Role: </label>
                         <select name="role">
                         
                         <option value=""> Select role </option>
-                        <option value="buyer" > Buyer </option>
-                        <option value="seller"> Seller </option>
+                        <option value="Buyer" > Buyer </option>
+                        <option value="Seller"> Seller </option>
                         
                         </select>
                     </div>
@@ -242,6 +82,19 @@ div p {
             </form>
     
         </section> 
+        
+        
+        <script>
+	 /* password show */
+    const Password = document.querySelector("#password");
+	const Checkbox = document.querySelector("#show");
+
+	Checkbox.addEventListener("click", () => {
+		const type =
+			 Password.getAttribute("type") === "password" ? "text" : "password";
+				Password.setAttribute("type", type);
+});
+	</script>
 
 </body>
 </html>

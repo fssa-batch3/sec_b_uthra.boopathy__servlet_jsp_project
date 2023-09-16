@@ -59,16 +59,21 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	            HttpSession session = request.getSession();
 	            
 	            session.setAttribute("userId", id); 
+	            session.setAttribute("userDetails", user);
 	            response.sendRedirect(request.getContextPath() + "/category_list");
 	            
 		        }
 		    }
            
-		} catch (ServiceException e) {
+		} catch (ServiceException | ValidationException e) {
 		    e.printStackTrace();
-		} catch (ValidationException e) {
-		    e.printStackTrace();
-		}
+		    
+		    request.setAttribute("errorMessage", e.getMessage());
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/user_login.jsp");
+			
+			rd.forward(request, response);
+		} 
 	}
 
 }

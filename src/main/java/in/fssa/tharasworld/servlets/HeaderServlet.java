@@ -27,13 +27,7 @@ public class HeaderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		 try {
-		        String idParam = request.getParameter("id");
-		        int userId = -1; 
-
-		        if (idParam != null && !idParam.isEmpty()) {
-		            userId = Integer.parseInt(idParam);
-		            System.out.println(userId);
-		        }
+			 int userId = (Integer) request.getSession().getAttribute("userId"); 
 
 		        if (userId > 0) {
 		            UserEntity user = UserService.findById(userId);

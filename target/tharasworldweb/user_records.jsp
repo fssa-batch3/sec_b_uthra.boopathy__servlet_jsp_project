@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kreon:wght@500&display=swap" rel="stylesheet">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 
@@ -59,7 +62,7 @@ tr:nth-child(even) {
 			<td> <%= users.getEmail() %> </td>
 			<td> <%= users.getPhoneNumber() %> </td>
 			<td> <%= users.getRole() %> </td>
-			<td> <a href="user_records/details?id=<%= users.getId() %>"> <button type="submit"> View </button> </a> </td>
+			<td> <a href="user/details?id=<%= users.getId() %>"> <button type="submit"> View </button> </a> </td>
 			<td> <a href="user/edit?id=<%= users.getId() %>"> <button type="submit"> Edit </button> </a> </td>
 			<td> <a href="user/delete?id=<%= users.getId()%>"> <button type="submit"> Delete </button> </a> </td>
 		</tr>

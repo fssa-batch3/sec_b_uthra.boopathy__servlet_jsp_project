@@ -1,3 +1,4 @@
+<%@page import="in.fssa.tharasworld.entity.UserEntity"%>
 <%@page import="in.fssa.tharasworld.entity.PriceEntity"%>
 <%@page import="java.util.List"%>
 <%@page import="in.fssa.tharasworld.dto.ProductDetailDTO"%>
@@ -6,63 +7,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
 
-<style>
-.card {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	max-width: 300px;
-	margin: auto;
-	text-align: center;
-	font-family: arial;
-}
-.title {
-	color: grey;
-	font-size: 18px;
-}
-button {
-	border: none;
-	outline: 0;
-	display: inline-block;
-	padding: 8px;
-	color: white;
-	background-color: #000;
-	text-align: center;
-	cursor: pointer;
-	width: 100%;
-	font-size: 18px;
-}
-a {
-	text-decoration: none;
-	font-size: 22px;
-	color: black;
-}
-button:hover, a:hover {
-	opacity: 0.7;
-}
-</style>
+<meta charset="ISO-8859-1">
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Kreon:wght@300;400;500;600;700&family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&family=Parisienne&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+   
+
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/style-saree1view.css">
+
+<title> Product detail </title>
+
 </head>
 <body>
-	<h2 style="text-align: center">User Profile Card</h2>
-	<div class="card">
-	  <img src="https://www.w3schools.com/w3images/team2.jpg" alt="John" style="width: 100%">
-		<%
-		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("productDetails");
 
+	<%
+	String headerJSP = "";
+	if (request.getAttribute("userDetails") != null) {
+		headerJSP = "/after_login_header.jsp";
+	} else {
+		headerJSP = "/before_login_header.jsp";
+	}
+	%>
+
+	<jsp:include page="<%=headerJSP%>" />
+	
+	<%
+		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("productDetails");
+		
 			if (product != null) {
 		%>
-		<h1><%=product.getName()%></h1>
-		<% List<PriceEntity> price = product.getListOfPrices(); %>
-		<p> <%= price.get(0).getCurrentPrice() %> </p>
-		<s> <%= price.get(0).getActualPrice() %> </s>
-		<p> <%= price.get(0).getDiscount() %>
+		
+		<div class="detail">
+		
+		<div class="left">
+    <div class="image">
+        <img src="<%= product.getImg() %>" alt="ProductName image" height="460px" width="400px">
+    </div>
+</div>
 
-		<p>
-			<button>Add to cart</button>
-		</p>
-	</div>
-	<%
+<div class="right">
+    <h3 id="name"> <%=product.getName()%> </h3>
+    <h4>Special price</h4>
+	
+	<% List<PriceEntity> price = product.getListOfPrices(); %>
+    <div class="price">
+        <p id="original_price">&#8377 <%= price.get(0).getCurrentPrice() %></p>
+        <p>
+            <s id="discount_price">&#8377 <%= price.get(0).getActualPrice() %> </s>
+        </p>
+        <p>
+            <b id="discount_percent"><%= price.get(0).getDiscount() %>% off</b>
+        </p>
+    </div>
+
+    <strong>Product details:</strong>
+
+    <div class="para">
+        <p id="product_detail"> <%= product.getDescription() %> </p>
+    </div>
+    
+    <strong class="paras">Additional offers</strong>
+   
+    <div class="paras">
+        <p id="add_info"> &#8277 Special PriceGet extra 30% off (price inclusive of cash back / coupon)T&C </p>
+		<p> &#8277 Bank Offer5% Cash back on Thara's World Axis Bank CardT&C </p>
+		<p> &#8277Partner OfferSign up for Thara's World Pay Later and get Thara's World Gift Card worth up to Rs. 500</p>
+    </div>
+    
+    <button class="add" data-add="product_uuid">ADD TO CART
+        <i class="fa fa-shopping-cart" style="font-size:24px;color:white;"></i>
+    </button>
+    <button class="buy">BUY NOW
+        <i class="fa fa-shopping-bag" style="font-size:24px;color:white;"></i>
+    </button>
+    <button class="wish">WISHLIST
+        <i class="fa fa-heart" style="font-size:24px;color:white;"></i>
+    </button>
+    
+</div>
+		
+		
+		</div>
+		
+		<%
 	} else {
 	%>
 	<p>Product not found.</p>

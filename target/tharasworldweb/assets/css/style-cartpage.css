@@ -1,0 +1,559 @@
+*{
+    margin: 0px;
+    font-family: 'Kreon', serif;
+}
+
+header{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: 	purple;
+    height: 100px;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+
+header div ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-left: 550px;
+}
+
+header div ul li{
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+.nav a{
+     text-decoration: none;
+     color: white;
+     font-size: 24px;
+}
+
+#count {
+    background-color: white;
+    color: purple;
+    font-size: 20px;
+    border-radius: 50%;
+    height: 20px;
+    width: 22px;
+    margin-top: -44px;
+    margin-left: 17px;
+    text-align: center;
+    font-weight: bold;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: normal;
+    padding-left: 60px;
+    padding-top: 20px;
+    color: white;
+}
+
+.logo{
+    height: 70px;
+    width: 70px;
+    margin-top: 15px;
+    margin-left: 50px;
+    border-radius: 50px;
+}
+
+.login{
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+.arrow {
+    margin: 2rem;
+    font-size: 30px;
+}
+
+.arrow a {
+    color: black;
+}
+
+.contain {
+    border: 1px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    width: 60%;
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 100px;   
+    margin-left: 200px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.contain h3 {
+    color: black;
+}
+
+.contain .add {
+    width: 160px;
+    height: 45px;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.container{
+    border: 1px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    width: 75%;
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;   
+    margin-left: 100px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.not {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+}
+
+.details {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 15vh;
+    width: 25rem;
+}
+
+.details div {
+    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+input {
+    height: 15px;
+    width: 40px;
+}
+
+.star {
+    display: flex;
+    flex-direction: row;
+}
+
+.container img{
+    border-radius: 4px; 
+}
+
+.stars{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.remove{
+    height: 35px;
+    width: 120px;
+    background-color: purple;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}   
+
+.wish {
+    height: 35px;
+    width: 120px;
+    background-color: purple;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.buy {
+    height: 40px;
+    width: 140px;
+    background-color: purple;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    margin-left: -10rem;
+}
+
+button a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+h3{
+    font-size: 28px;
+    color: maroon;
+    word-spacing: 10px;
+}    
+
+p{
+    font-size: 23px;
+    font-weight: bold;
+    color: black;
+}
+
+s{
+    color: darkgrey;
+    font-size: 22px; 
+}
+
+.percent{
+    color: green;
+    font-size: 22px;
+}
+
+.total {
+    width: 65%;
+    height: 30vh;
+    display: flex;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 100px;   
+    margin-left: 16rem;
+}
+
+.sum {
+    margin-bottom: 13rem;
+    margin-left: -3rem;
+}
+
+.sub {
+   margin-left: -22rem;
+}
+
+.amt {
+    margin-left: -13rem;
+ }
+ 
+
+.total div p {
+    padding-top: 2rem;
+    align-content: flex-end;
+}
+
+.back {
+    width: 65%;
+    height: 20vh;
+    display: flex;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 100px;   
+    margin-left: 16rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+}
+
+.address {
+    font-size: 24px;
+}
+
+.change {
+    height: 40px;
+    width: 140px;
+    background-color: purple;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+footer{
+    background-color: purple;
+    height: 290px;
+    margin-top: 150px;
+}
+
+.about{
+    margin: 60px 70px;
+    padding-top: 10px;
+    color: white;
+}
+
+.us{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 20px;
+    word-spacing: 5px;
+}
+
+.us a{
+    text-decoration: none;
+    color: white;
+}
+
+.us p{
+   font-size: 20px;
+   font-weight: normal;
+   margin: 0;
+}
+
+h4{
+    font-size: 25px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.contact{
+    font-size: 20px;
+    margin: 70px 0px;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contact div{
+    margin: 15px 0;
+    font-size: 23px;
+    color: white;
+}
+
+.contact div p{
+    font-size: 20px;
+   font-weight: normal;
+   margin: 0;
+   color: white;
+}
+
+.con{
+    font-size: 23px;
+    position: relative;
+    top: 10px;
+    right: 5px;
+}
+
+.line{
+    border-right: 2px solid gray;
+    height: 190px;
+    margin: 60px;
+}
+
+.socials{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.socials div{
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    justify-content: center;
+    border: 0;
+}
+
+.insta{
+    background-image: linear-gradient(315deg, #7110d2, #de46a9);
+    color: white;
+}
+
+.fb{
+    background-color: #3b5998;
+    color: white;
+}
+
+.wa{
+    background-color: #25d366;
+    color: white;
+}
+
+.twiter{
+    background-color: #00acee;
+    color: white;
+}
+
+.menu{
+    display: none;
+}
+
+
+@media only screen and (max-width: 360px)
+{
+
+    header{
+        height: 10vh;
+        width: 100vw;
+    }
+
+    .logo{
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+    }
+
+    h1{
+        font-size: 25px;
+        margin-left: -50px;
+    }
+
+    .nav{
+        display: none;
+    }
+
+    .menu{
+        display: block;
+        font-size: 26px;
+        color: white;
+        margin-top: 20px;
+        margin-left: 90px;
+        position: relative;
+    }
+
+    .menu-list a{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+    }
+
+    .menu:hover .menu-list{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        margin-top: -38px;
+        margin-left: -250px;
+    }
+
+    .menu-list{
+        display: none;
+        color: white;
+        position: absolute;
+    }
+
+    footer{
+        height: 25vh;
+        margin-top: 100px;
+    }
+    
+    .about{
+        margin: 10px 30px;
+        padding-top: 10px;
+        color: white;
+    }
+    
+    .us{
+        font-size: 16px;
+        width: 100px;
+    }
+    
+    .us a{
+        text-decoration: none;
+        color: white;
+    }
+    
+    h4{
+        font-size: 20px;
+        padding-top: 5px;
+        padding-bottom: 15px;
+    }
+    
+    .contact{
+        font-size: 20px;
+        margin: 70px 0px;
+        color: white;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .contact div{
+        margin: -30px 0;
+        font-size: 20px;
+        color: white;
+    }
+    
+    .con{
+        font-size: 20px;
+        position: relative;
+        left: 20px;
+        top: -10px;
+    }
+    
+    .line{
+        border-right: 2px solid gray;
+        height: 150px;
+        position: relative;
+        top: 22px;
+        left: 1px;
+    }
+    
+    .socials{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    
+    .socials div{
+        margin: 0px 10px;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        padding: 10px;
+        justify-content: center;
+        border: 0;
+    }
+    
+    .contact div p{
+        margin-top: 70px;
+        font-size: 18px;
+    }
+
+    .socials .insta{
+        margin-top: -12px;
+    }
+
+}    
