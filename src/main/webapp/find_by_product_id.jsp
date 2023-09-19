@@ -78,15 +78,21 @@
 		<p> &#8277Partner OfferSign up for Thara's World Pay Later and get Thara's World Gift Card worth up to Rs. 500</p>
     </div>
     
-    <button class="add" data-add="product_uuid">ADD TO CART
+<!--     <button class="add" data-add="product_uuid">ADD TO CART
         <i class="fa fa-shopping-cart" style="font-size:24px;color:white;"></i>
-    </button>
+    </button> -->
+    
+    <a href="/tharasworldweb/products/buy_now?pdt_id=<%= product.getPdtId() %>">
+    
     <button class="buy">BUY NOW
         <i class="fa fa-shopping-bag" style="font-size:24px;color:white;"></i>
     </button>
-    <button class="wish">WISHLIST
+    
+    </a>
+    
+ <!--    <button class="wish">WISHLIST
         <i class="fa fa-heart" style="font-size:24px;color:white;"></i>
-    </button>
+    </button> -->
     
 </div>
 		

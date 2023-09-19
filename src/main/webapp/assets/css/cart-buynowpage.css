@@ -226,7 +226,7 @@ strong{
     top: 65px;
 }
 
-input[type="name"]{
+input[type="text"]{
     height: 25px;
     width: 200px;
     font-size: 15px;

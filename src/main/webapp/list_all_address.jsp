@@ -104,7 +104,7 @@
             <p> <%= add.getPincode() %> </p>
             <p> <%= add.getState() %> </p>
         </div>
-        <button class="set" data-id="your-address-id">SET AS DEFAULT</button>
+       <a href="address/set_as_default?address_id=<%= add.getAddressId() %>"> <button class="set" data-id="your-address-id">SET AS DEFAULT</button> </a>
     </div>
 
  		<%} %>

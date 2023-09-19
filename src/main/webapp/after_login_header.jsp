@@ -98,8 +98,8 @@ h1 {
 			<ul>
 				<!-- <li><a href="#"><i
 						class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
-				<li><a href="#"><i class="fa-sharp fa-solid fa-heart"></i></a></li>
-				<li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li> -->
+				<li><a href="#"><i class="fa-sharp fa-solid fa-heart"></i></a></li> -->
+				<li><a href="/tharasworldweb/orders"><i class="fa-solid fa-bag-shopping"></i></a></li> 
 				<li><a href="/tharasworldweb/user/details"><i id="profile"
 						class="fa-solid fa-circle-user"></i> </a></li>
 				<li><a href="/tharasworldweb/user/logout"> <span class="login"

@@ -84,13 +84,19 @@ alert("<%=error%>");
           <div>
             <label> Tpye: </label>
             <select name="type" required>
+			
 				<option value=""> Select type </option>
 					
 				<% TypeService typeService = new TypeService();
+				
 				Set<TypeEntity> types = typeService.findAll(); 
+				
 				for( TypeEntity type : types ) { %>
+				
 				<option value="<%= type.getTypeId() %>" > <%= type.getTypeName() %> </option>
+				
 				<% } %>
+			
 			</select>
 
           </div>

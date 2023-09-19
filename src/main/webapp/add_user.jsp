@@ -15,14 +15,14 @@
 </head>
 <body>
 
-<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+ <% String errorMsg = (String) request.getAttribute("errorMessage"); %>
 
 
 <% if(errorMsg != null) { %>
 
 <script> alert("<%=errorMsg%>"); </script>
 
-<% } %>
+<% } %> 
 	
 	 <section>
             <form role="form" action="create" method="post">
