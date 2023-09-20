@@ -18,19 +18,11 @@
    
 </head>
 <body>
-              <%
-	String headerJSP = "";
-	if (request.getAttribute("editUser") != null) {
-		headerJSP = "/after_login_header.jsp";
-	} else {
-		headerJSP = "/before_login_header.jsp";
-	}
-	%>
-
-	<jsp:include page="<%=headerJSP%>" />
+      
+<%@ include file="/header.jsp" %>  
 
 <%
-		UserEntity user = (UserEntity) request.getAttribute("editUser");
+		UserEntity user1 = (UserEntity) request.getAttribute("editUser");
 
 		AddressEntity address = (AddressEntity) request.getAttribute("address");
 		
@@ -40,19 +32,23 @@
 		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
 
 
-		<% if(errorMsg != null && user!=null) { %>
+		<% if(errorMsg != null && user1!=null) { %>
 		
 		<script> alert("<%=errorMsg%>"); </script>
 		
 		<script>
-			doucument.getElementById("name").value = "<%= user.getName()%>";
-			doucument.getElementById("email").value = "<%= user.getEmail()%>";
-			doucument.getElementById("phonenumber").value = "<%= user.getPhoneNumber()%>";
-			doucument.getElementById("password").value = "<%= user.getPassword()%>";
-			doucument.getElementById("age").value = "<%= user.getAge()%>";	
+			doucument.getElementById("name").value = "<%= user1.getName()%>";
+			doucument.getElementById("email").value = "<%= user1.getEmail()%>";
+			doucument.getElementById("phonenumber").value = "<%= user1.getPhoneNumber()%>";
+			doucument.getElementById("password").value = "<%= user1.getPassword()%>";
+			doucument.getElementById("age").value = "<%= user1.getAge()%>";	
+			
+			if(address != null){}
+			
 	 		document.getElementById("address").value = "<%=address.getAddress() %>";
 			document.getElementById("pincode").value = "<%= address.getPincode() %>";
 			document.getElementById("state").value = "<%= address.getState() %>" 
+		}
 		</script>
 		
 		<% } %>
@@ -69,44 +65,42 @@
                
                 <div class="name">
                     <label> Name: </label>
-                    <input type="text" id="uname" name="name" value=<%= user.getName() %>>
+                    <input type="text" id="uname" name="name" value=<%= user1.getName() %>>
                 </div>
 
                 <div class="age">
                     <label> Age:</label>
-                    <input type="tel" id="age" name="age" value=<%=user.getAge()%> min="1" minlength="2" maxlength="3">
+                    <input type="tel" id="age" name="age" value=<%=user1.getAge()%> min="1" minlength="2" maxlength="3">
                 </div>
 
                 <div class="add">
                     <label> Residential address: </label>
-                    <textarea id="address" disabled><%=address.getAddress() %></textarea>
-                     
-                    
+                    <textarea id="address" disabled> <% if(address!=null){ %> <%=address.getAddress() %> <% } %> </textarea>         
                 </div>
 
                 <div class="pin">
                     <label> Pincode: </label>
-                    <input type="number" id="pincode" name="pincode"  value="<%= address.getPincode() %>"  maxlength="6" disabled>  
+                    <input type="number" id="pincode" name="pincode"  value="  <% if(address!=null){ %> <%= address.getPincode() %> <% } %>"  maxlength="6" disabled>  
                 </div>
 
                 <div class="state">
                     <label> State: </label>
-                    <input type="text" id="state" value = "<%= address.getState() %>" disabled>  
+                    <input type="text" id="state" value ="<% if(address!=null){ %><%= address.getState() %> <% } %>" disabled>  
                 </div>
                 
                 <div class="no">
                     <label> Contact number: </label>
-                    <input type="number" placeholder="+91" id="phonenumber" value=<%= user.getPhoneNumber() %> disabled>
+                    <input type="number" placeholder="+91" id="phonenumber" value=<%= user1.getPhoneNumber() %> disabled>
                 </div>
 
                 <div class="mail">
                     <label> E-Mail Id: </label>
-                    <input type="email" id="email" placeholder="ghds4729@gmail.com" value=<%= user.getEmail() %> pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" disabled>
+                    <input type="email" id="email" placeholder="ghds4729@gmail.com" value=<%= user1.getEmail() %> pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" disabled>
                 </div>
                 
                 <div class="pass">
                     <label> Password: </label>
-                    <input type="password" id="password" name="password" placeholder="**********" value=<%= user.getPassword() %> pattern="*" >
+                    <input type="password" id="password" name="password" placeholder="**********" value=<%= user1.getPassword() %> pattern="*" >
                 </div>
                 
                 <div class="form-group">
@@ -117,7 +111,7 @@
 
                  <div class="des">
                     <label> Your Designation:</label>
-                    <input type="text" id="des" placeholder="Buyer" value=<%= user.getRole() %> disabled>
+                    <input type="text" id="des" placeholder="Buyer" value=<%= user1.getRole() %> disabled>
                 </div> 
                 
                 <div >

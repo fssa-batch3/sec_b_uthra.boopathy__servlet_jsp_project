@@ -15,6 +15,8 @@
 </head>
 <body>
 
+<%@ include file="/header.jsp" %> 
+
 <% String errorMsg = (String) request.getAttribute("errorMessage"); %>
 
 <% if(errorMsg != null) { %>

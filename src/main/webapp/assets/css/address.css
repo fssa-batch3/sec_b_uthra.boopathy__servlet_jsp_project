@@ -25,13 +25,13 @@
 }
 
 .container {
-    height: 25vh;
     width: 70%;
     margin-top: 30px;
     margin-left: 200px;
     background-color: whitesmoke;
     border: 0;
     border-radius: 8px;
+    padding-bottom: 30px;
 }
 
 h3 {

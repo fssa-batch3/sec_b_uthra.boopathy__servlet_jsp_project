@@ -1,3 +1,4 @@
+<%@page import="in.fssa.tharasworld.service.UserService"%>
 <%@page import="in.fssa.tharasworld.model.User"%>
 <%@page import="in.fssa.tharasworld.entity.UserEntity"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -87,8 +88,64 @@ h1 {
 </style>
 </head>
 <body>
+
+<% 
+
+	HttpSession session1 = request.getSession();
+
+	Integer userIdObject = (Integer) session1.getAttribute("userId");
+
+
+	if(userIdObject == null) {
+		
+%>
 	
 	<header id="userLogin">
+
+<a href= "/tharasworldweb/category_list"> <img class="logo" src="https://iili.io/HybH2KN.png" alt="logo" /> </a>
+		<h1> Thara's World </h1>
+		  <div class="nav">
+		     <ul> 
+		        <li><a href = "/tharasworldweb/user/new"><span class="login"> Sign up </span> </a> </li>
+		        <li> <a href= "/tharasworldweb/user/login"><span class="login"> Login </span> </a></li>
+		      </ul>
+		  </div>
+
+</header>
+	
+	<% } else { 
+	
+		int userId = userIdObject.intValue();
+		UserEntity user = UserService.findById(userId);
+	
+			 if (user.getRole().equalsIgnoreCase("seller")) { %>
+		
+	
+	<header id="userLogin">
+
+		<a href="/tharasworldweb/category_list"> <img class="logo"
+			src="https://iili.io/HybH2KN.png" alt="logo" />
+		</a>
+		<h1>Thara's World</h1>
+		<div class="nav">
+			<ul>
+				<!-- <li><a href="#"><i
+						class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
+				<li><a href="#"><i class="fa-sharp fa-solid fa-heart"></i></a></li> -->
+				<li><a href="/tharasworldweb/seller_orderList"><i class="fa-solid fa-bag-shopping"></i></a></li> 
+				<li><a href="/tharasworldweb/user/details"><i id="profile"
+						class="fa-solid fa-circle-user"></i> </a></li>
+				<li><a href="/tharasworldweb/user/logout"> <span class="login"
+						id="logout"> Log out </span></li>
+				</a>
+			</ul>
+		</div>
+
+	</header>
+	
+		<% } else { %>
+	
+					<header id="userLogin">
 
 		<a href="/tharasworldweb/category_list"> <img class="logo"
 			src="https://iili.io/HybH2KN.png" alt="logo" />
@@ -109,6 +166,11 @@ h1 {
 		</div>
 
 	</header>
+	
+		<% } %>
+	
+	
+	<% } %> 
 	
 </body>
 </html>

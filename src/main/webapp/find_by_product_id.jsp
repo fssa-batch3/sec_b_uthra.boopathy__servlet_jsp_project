@@ -24,19 +24,12 @@
 </head>
 <body>
 
-	<%
-	String headerJSP = "";
-	if (request.getAttribute("userDetails") != null) {
-		headerJSP = "/after_login_header.jsp";
-	} else {
-		headerJSP = "/before_login_header.jsp";
-	}
-	%>
-
-	<jsp:include page="<%=headerJSP%>" />
+	<%@ include file="/header.jsp" %> 
 	
 	<%
 		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("productDetails");
+	
+		UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
 		
 			if (product != null) {
 		%>
@@ -54,6 +47,7 @@
     <h4>Special price</h4>
 	
 	<% List<PriceEntity> price = product.getListOfPrices(); %>
+	
     <div class="price">
         <p id="original_price">&#8377 <%= price.get(0).getCurrentPrice() %></p>
         <p>
@@ -78,9 +72,9 @@
 		<p> &#8277Partner OfferSign up for Thara's World Pay Later and get Thara's World Gift Card worth up to Rs. 500</p>
     </div>
     
-<!--     <button class="add" data-add="product_uuid">ADD TO CART
+     <button class="add" data-add="product_uuid">ADD TO CART
         <i class="fa fa-shopping-cart" style="font-size:24px;color:white;"></i>
-    </button> -->
+    </button> 
     
     <a href="/tharasworldweb/products/buy_now?pdt_id=<%= product.getPdtId() %>">
     
@@ -106,6 +100,6 @@
 	<%
 	}
 	%>
-
+	
 </body>
 </html>

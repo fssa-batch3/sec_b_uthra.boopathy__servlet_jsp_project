@@ -25,24 +25,14 @@
 <body>
 
 
-	<%
-	String headerJSP = "";
-	if (request.getAttribute("userDetails") != null) {
-		headerJSP = "/after_login_header.jsp";
-	} else {
-		headerJSP = "/before_login_header.jsp";
-	}
-	%>
-
-	<jsp:include page="<%=headerJSP%>" />
-
+	<%@ include file="/header.jsp"%>
 
 	<%
 	ProductDetailDTO pdt = (ProductDetailDTO) request.getAttribute("productDetails");
 
 	AddressEntity address = (AddressEntity) request.getAttribute("address");
 
-	UserEntity user = (UserEntity) request.getAttribute("userDetails");
+	UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
 	%>
 
 	<div class="left">
@@ -71,24 +61,32 @@
 
 			<div class="name">
 				<label> Name: </label> <input type="text" id="uname" name="name"
-					value="<%=address.getName()%>" disabled="true">
+					value="<%if (address != null) {%><%=address.getName()%> <%}%>"
+					disabled="true">
 			</div>
 
 			<div class="add">
 				<label> Address: </label>
-				<textarea id="address" name="address" disabled="true"><%=address.getAddress()%> </textarea>
+				<textarea id="address" name="address" disabled="true"> <%
+ if (address != null) {
+ %> <%=address.getAddress()%>
+					<%
+					}
+					%> </textarea>
 			</div>
 			<input type="number" id="pincode" name="pincode"
-				placeholder="Pincode" value="<%=address.getPincode()%>"
+				placeholder="Pincode"
+				value=" <%if (address != null) {%><%=address.getPincode()%><%}%>"
 				maxlength="6" size="6" disabled> <input type="text"
-				id="state" name="state" value="<%=address.getState()%>"
-				placeholder="State" disabled> 
-				
-			
+				id="state" name="state"
+				value=" <%if (address != null) {%><%=address.getState()%><%}%>"
+				placeholder="State" disabled>
+
+
 
 			<div class="no">
 				<label> Phone number: </label> <input type="tel" id="phonenumber"
-					name="phoneNumber" value="<%=user.getPhoneNumber()%>"
+					name="phoneNumber" value="<%=user1.getPhoneNumber()%>"
 					required="true" placeholder="+91" maxlength="10">
 			</div>
 
@@ -108,17 +106,18 @@
 
 			<input type="hidden" name="priceId"
 				value="<%=pdt.getListOfPrices().get(0).getPriceId()%>" /> <input
-				type="hidden" name="addressId" value="<%=address.getAddressId()%>" />
+				type="hidden" name="addressId"
+				value="<%if (address != null) {%><%=address.getAddressId()%><%}%>" />
 
 			<input type="hidden" name="sellerId" value="<%=pdt.getSellerId()%>" />
 
 			<button class="place" type="submit">PLACE ORDER</button>
 
 		</form>
-		
+
 		<a href="/tharasworldweb/address">
-				<button class="change" type="submit">Change address</button>
-			</a>
+			<button class="change" type="submit">Change address</button>
+		</a>
 
 	</div>
 

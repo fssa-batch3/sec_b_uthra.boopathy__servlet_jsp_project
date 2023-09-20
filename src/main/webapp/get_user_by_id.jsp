@@ -24,24 +24,16 @@
     </head>
     
     <body>
-                <%
-	String headerJSP = "";
-	if (request.getAttribute("userDetails") != null) {
-		headerJSP = "/after_login_header.jsp";
-	} else {
-		headerJSP = "/before_login_header.jsp";
-	}
-	%>
-
-	<jsp:include page="<%=headerJSP%>" />
+       
+<%@ include file="/header.jsp" %> 
 	
 	                
                 <%
-		UserEntity user = (UserEntity) request.getAttribute("userDetails");
+		UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
                 
         AddressEntity address = (AddressEntity) request.getAttribute("address");
 
-			if (user != null) {
+			if (user1 != null) {
 		%>
 
         <div class="arrows"></div>
@@ -58,12 +50,12 @@
                
                 <div class="name">
                     <label> Name: </label>
-                    <input type="text" id="uname" value="<%=user.getName() %>" disabled="true">
+                    <input type="text" id="uname" value="<%=user1.getName() %>" disabled="true">
                 </div>
 
                 <div class="age">
                     <label> Age:</label>
-                    <input type="number" id="age" value="<%=user.getAge()%>" disabled="true">
+                    <input type="number" id="age" value="<%=user1.getAge()%>" disabled="true">
                 </div>
 
                 <div class="add">
@@ -73,17 +65,17 @@
                 
                 <div class="no">
                     <label> Contact number: </label>
-                    <input type="number" id="phonenumber" value="<%=user.getPhoneNumber()%>" disabled="true">
+                    <input type="number" id="phonenumber" value="<%=user1.getPhoneNumber()%>" disabled="true">
                 </div>
 
                 <div class="mail">
                     <label> E-Mail Id: </label>
-                    <input type="email" id="email" value="<%=user.getEmail()%>" disabled="true">
+                    <input type="email" id="email" value="<%=user1.getEmail()%>" disabled="true">
                 </div>
 
                 <div class="des">
                     <label> Your Designation:</label>
-                   <input type="text" id="role" value="<%=user.getRole()%>" disabled="true">
+                   <input type="text" id="role" value="<%=user1.getRole()%>" disabled="true">
                 </div>
                 
                 <div >

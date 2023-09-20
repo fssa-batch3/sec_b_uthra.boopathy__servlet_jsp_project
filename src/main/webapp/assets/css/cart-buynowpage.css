@@ -3,69 +3,6 @@
     font-family: 'Kreon', serif;
 }
 
-header{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    background-color: purple;
-    height: 100px;
-}
-
-header div ul{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    list-style: none;
-    margin-left: 500px;
-}
-
-header div ul li{
-    padding-top: 40px;
-    padding-left: 30px;
-}
-
-header div ul li a{
-    font-size: 24px;
-     text-decoration: none;
-     color: white;
-}
-
-#count {
-    background-color: white;
-    color: purple;
-    font-size: 20px;
-    border-radius: 50%;
-    height: 20px;
-    width: 22px;
-    margin-top: -44px;
-    margin-left: 17px;
-    text-align: center;
-    font-weight: bold;
-}
-
-h1{
-    font-size: 50px;
-    padding-left: 60px;
-    position: relative;
-    top: 20px;
-    color: white;
-    font-weight: normal;
-}
-
-.logo{
-    margin-top: 15px;
-    margin-left: 50px;
-    border-radius: 50px;
-    height: 70px;
-    width: 70px;
-}
-
-.login{
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-}
-
 .left{
     width: 50%;
     position: relative;
@@ -226,17 +163,6 @@ strong{
     top: 65px;
 }
 
-input[type="text"]{
-    height: 25px;
-    width: 200px;
-    font-size: 15px;
-    border: 1px solid gray;
-    border-radius: 3px;
-    position: relative;
-    left: 120px;
-    outline: none;
-}
-
 select{
     height: 30px;
     width: 200px;
@@ -279,7 +205,7 @@ textarea{
     border: none;
     border-radius: 3px;
     margin-top: 0.5rem;
-    margin-left: 5.4rem; 
+    margin-left: 4rem; 
     outline: none;
 }
 
@@ -306,27 +232,27 @@ input[type="number"]{
 }
 
 input[type="text"]{
-    height: 25px;
-    width: 50px;
-    font-size: 15px;
+    height: 30px;
+    width: 200px;
+    font-size: 18px;
     border: none;
     /* border-radius: 3px; */
     position: relative;
-    left: 96px;
+    left: 120px;
     outline: none;
 }
 
 .change {
-    background-color: purple;
+	background-color: purple;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     border: none;
     border-radius: 3px;
-    height: 25px;
-    width: 130px;
+    height: 40px;
+    width: 150px;
     position: relative;
-    top: 40px;
-    right: 70px;
+    top: -40px;
+    left: 301px;
     cursor: pointer;
 }
 

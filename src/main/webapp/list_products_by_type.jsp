@@ -25,16 +25,8 @@
     </head> 
     
     <body>
-        	<%
-	String headerJSP = "";
-	if (request.getAttribute("userDetails") != null) {
-		headerJSP = "/after_login_header.jsp";
-	} else {
-		headerJSP = "/before_login_header.jsp";
-	}
-	%>
-
-	<jsp:include page="<%=headerJSP%>" />
+        
+<%@ include file="/header.jsp" %> 
 
         <section class="subheading">
             <h2> FILTER: </h2>

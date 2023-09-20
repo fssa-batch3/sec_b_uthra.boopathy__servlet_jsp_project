@@ -1,7 +1,8 @@
 package in.fssa.tharasworld.servlets;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,11 +26,12 @@ import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
 
 /**
- * Servlet implementation class MyOrdersServlet
+ * Servlet implementation class ViewOrderedProductsServlet
  */
-@WebServlet("/orders")
-public class MyOrdersServlet extends HttpServlet {
+@WebServlet("/ordered_products")
+public class ViewOrderedProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,51 +47,29 @@ public class MyOrdersServlet extends HttpServlet {
 			int userId = userIdObject.intValue();
 			UserEntity user = UserService.findById(userId);
 			
-			System.out.println(userId);
+//			System.out.println(userId);
 
-			List<OrderEntity> order = OrderService.findOrdersByUserId(userId);
+			int orderId = (Integer) Integer.parseInt(request.getParameter("order_id"));
 			
-			List<PriceEntity> priceList = new ArrayList<>();
+			System.out.println(orderId);
+						
+			OrderEntity order = OrderService.findOrderByOrderId(orderId);
 			
-			for(OrderEntity p : order) {
-								
-				PriceEntity price = PriceService.findPriceByPriceId(p.getPriceId());
-				
-				priceList.add(price);
-			}
+			int pdtId = PriceService.findProductByPriceId(order.getPriceId());
+
+			PriceEntity price = PriceService.findPriceByPriceId(order.getPriceId());
 			
+			ProductDetailDTO product = ProductService.findByProductId(pdtId);
 			
-//			System.out.println(order);
-			
-			List<AddressEntity> addressList = new ArrayList<>();
-			
-			for(OrderEntity s : order) {
-				int addressId = OrderService.findAddressByOrderId(s.getOrderId());
-				
-				AddressEntity address = AddressService.findByAddressId(addressId);
-				
-				addressList.add(address);
-			}
-			
-			List<ProductDetailDTO> productList = new ArrayList<>();
-			
-			for(OrderEntity p : order) {
-				int priceId = PriceService.findProductByPriceId(p.getPriceId());
-				
-				ProductDetailDTO product = ProductService.findByProductId(priceId);
-								
-				productList.add(product);
-			}
-			
+			UserEntity seller = UserService.findById(product.getSellerId());
 			
 			request.setAttribute("userDetails", user);
-			request.setAttribute("productList", productList);
-			request.setAttribute("price", priceList);
-			request.setAttribute("addressList", addressList);
-			request.setAttribute("orderList", order);
+			request.setAttribute("price", price);
+			request.setAttribute("productDetail", product);
+			request.setAttribute("order", order);
+			request.setAttribute("seller", seller);
 
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/my_orders.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/ordered_products.jsp");
 			dispatcher.forward(request, response);
 		
 		} catch (ServiceException e) {
@@ -101,6 +81,5 @@ public class MyOrdersServlet extends HttpServlet {
 		} 
 		
 	}
-
 
 }

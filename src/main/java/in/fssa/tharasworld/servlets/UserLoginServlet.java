@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
@@ -33,13 +35,15 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		
 		try {
 		    Long phoneNumber = Long.parseLong(request.getParameter("phone_number"));
+		    
 		    String password = request.getParameter("password");
+		   
 		    UserService userService = new UserService();
 		    UserEntity user = userService.checkUserExistsWithPhoneNumber(phoneNumber);
 		    
 		    if (user == null) {
 		        System.out.println("User not found");
-		    } else if (!password.equals(user.getPassword())) {
+		    } else if (!BCrypt.checkpw(password, user.getPassword())) {
 		        System.out.println("Incorrect Phone number or Password:(");
 		    } else {
 	            int id = user.getId();

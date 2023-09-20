@@ -15,12 +15,23 @@
 </head>
 <body>
 
+<%@ include file="/header.jsp" %>  
+
  <% String errorMsg = (String) request.getAttribute("errorMessage"); %>
 
 
 <% if(errorMsg != null) { %>
 
-<script> alert("<%=errorMsg%>"); </script>
+<div id="popup1" class="overlay">
+		<div class="popup">
+			<h2>Alert !</h2>
+			<a  onclick="closeAlert()"  class="close" href="#">&times;</a>
+			<div class="content">
+				<%=errorMsg%>
+			</div>
+			<button id="alert" onclick="closeAlert()" type="button">Ok</button>
+		</div>
+	</div>
 
 <% } %> 
 	

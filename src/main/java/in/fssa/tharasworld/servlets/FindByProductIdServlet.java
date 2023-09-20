@@ -65,6 +65,7 @@ public class FindByProductIdServlet extends HttpServlet {
 				
 				ProductDetailDTO product = ProductService.findByProductId(Integer.parseInt(productId));
 				request.setAttribute("productDetails", product);
+				request.setAttribute("userId", userIdObject);
 				request.setAttribute("userDetails", user);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/find_by_product_id.jsp");
 				dispatcher.forward(request, response);

@@ -17,19 +17,11 @@
     </head>
     
     <body>
-                    <%
-	String headerJSP = "";
-	if (request.getAttribute("userDetails") != null) {
-		headerJSP = "/after_login_header.jsp";
-	} else {
-		headerJSP = "/before_login_header.jsp";
-	}
-	%>
-
-	<jsp:include page="<%=headerJSP%>" />
+   
+<%@ include file="/header.jsp" %> 
 
 <%
-		UserEntity user = (UserEntity) request.getAttribute("userDetails");
+		UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
 
 		List<AddressEntity> addressList = (List<AddressEntity>) request.getAttribute("addressList");
 		
@@ -42,7 +34,7 @@
 		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
 
 
-		<% if(errorMsg != null && user!=null) { %>
+		<% if(errorMsg != null && user1!=null) { %>
 		
 		<script> alert("<%=errorMsg%>"); </script>
 		
@@ -81,7 +73,7 @@
         <div class="address">
             <i class="fa-sharp fa-solid fa-location-dot" style="font-size: 25px; margin-top: 2rem; margin-left: 3rem" title="Location"></i>
             <h3>DEFAULT ADDRESS :</h3>
-            <p id="address"> You did not add any address </p>
+            <p id="address"> You did not add any address as default </p>
         </div>
     </div>
     
@@ -104,7 +96,38 @@
             <p> <%= add.getPincode() %> </p>
             <p> <%= add.getState() %> </p>
         </div>
-       <a href="address/set_as_default?address_id=<%= add.getAddressId() %>"> <button class="set" data-id="your-address-id">SET AS DEFAULT</button> </a>
+        
+        
+        <% if(address!=null){ 
+        
+        
+        		if(address.getAddressId() == add.getAddressId()) { %>
+    
+        		<button class="set" data-id="your-address-id" style="width:200px;margin-left:70px;">DEFAULT ADDRESS</button>
+ 
+				<% } else { %>
+					<a href="address/set_as_default?address_id=<%= add.getAddressId() %>">
+		    				<button class="set" data-id="your-address-id">SET AS DEFAULT</button>
+		      		 </a>
+				<% } %>
+		
+		<% } else { %>
+        
+        	<a href="address/set_as_default?address_id=<%= add.getAddressId() %>">
+    				<button class="set" data-id="your-address-id">SET AS DEFAULT</button>
+      		 </a>
+		<% } %>
+        
+        <%-- <% if(address.isSetAsDefaultStatus()){ %>
+        
+        	<a href="address/set_as_default?address_id=<%= add.getAddressId() %>"> <button class="set" data-id="your-address-id"> DEFAULT ADDRESS </button> </a>
+        
+        <% } else { %>
+        
+				<button class="set" data-id="your-address-id"> SET AS DEFAULT </button> 
+        
+        <% } %> --%>
+      
     </div>
 
  		<%} %>

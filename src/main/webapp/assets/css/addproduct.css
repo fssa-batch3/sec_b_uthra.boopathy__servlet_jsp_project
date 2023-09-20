@@ -158,6 +158,8 @@ input[type="text"]{
     margin-top: 20px;
     margin-bottom: 20px;
     outline: none;
+    font-size: 20px;
+    background-color: white;
 }
 
 input[type="number"]{
@@ -169,6 +171,8 @@ input[type="number"]{
     margin-top: 20px;
     margin-bottom: 20px;
     outline: none;
+    font-size: 20px;
+    background-color: white;
 }
 
 input[type="url"]{
@@ -180,6 +184,8 @@ input[type="url"]{
     margin-top: 20px;
     margin-bottom: 20px;
     outline: none;
+    font-size: 20px;
+    background-color: white;
 }
 
 textarea{
@@ -188,6 +194,8 @@ textarea{
     outline: none;
     position: relative;
     top: 10px;
+    font-size: 20px;
+    background-color: white;
 }
 
 .add{

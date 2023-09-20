@@ -15,19 +15,20 @@
     </head>
     
     <body>
-                              <%
-	String headerJSP = "";
-	if (request.getAttribute("userDetails") != null) {
-		headerJSP = "/after_login_header.jsp";
-	} else {
-		headerJSP = "/before_login_header.jsp";
-	}
-	%>
+           
+<%@ include file="/header.jsp" %>  
 
-	<jsp:include page="<%=headerJSP%>" />
+ <% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+
+
+<% if(errorMsg != null) { %>
+
+<script> alert("<%=errorMsg%>"); </script>
+
+<% } %> 
 
 <%
-		UserEntity user = (UserEntity) request.getAttribute("userDetails");
+		UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
 	%>
 
         <div class="arrows">

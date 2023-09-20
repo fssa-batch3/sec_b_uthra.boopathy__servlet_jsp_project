@@ -1,7 +1,9 @@
 package in.fssa.tharasworld.servlets;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,17 +27,16 @@ import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
 
 /**
- * Servlet implementation class MyOrdersServlet
+ * Servlet implementation class SellerOrderListServlet
  */
-@WebServlet("/orders")
-public class MyOrdersServlet extends HttpServlet {
+@WebServlet("/seller_orderList")
+public class SellerOrderListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
 		HttpSession session = request.getSession();
 		
@@ -47,17 +48,7 @@ public class MyOrdersServlet extends HttpServlet {
 			
 			System.out.println(userId);
 
-			List<OrderEntity> order = OrderService.findOrdersByUserId(userId);
-			
-			List<PriceEntity> priceList = new ArrayList<>();
-			
-			for(OrderEntity p : order) {
-								
-				PriceEntity price = PriceService.findPriceByPriceId(p.getPriceId());
-				
-				priceList.add(price);
-			}
-			
+			List<OrderEntity> order = OrderService.findOrdersBySellerId(userId);
 			
 //			System.out.println(order);
 			
@@ -84,12 +75,10 @@ public class MyOrdersServlet extends HttpServlet {
 			
 			request.setAttribute("userDetails", user);
 			request.setAttribute("productList", productList);
-			request.setAttribute("price", priceList);
 			request.setAttribute("addressList", addressList);
 			request.setAttribute("orderList", order);
 
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/my_orders.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/seller_order_list.jsp");
 			dispatcher.forward(request, response);
 		
 		} catch (ServiceException e) {
@@ -100,7 +89,7 @@ public class MyOrdersServlet extends HttpServlet {
 			e.printStackTrace();
 		} 
 		
+		
 	}
-
 
 }
