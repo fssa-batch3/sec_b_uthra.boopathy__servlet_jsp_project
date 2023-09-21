@@ -54,6 +54,7 @@
 
 .pdtDetails {
 	margin-left: 2rem;
+	margin-top: 2rem;
 }
 
 h3 {
@@ -126,6 +127,157 @@ a {
 	border-radius: 5px;
 	padding: 10px;
 }
+
+
+footer{
+    background-color: purple;
+    height: 310px;
+    margin-top: 150px;
+}
+
+.about{
+    margin: 60px 70px;
+    padding-top: 10px;
+    color: white;
+}
+
+.us{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 20px;
+    word-spacing: 5px;
+}
+
+.us a{
+    text-decoration: none;
+    color: white;
+}
+
+.us p{
+   font-size: 20px;
+   font-weight: normal;
+   margin: 0;
+}
+
+.about h4{
+    font-size: 25px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    color: white;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.contact{
+    font-size: 20px;
+    margin: 70px 0px;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contact div{
+    margin: 15px 0;
+    font-size: 23px;
+    color: white;
+}
+
+.contact div p{
+    font-size: 20px;
+   font-weight: normal;
+   margin: 0;
+   color: white;
+}
+
+.con{
+    font-size: 23px;
+    position: relative;
+    top: 10px;
+    right: 5px;
+}
+
+.line{
+    border-right: 2px solid gray;
+    height: 190px;
+    margin: 70px;
+}
+
+.socials{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.socials div{
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+    justify-content: center;
+    border: 0;
+}
+
+.insta{
+    background-image: linear-gradient(315deg, #7110d2, #de46a9);
+    color: white;
+}
+
+.fb{
+    background-color: #3b5998;
+    color: white;
+}
+
+.wa{
+    background-color: #25d366;
+    color: white;
+}
+
+.twiter{
+    background-color: #00acee;
+    color: white;
+}
+
+.collections img{
+    border-radius: 150px;
+    padding: 40px;
+}
+
+.icons div{
+    position: relative;
+}
+
+.div{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 70px;
+    display: inline-flex;
+    bottom: 20px;
+}
+
+.divs{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 90px;
+    bottom: 20px;
+}
+
+.divss{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 100px;
+    bottom: 20px;
+}
+
   
  </style>
 

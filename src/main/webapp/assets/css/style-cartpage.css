@@ -111,7 +111,6 @@ h1{
     border-radius: 8px;
     background-color: whitesmoke;
     width: 75%;
-    height: 30vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -120,6 +119,8 @@ h1{
     margin-left: 100px;
     padding-left: 5rem;
     padding-right: 5rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .not {
@@ -129,11 +130,6 @@ h1{
 }
 
 .details {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
     height: 15vh;
     width: 25rem;
 }
@@ -211,6 +207,7 @@ h3{
     font-size: 28px;
     color: maroon;
     word-spacing: 10px;
+    margin-top: -20px;
 }    
 
 p{
@@ -238,7 +235,7 @@ s{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-top: 100px;   
+    margin-top: 100px;
     margin-left: 16rem;
 }
 
@@ -281,17 +278,6 @@ s{
 
 .address {
     font-size: 24px;
-}
-
-.change {
-    height: 40px;
-    width: 140px;
-    background-color: purple;
-    border: 0px;
-    border-radius: 5px;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
 }
 
 footer{
@@ -414,146 +400,3 @@ h4{
 .menu{
     display: none;
 }
-
-
-@media only screen and (max-width: 360px)
-{
-
-    header{
-        height: 10vh;
-        width: 100vw;
-    }
-
-    .logo{
-        width: 40px;
-        height: 40px;
-        margin-left: 10px;
-    }
-
-    h1{
-        font-size: 25px;
-        margin-left: -50px;
-    }
-
-    .nav{
-        display: none;
-    }
-
-    .menu{
-        display: block;
-        font-size: 26px;
-        color: white;
-        margin-top: 20px;
-        margin-left: 90px;
-        position: relative;
-    }
-
-    .menu-list a{
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        color: white;
-        padding: 5px;
-        text-decoration: none;
-    }
-
-    .menu:hover .menu-list{
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: center;
-        margin-top: -38px;
-        margin-left: -250px;
-    }
-
-    .menu-list{
-        display: none;
-        color: white;
-        position: absolute;
-    }
-
-    footer{
-        height: 25vh;
-        margin-top: 100px;
-    }
-    
-    .about{
-        margin: 10px 30px;
-        padding-top: 10px;
-        color: white;
-    }
-    
-    .us{
-        font-size: 16px;
-        width: 100px;
-    }
-    
-    .us a{
-        text-decoration: none;
-        color: white;
-    }
-    
-    h4{
-        font-size: 20px;
-        padding-top: 5px;
-        padding-bottom: 15px;
-    }
-    
-    .contact{
-        font-size: 20px;
-        margin: 70px 0px;
-        color: white;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-    .contact div{
-        margin: -30px 0;
-        font-size: 20px;
-        color: white;
-    }
-    
-    .con{
-        font-size: 20px;
-        position: relative;
-        left: 20px;
-        top: -10px;
-    }
-    
-    .line{
-        border-right: 2px solid gray;
-        height: 150px;
-        position: relative;
-        top: 22px;
-        left: 1px;
-    }
-    
-    .socials{
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-    
-    .socials div{
-        margin: 0px 10px;
-        height: 20px;
-        width: 20px;
-        display: flex;
-        align-items: center;
-        border-radius: 50%;
-        padding: 10px;
-        justify-content: center;
-        border: 0;
-    }
-    
-    .contact div p{
-        margin-top: 70px;
-        font-size: 18px;
-    }
-
-    .socials .insta{
-        margin-top: -12px;
-    }
-
-}    

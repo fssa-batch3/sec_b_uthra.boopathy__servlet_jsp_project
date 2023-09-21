@@ -10,6 +10,11 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/style-register.css">
 
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
+
 <title> Register user </title>
 
 </head>
@@ -17,27 +22,27 @@
 
 <%@ include file="/header.jsp" %>  
 
- <% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+	<%
+	String error = (String) request.getAttribute("errorMessage");
+	if (error != null && !("".equals(error))) {
+	%>
+	<script>
+		Notify.error(
+		`<%=error%>
+		`);
+	</script>
 
-
-<% if(errorMsg != null) { %>
-
-<div id="popup1" class="overlay">
-		<div class="popup">
-			<h2>Alert !</h2>
-			<a  onclick="closeAlert()"  class="close" href="#">&times;</a>
-			<div class="content">
-				<%=errorMsg%>
-			</div>
-			<button id="alert" onclick="closeAlert()" type="button">Ok</button>
-		</div>
-	</div>
-
-<% } %> 
+	<%
+	}
+	%>
 	
 	 <section>
             <form role="form" action="create" method="post">
+            
+            
                 <div class="register">
+                
+                
             
                     <h2> SIGN UP : </h2>
                     <div>
@@ -52,17 +57,17 @@
                     
                     <div>
                         <label> Email: </label>
-                        <input type="text" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" required="true">
+                        <input type="text" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required="true">
                     </div>
 
                     <div>
                         <label> Phone number: </label>
-                        <input type="tel" id="phonenumber" name="phone_number" placeholder="+91" required="true">
+                        <input type="tel" id="phonenumber" name="phone_number" pattern="[6-9]\d{9}" placeholder="+91" required="true">
                     </div>
 
                     <div>
                         <label> Create Password: </label>
-                        <input type="password" id="password" name="password" required="true" >
+                        <input type="password" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required="true" >
                         <p> (Pattern: Atleast 8 characters including uppercase, lowercase, number and special characters) </p>
                     </div>
                     
@@ -74,7 +79,7 @@
                     
                     <div>
                         <label > Role: </label>
-                        <select name="role">
+                        <select name="role" required>
                         
                         <option value=""> Select role </option>
                         <option value="Buyer" > Buyer </option>

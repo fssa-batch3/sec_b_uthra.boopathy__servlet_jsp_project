@@ -40,7 +40,7 @@ public class BuyNowServlet extends HttpServlet {
 		Integer userIdObject = (Integer) session.getAttribute("userId");
 		if (userIdObject == null) {
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/user/new");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/user/login");
 			dispatcher.forward(request, response);
 
 		} else {

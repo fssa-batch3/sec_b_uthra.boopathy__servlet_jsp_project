@@ -21,6 +21,18 @@ import in.fssa.tharasworld.util.Logger;
 @WebServlet("/user/create")
 public class CreateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/add_user.jsp");
+		
+		rd.forward(request, response);
+
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

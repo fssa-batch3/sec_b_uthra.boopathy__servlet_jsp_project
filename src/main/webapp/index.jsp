@@ -49,10 +49,10 @@
 					<!-- <li><a href=""> About Us </a></li> -->
 				</ul>
 			</div>
-			<a href="user/new">
+			<a href="user/create">
 				<button>Sign up</button>
 			</a> <a href="user/login">
-				<button>Sign in</button>
+				<button>Login</button>
 			</a>
 		</div>
 	</header>
@@ -77,10 +77,10 @@
 					<!-- <li><a href=""> About Us </a></li> -->
 				</ul>
 			</div>
-			<a href="user/new">
+			<a href="user/create">
 				<button>Sign up</button>
 			</a> <a href="user/login">
-				<button>Sign in</button>
+				<button>Login</button>
 			</a>
 		</div>
 	</header>

@@ -37,7 +37,7 @@ header div ul {
 	flex-wrap: wrap;
 	flex-direction: row;
 	list-style: none;
-	margin-left: 550px;
+	margin-left: 300px;
 }
 
 header div ul li {
@@ -129,15 +129,25 @@ h1 {
 		<h1>Thara's World</h1>
 		<div class="nav">
 			<ul>
-				<!-- <li><a href="#"><i
+			
+				 <li><a href="/tharasworldweb/cart.jsp"><i
 						class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
-				<li><a href="#"><i class="fa-sharp fa-solid fa-heart"></i></a></li> -->
-				<li><a href="/tharasworldweb/seller_orderList"><i class="fa-solid fa-bag-shopping"></i></a></li> 
+				<li><a href="/tharasworldweb/wishlist.jsp"><i class="fa-sharp fa-solid fa-heart"></i></a></li> 
+				<li><a href="/tharasworldweb/orders"><i class="fa-solid fa-bag-shopping"></i></a></li> 
 				<li><a href="/tharasworldweb/user/details"><i id="profile"
 						class="fa-solid fa-circle-user"></i> </a></li>
+						
+						<li><a href="/tharasworldweb/product_list"> <span class="login"
+						id="logout"> My products </span> </a> </li>
+						
+				<li><a href="/tharasworldweb/seller_orderList"> <span class="login"
+						id="logout"> Orders </span> </a> </li>
+				
 				<li><a href="/tharasworldweb/user/logout"> <span class="login"
-						id="logout"> Log out </span></li>
-				</a>
+						id="logout"> Log out </span> </a> </li>
+						
+						
+				
 			</ul>
 		</div>
 
@@ -153,9 +163,9 @@ h1 {
 		<h1>Thara's World</h1>
 		<div class="nav">
 			<ul>
-				<!-- <li><a href="#"><i
+				 <li><a href="/tharasworldweb/cart.jsp"><i
 						class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
-				<li><a href="#"><i class="fa-sharp fa-solid fa-heart"></i></a></li> -->
+				 <li><a href="/tharasworldweb/wishlist.jsp"><i class="fa-sharp fa-solid fa-heart"></i></a></li> 
 				<li><a href="/tharasworldweb/orders"><i class="fa-solid fa-bag-shopping"></i></a></li> 
 				<li><a href="/tharasworldweb/user/details"><i id="profile"
 						class="fa-solid fa-circle-user"></i> </a></li>

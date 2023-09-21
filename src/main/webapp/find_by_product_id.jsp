@@ -84,9 +84,9 @@
     
     </a>
     
- <!--    <button class="wish">WISHLIST
+   <button class="wish">WISHLIST
         <i class="fa fa-heart" style="font-size:24px;color:white;"></i>
-    </button> -->
+    </button> 
     
 </div>
 		
@@ -100,6 +100,124 @@
 	<%
 	}
 	%>
+	
+	<script>
+	
+	//// add to cart
+	
+	
+    const cart_products = document.querySelector("button.add");
+    
+    <% HttpSession session3 = request.getSession(); %>
+    <% Integer userId = (Integer) session3.getAttribute("userId"); %>
+    
+    cart_products.addEventListener("click", () => {
+        <% if (userId == null) { %>
+            alert("You are not logged in");
+            console.log("add to cart array");
+        <% } else { %>
+            
+        let user_id = <%= userId.intValue() %>;
+            let add_to_cart = JSON.parse(localStorage.getItem("cart")) || [];
+            console.log(add_to_cart);
+            let id = <%= product.getListOfPrices().get(0).getPriceId() %>;
+            
+            const exist =
+                add_to_cart.length &&
+                JSON.parse(localStorage.getItem("cart")).some(
+                    (data) => data.price_id == id && data.buyer_id == user_id 
+                );
+            
+            if (exist) {
+                alert("This product has already been added");
+            } else {
+                alert("This product is added to your cart.");
+                
+                let productName = '<%= product.getName() %>';
+                let imageUrl = '<%= product.getImg() %>';
+                
+                add_to_cart.push({
+                    product_quantity: 1,
+                    seller_id: <%= product.getSellerId() %>,
+                    buyer_id: user_id,
+                    product_name: productName,
+                    product_image: imageUrl,
+                    price_id: <%= product.getListOfPrices().get(0).getPriceId() %>,
+                    actual_price: <%= product.getListOfPrices().get(0).getActualPrice() %>,
+                    current_price: <%= product.getListOfPrices().get(0).getCurrentPrice() %>,
+                    discount: <%= product.getListOfPrices().get(0).getDiscount() %>
+                });
+                
+                const cart_count = add_to_cart.filter((pdt) => pdt.buyer_id === user_id).length;
+                console.log(cart_count);
+
+                localStorage.setItem("cart", JSON.stringify(add_to_cart));
+                
+                window.location.reload();
+            }
+            
+            <% } %>
+
+    });
+    
+    
+    
+    /////  wishlist
+    
+    
+    const wish_products = document.querySelector("button.wish");
+
+wish_products.addEventListener("click", () => {
+    <% if (userId == null) { %>
+    alert("You are not logged in");
+    <% } else { %>
+
+    let user_id = <%= userId.intValue() %>;
+
+    // Get the existing wishlist or create an empty array if it doesn't exist
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    console.log(wishlist);
+
+    let id = <%= product.getListOfPrices().get(0).getPriceId() %>;
+
+    const exist =
+        wishlist.length &&
+        wishlist.some((data) => data.price_id == id && data.buyer_id == user_id);
+
+    if (exist) {
+        alert("This product has already been added");
+    } else {
+        alert("This product is added to your wishlist.");
+
+        let productName = '<%= product.getName() %>';
+        let imageUrl = '<%= product.getImg() %>';
+
+        wishlist.push({
+            product_quantity: 1,
+            seller_id: <%= product.getSellerId() %>,
+            buyer_id: user_id,
+            product_name: productName,
+            product_image: imageUrl,
+            price_id: <%= product.getListOfPrices().get(0).getPriceId() %>,
+            actual_price: <%= product.getListOfPrices().get(0).getActualPrice() %>,
+            current_price: <%= product.getListOfPrices().get(0).getCurrentPrice() %>,
+            discount: <%= product.getListOfPrices().get(0).getDiscount() %>,
+        });
+
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+        console.log(JSON.parse(localStorage.getItem("wishlist")));
+
+        window.location.reload();
+    }
+
+    <% } %>
+});
+
+    
+    
+    
+</script>
 	
 </body>
 </html>

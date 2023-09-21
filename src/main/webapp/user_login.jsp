@@ -12,32 +12,44 @@
 
 <title> User login </title>
 
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
+
 </head>
 <body>
 
 <%@ include file="/header.jsp" %> 
 
-<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
+<%
+	String error = (String) request.getAttribute("errorMessage");
+	if (error != null && !("".equals(error))) {
+	%>
+	<script>
+		Notify.error(
+		`<%=error%>
+		`);
+	</script>
 
-<% if(errorMsg != null) { %>
-
-<script> alert("<%=errorMsg%>"); </script>
-
-<% } %>
+	<%
+	}
+	%>
 
  <section>
     <form role="form" action="login" method="post" id="signIn">
       <h2> Login</h2>
 
       <div class="no">
-        <label> Contact number: </label>
-        <input type="tel" required="true" placeholder="+91" id="phonenumber" name="phone_number">
+        <label> Contact number </label>
+        <input type="tel" required="true"  pattern="[6-9]\d{9}" id="phonenumber" name="phone_number">
         <br>
       </div>
 
       <div class="password">
-        <label> Password: </label>
-        <input type="password" placeholder="*******" id="password" name="password" required="true">
+        <label> Password </label>
+        <input type="password" placeholder="*******" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" id="password" name="password" required="true">
       </div>
       
       <div class="form-group">
