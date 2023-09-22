@@ -36,7 +36,7 @@
 			if (user1 != null) {
 		%>
 
-        <div class="arrows"></div>
+      <!--   <div class="arrows"></div> -->
 
         <section>
 

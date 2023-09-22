@@ -300,22 +300,22 @@ footer{
 	%>
 	
 
-
+<!-- 
     <div class="arrows">
         <div class="arrow">
             <a href="/tharasworldweb/index">
                 <i class="fa-solid fa-arrow-left" title="Back"></i>
             </a>
         </div>
-    </div>
+    </div> -->
 
     <section>
     
-    <% if(order==null){ %>
+    <% if(order.isEmpty()){ %>
     
     <div class="container">
         <p class="not">You have not ordered any products yet</p>
-        <button class="add">ORDER NOW</button>
+      <a href="/tharasworldweb/productlist.jsp" > <button class="add">ORDER NOW</button>  </a>
     </div>
     
     <% } else { %>

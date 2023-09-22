@@ -43,13 +43,13 @@
 		UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
 	%>
 
-        <div class="arrows">
+<!--         <div class="arrows">
         <div class="arrow">
             <a href="address">
                 <i class="fa-solid fa-arrow-left" title="Back"></i>
             </a>
         </div>
-    </div>
+    </div> -->
 <section>
 
 <form action="create" method="post">
@@ -58,7 +58,7 @@
 
         <div>
             <label> Name :  </label>
-            <input type="text" id="uname" name="name">
+            <input type="text" id="uname" name="name" pattern="^[a-zA-Z ]+$">
         </div>
 
         <div>
@@ -73,7 +73,7 @@
 
         <div>
             <label> State : </label>
-            <input type="text" id="state" name="state">
+            <input type="text" id="state" name="state" pattern="^[a-zA-Z ]+$">
         </div>
 
 	<a href="/tharasworldweb/address">

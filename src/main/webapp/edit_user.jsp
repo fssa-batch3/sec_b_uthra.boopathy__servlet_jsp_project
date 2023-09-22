@@ -27,19 +27,7 @@
       
 <%@ include file="/header.jsp" %>  
 
-<%
-	String error = (String) request.getAttribute("errorMessage");
-	if (error != null && !("".equals(error))) {
-	%>
-	<script>
-		Notify.error(
-		`<%=error%>
-		`);
-	</script>
 
-	<%
-	}
-	%>
 
 <%
 		UserEntity user1 = (UserEntity) request.getAttribute("editUser");
@@ -52,9 +40,19 @@
 		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
 
 
-		<% if(errorMsg != null && user1!=null) { %>
-		
-		<script> alert("<%=errorMsg%>"); </script>
+	<%
+	String error = (String) request.getAttribute("errorMessage");
+	if (error != null && !("".equals(error))) {
+	%>
+	<script>
+		Notify.error(
+		`<%=error%>
+		`);
+	</script>
+
+	<%
+	}
+	%>
 		
 		<script>
 			doucument.getElementById("name").value = "<%= user1.getName()%>";
@@ -70,8 +68,7 @@
 			document.getElementById("state").value = "<%= address.getState() %>" 
 		}
 		</script>
-		
-		<% } %>
+
 
 <section>
 
@@ -85,15 +82,15 @@
                
                 <div class="name">
                     <label> Name: </label>
-                    <input type="text" id="uname" name="name" value=<%= user1.getName() %>>
+                    <input type="text" id="uname" name="name" pattern="^[a-zA-Z ]+$" value=<%= user1.getName() %>>
                 </div>
 
                 <div class="age">
                     <label> Age:</label>
-                    <input type="tel" id="age" name="age" value=<%=user1.getAge()%> min="1" minlength="2" maxlength="3">
+                    <input type="number" id="age" name="age" value=<%=user1.getAge()%> min="1" minlength="2" maxlength="3">
                 </div>
 
-                <div class="add">
+               <%--  <div class="add">
                     <label> Residential address: </label>
                     <textarea id="address" disabled> <% if(address!=null){ %> <%=address.getAddress() %> <% } %> </textarea>         
                 </div>
@@ -106,7 +103,7 @@
                 <div class="state">
                     <label> State: </label>
                     <input type="text" id="state" value ="<% if(address!=null){ %><%= address.getState() %> <% } %>" disabled>  
-                </div>
+                </div> --%>
                 
                 <div class="no">
                     <label> Contact number: </label>
@@ -118,7 +115,7 @@
                     <input type="email" id="email" placeholder="ghds4729@gmail.com" value=<%= user1.getEmail() %> pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" disabled>
                 </div>
                 
-                <div class="pass">
+               <%--  <div class="pass">
                     <label> Password: </label>
                     <input type="password" id="password" name="password" placeholder="**********" value=<%= user1.getPassword() %> pattern="*" >
                 </div>
@@ -127,7 +124,7 @@
 							<label class="showLabel"> <input type="checkbox"
 								id="show"> Show Password
 							</label>
-						</div>
+						</div> --%>
 
                  <div class="des">
                     <label> Your Designation:</label>

@@ -108,7 +108,7 @@
 			<div class="no">
 				<label> Phone number: </label> <input type="tel" id="phonenumber"
 					name="phoneNumber" value="<%=user1.getPhoneNumber()%>"
-					required="true" placeholder="+91" maxlength="10">
+					required="true" placeholder="+91" pattern="[6-9]\d{9}" maxlength="10">
 			</div>
 
 			<div class="quantity">

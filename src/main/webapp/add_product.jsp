@@ -48,7 +48,7 @@
 
 <section>
 
-    <div class="arrows"> </div>
+    <!-- <div class="arrows"> </div> -->
 
     <form action="create" method = "post">
 

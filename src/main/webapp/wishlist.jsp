@@ -24,7 +24,7 @@
 
 	<%@ include file="/header.jsp"%>
 
-	<div class="arrows"></div>
+	<!-- <div class="arrows"></div> -->
 
 	<section>
 		<div class="thumbnail"></div>
@@ -85,7 +85,7 @@
 
 	<script>
 				//<div class = "arrow" > </div>
-				
+				/* 
 				const div_arrow = document.createElement("div");
 				div_arrow.setAttribute("class", "arrow");
 				//console.log(div_arrow);
@@ -104,7 +104,7 @@
 				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
 				a_arrow.append(i_arrow);
 				
-				document.querySelector("div.arrows").append(div_arrow);
+				document.querySelector("div.arrows").append(div_arrow); */
 				
 				<%HttpSession session3 = request.getSession();%>
 				<%Integer userId = (Integer) session3.getAttribute("userId");%>
@@ -117,9 +117,9 @@
 				
 				if(wishlist_products!=null){
 				
-					const check_pdt = wishlist_products.filter((e) => e.buyer_id === user_id);
+					const check_pdt = wishlist_products.filter((e) => e.buyer_id == user_id);
 				
-					if (check_pdt.length === 0) {
+				if (check_pdt.length == 0) {
 				
 				//<div class = products >
 				
@@ -142,7 +142,7 @@
 				// order products
 				
 				document.querySelector("button.add").addEventListener("click",() => {
-				window.location.href = "#";
+				window.location.href = "/tharasworldweb/productlist.jsp";
 				})
 				 
 				

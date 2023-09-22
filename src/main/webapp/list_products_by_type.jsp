@@ -62,7 +62,7 @@
             </div>
 
         </section>
-
+<!-- 
         <div class = "arrows"> 
         
         <div class="arrow">
@@ -72,7 +72,7 @@
 		</div>
         
          </div>
-
+ -->
         <section>
         
         <div class="thumbnail">

@@ -41,14 +41,14 @@
 		<% } %>
 
 
-         <div class="arrows">
+   <!--       <div class="arrows">
         <div class="arrow">
             <a href="user/edit">
                 <i class="fa-solid fa-arrow-left" title="Back"></i>
             </a>
         </div>
     </div>
-
+ -->
         <a href="address/new">
          <button class="add"> ADD ADDRESS </button>
         </a>

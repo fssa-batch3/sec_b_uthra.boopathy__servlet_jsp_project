@@ -33,6 +33,15 @@
 <body>
 
 	<%@ include file="/header.jsp"%>
+
+
+	<% 
+
+		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("editProduct");
+	
+	%>
+
+
 	
 	<%
 	String error = (String) request.getAttribute("errorMessage");
@@ -43,27 +52,6 @@
 		`<%=error%>
 		`);
 	</script>
-
-	<%
-	}
-	%>
-
-	<% 
-
-		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("editProduct");
-	
-	%>
-
-
-	<% String error = (String) request.getAttribute("errorMessage"); %>
-
-	<% if(error != null) { %>
-
-	<script> 
-
-alert("<%=error%>");
-
-</script>
 
 
 	<script>
@@ -90,7 +78,7 @@ alert("<%=error%>");
 	
 	<section>
 
-    <div class="arrows"> </div>
+    <!-- <div class="arrows"> </div> -->
 
     <form action="update?pdt_id=<%= product.getPdtId() %>" method="post">
 

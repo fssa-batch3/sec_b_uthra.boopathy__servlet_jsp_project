@@ -27,19 +27,6 @@
     
 <%@ include file="/header.jsp" %>  
 
-<%
-	String error = (String) request.getAttribute("errorMessage");
-	if (error != null && !("".equals(error))) {
-	%>
-	<script>
-		Notify.error(
-		`<%=error%>
-		`);
-	</script>
-
-	<%
-	}
-	%>
 
 <%
 		
@@ -49,12 +36,19 @@
 		%>
 		
 				
-		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
-
-
-		<% if(errorMsg != null && address!= null) { %>
+		<%
+	String error = (String) request.getAttribute("errorMessage");
+	if (error != null && !("".equals(error))) {
+	%>
+	<script>
+		Notify.error(
+		`<%=error%>
+		`);
 		
-		<script> alert("<%=errorMsg%>"); 
+	</script>
+			<% } %>
+			
+			<script>
 		
 		document.getElementById("id").value = "<%= address.getAddressId()%>";
 		document.getElementById("uname").value = "<%= address.getName() %>";
@@ -64,16 +58,14 @@
        
         </script>
 		
-				
-		<% } %>
 
-        <div class="arrows">
+ <!--        <div class="arrows">
         <div class="arrow">
             <a href="address">
                 <i class="fa-solid fa-arrow-left" title="Back"></i>
             </a>
         </div>
-    </div>
+    </div> -->
 <section>
 
     <h3> EDIT ADDRESS </h3>
@@ -84,7 +76,7 @@
 
         <div>
             <label> Name :  </label>
-            <input type="text" id="uname" name="name" value="<%= address.getName() %>" required>
+            <input type="text" id="uname" name="name" pattern="^[a-zA-Z ]+$" value="<%= address.getName() %>" required>
         </div>
 
         <div>

@@ -23,11 +23,23 @@
 
 <%@ include file="/header.jsp" %> 
 
-<%
+
+<% String error = (String) request.getAttribute("errorMessage"); 
+
+if (error != null) {
+%>
+
+<script>alert("<%= error %>");</script>
+
+<% } %> 
+
+<%-- <%
 	String error = (String) request.getAttribute("errorMessage");
 	if (error != null && !("".equals(error))) {
-	%>
+		%>
+	
 	<script>
+		console.log("coming");
 		Notify.error(
 		`<%=error%>
 		`);
@@ -35,7 +47,7 @@
 
 	<%
 	}
-	%>
+	%> --%>
 
  <section>
     <form role="form" action="login" method="post" id="signIn">
@@ -49,7 +61,7 @@
 
       <div class="password">
         <label> Password </label>
-        <input type="password" placeholder="*******" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" id="password" name="password" required="true">
+        <input type="password" placeholder="*******" id="password" name="password" required="true">
       </div>
       
       <div class="form-group">
@@ -81,6 +93,7 @@
 				Password.setAttribute("type", type);
 });
 	</script>
+	
 
 </body>
 </html>

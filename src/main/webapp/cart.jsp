@@ -18,14 +18,14 @@
     <body>
  
 	<%@ include file="/header.jsp" %> 
-
+<!-- 
         <div class="arrows">
         
         <div class="arrow">
     <a href="#">
         <i title="Back" class="fa-solid fa-arrow-left"></i>
     </a>
-</div>
+</div> -->
         
         </div>
         
@@ -93,10 +93,10 @@
                           <a href="#"> Security </a>
                         </p> 
                         <p>
-                          <a href="../homepage/termsofuse.html"> Terms of use </a> 
+                          <a href="#"> Terms of use </a> 
                         </p> 
                         <p>
-                          <a href="../homepage/return.html"> Return policy </a>
+                          <a href="#"> Return policy </a>
                         </p> 
            </div>
           </div>
@@ -170,7 +170,7 @@
         	  // add products
 
         	document.querySelector("button.add").addEventListener("click",() => {
-        	  window.location.href = "#";
+        	  window.location.href = "/tharasworldweb/productlist.jsp";
         	})
 
         	} else {
@@ -320,7 +320,7 @@
 
         let total = 0;
 
-        const check_pdt = add_to_cart.filter((e) => e.buyer_id === user_id);
+        const check_pdt = add_to_cart.filter((e) => e.buyer_id == user_id);
         console.log(check_pdt);
         
         for (let l = 0; l < check_pdt.length; l++) {
@@ -329,10 +329,10 @@
 
         console.log(total);
 
-        if (check_pdt.length === 0) {
+        if (total == 0) {
           const div_total = document.createElement("div");
           div_total.setAttribute("class", "total");
-          div_total.setAttribute("style", "display: none");
+          div_total.setAttribute("style", "display: none;");
        
         } else {
          
@@ -373,8 +373,12 @@
 
             if (qauntity > 11) {
               
-              alert("Only 10 items can be ordered at a time.")
+              alert("Only 10 items can be ordered at a time.");
             
+            } else if(qauntity == 0){
+            	alert("Invalid quantity.");
+            } else if (qauntity < 0) {
+            	alert("Invalid quantity.")
             }
 
             else {

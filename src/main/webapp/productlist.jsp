@@ -31,7 +31,7 @@ Set<ProductDetailDTO> product = ProductService.findAll();
 	<div class="products"> 
 	
 		<img src = "<%= products.getImg() %>" alt="image" height="200px" width="180px">
-		<a href="product/details?pdt_id=<%= products.getPdtId() %>"> <h3> <%= products.getName() %> </h3> </a>
+		<a href="/tharasworldweb/category/types/products/details?pdt_id=<%= products.getPdtId() %>"> <h3> <%= products.getName() %> </h3> </a>
 		<% List<PriceEntity> priceList = products.getListOfPrices(); %>
         <% if (!priceList.isEmpty()) { %>
         <div class="price">

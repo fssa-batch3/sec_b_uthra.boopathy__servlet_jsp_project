@@ -36,6 +36,13 @@
 
 <%@ include file="/header.jsp" %>  
 
+	<% 
+
+		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("editProductPrice");
+	
+	%>
+		
+					
 <%
 	String error = (String) request.getAttribute("errorMessage");
 	if (error != null && !("".equals(error))) {
@@ -45,29 +52,6 @@
 		`<%=error%>
 		`);
 	</script>
-
-	<%
-	}
-	%>
-
-
-	<% 
-
-		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("editProductPrice");
-	
-	%>
-		
-					
-		
-	<% String error = (String) request.getAttribute("errorMessage"); %>
-
-	<% if(error != null) { %>
-
-	<script> 
-
-alert("<%=error%>");
-
-</script>
 		
 		<script>
 			doucument.getElementById("image").value = "<%= product.getImg()%>";
@@ -96,7 +80,7 @@ alert("<%=error%>");
 		
 		<section>
 
-    <div class="arrows"> </div>
+  <!--   <div class="arrows"> </div> -->
 
    <form action="update_price?pdt_id=<%= product.getPdtId() %>" method="post">
 

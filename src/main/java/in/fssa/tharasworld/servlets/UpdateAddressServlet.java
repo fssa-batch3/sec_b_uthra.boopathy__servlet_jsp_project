@@ -69,14 +69,11 @@ public class UpdateAddressServlet extends HttpServlet {
 		
 		} catch (ValidationException | ServiceException e) {
 			e.printStackTrace();
-			request.setAttribute("errorMessage", e.getMessage());
-			
-			
-			   
+			request.setAttribute("errorMessage", e.getMessage());			   
 			request.setAttribute("editAddress", returnAddress);
 			request.setAttribute("userId", userId);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_user.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_address.jsp");
 			dispatcher.forward(request, response);
 			}
 		

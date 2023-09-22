@@ -70,7 +70,6 @@ public class GetAllProductsByTypeServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_type.jsp");
 				dispatcher.forward(request, response);
 				
-				dispatcher.forward(request, response);
 			} catch (ServiceException e) {
 				e.printStackTrace();
 			} catch (ValidationException e) {
