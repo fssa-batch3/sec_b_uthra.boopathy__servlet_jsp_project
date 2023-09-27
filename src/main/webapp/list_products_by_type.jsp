@@ -28,51 +28,17 @@
         
 <%@ include file="/header.jsp" %> 
 
-        <section class="subheading">
-            <h2> FILTER: </h2>
-            <div class="clr">
-                <label> COLOR: </label>
-                <select>
-                    <option> None </option>
-                    <option> Black </option>
-                    <option> White </option>
-                    <option> Red </option>
-                    <option> Pink </option>
-                    <option> Maroon </option>
-                    <option> Green </option>
-                    <option> Purple </option>
-                    <option> Yellow </option>
-                    <option> Brown </option>
-                </select>
-            </div>
-
-            <div class="mrp">
-                <label> PRICE: </label>
-                <select>
-                    <option> None </option>
-                    <option> 500 </option>
-                    <option> 1000 </option>
-                    <option> 1500 </option>
-                    <option> 2000 </option>
-                    <option> 2500 </option>
-                    <option> 3000 </option>
-                    <option> 3500 </option>
-                    <option> 4000 </option>
-                </select>
-            </div>
-
-        </section>
-<!-- 
         <div class = "arrows"> 
         
-        <div class="arrow">
+    
+<!--     <div class="arrow">
     		<a href="#">
        			 <i title="Back" class="fa-solid fa-arrow-left"></i>
    			 </a>
-		</div>
+	 -->	</div>
         
          </div>
- -->
+
         <section>
         
         <div class="thumbnail">
@@ -94,9 +60,9 @@
 		<% List<PriceEntity> priceList = products.getListOfPrices(); %>
         <% if (!priceList.isEmpty()) { %>
         <div class="price">
-       	  <p> &#8377 <%= priceList.get(0).getCurrentPrice() %> 
-          <s> &#8377 <%= priceList.get(0).getActualPrice() %> </s>
-          <span class="percent"> <%= priceList.get(0).getDiscount() %> %off </span>
+       	  <p>&#8377 <%= (int) Math.round(priceList.get(0).getCurrentPrice())%> 
+          <s>&#8377 <%= (int) Math.round(priceList.get(0).getActualPrice())%></s>
+          <span class="percent"> <%=(int)Math.round(priceList.get(0).getDiscount())%>%off </span>
           </p>
         </div>
           <% } %>
@@ -158,7 +124,39 @@
             </div>
 
         </footer>    
-              
-        </body>
         
+        
+        <script>
+        
+        
+
+      //<div class = "arrow" > </div>
+      				 
+      				const div_arrow = document.createElement("div");
+      				div_arrow.setAttribute("class", "arrow");
+      				//console.log(div_arrow);
+      				
+      				//<a> link </a>
+      				
+      				const a_arrow = document.createElement("a");
+      				a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+      				a_arrow.addEventListener("click", function() {
+      				    window.history.back();
+      				});
+      				div_arrow.append(a_arrow);
+      				//console.log(a_arrow);
+      				
+      				//< i >  arrow </i>
+      				
+      				const i_arrow = document.createElement("i");
+      				i_arrow.setAttribute("title", "Back");
+      				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+      				a_arrow.append(i_arrow);
+      				
+      				document.querySelector("div.arrows").append(div_arrow); 
+        
+        </script>
+        
+        
+        </body>
         </html>

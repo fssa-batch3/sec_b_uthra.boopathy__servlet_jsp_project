@@ -16,6 +16,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class GetAllAddressServlet
@@ -57,7 +58,7 @@ public class GetAllAddressServlet extends HttpServlet {
 			
 		} catch (ServiceException | ValidationException e) {
 			
-			e.printStackTrace();
+			Logger.error(e);
 		}
 		
 	}

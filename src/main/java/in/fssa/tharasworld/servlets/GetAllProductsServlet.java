@@ -18,6 +18,7 @@ import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.CategoryService;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 
 /**
@@ -34,7 +35,7 @@ public class GetAllProductsServlet extends HttpServlet {
 
 		Integer userIdObject = (Integer) request.getSession().getAttribute("userId");		
 		
-		if(userIdObject == null) {
+	if(userIdObject == null) {
 			
 			try {
 				Set<CategoryEntity> category = CategoryService.findAll();
@@ -42,7 +43,7 @@ public class GetAllProductsServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/category_list.jsp");
 				dispatcher.forward(request, response);
 			} catch (ServiceException e) {
-				e.printStackTrace();
+				Logger.error(e);
 			}
 			
 		} else {
@@ -59,11 +60,8 @@ public class GetAllProductsServlet extends HttpServlet {
 			request.setAttribute("userDetails", user);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/product_list.jsp");
 			dispatcher.forward(request, response);
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (ValidationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (ServiceException | ValidationException e) {
+			Logger.error(e);
 		}
 		
 		}		

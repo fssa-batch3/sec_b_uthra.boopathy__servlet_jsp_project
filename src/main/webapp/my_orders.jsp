@@ -25,6 +25,69 @@
 </head>
 
 <style>
+
+.arrow {
+    margin: 2rem;
+    font-size: 30px;
+}
+
+.arrow a {
+    color: black;
+}
+
+
+.contain {
+    border: 1px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    width: 60%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 100px;   
+    margin-left: 200px;
+    padding-left: 4rem;
+    padding-right: 5rem;
+}
+
+.contain h3 {
+    color: black;
+}
+
+.contain .add {
+    width: 160px;
+    height: 45px;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.container{
+    border: 1px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    width: 75%;
+    height: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;   
+    margin-left: 100px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.not {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+}
  
  .container {
  	display: flex;
@@ -291,32 +354,32 @@ footer{
 		
 		List<ProductDetailDTO> product = (List<ProductDetailDTO>) request.getAttribute("productList");
 		
-		List<PriceEntity> price = (List<PriceEntity>) request.getAttribute("priceList");
+		List<PriceEntity> price = (List<PriceEntity>) request.getAttribute("price");
 			
 			List<AddressEntity> address = (List<AddressEntity>) request.getAttribute("addressList");
 		
 			List<OrderEntity> order = (List<OrderEntity>) request.getAttribute("orderList");
 	
 	%>
-	
-
-<!-- 
+ 
     <div class="arrows">
-        <div class="arrow">
+        <!-- <div class="arrow">
             <a href="/tharasworldweb/index">
                 <i class="fa-solid fa-arrow-left" title="Back"></i>
             </a>
-        </div>
-    </div> -->
+        </div> -->
+    </div> 
 
-    <section>
+    <section id="myElement">
     
     <% if(order.isEmpty()){ %>
     
-    <div class="container">
-        <p class="not">You have not ordered any products yet</p>
-      <a href="/tharasworldweb/productlist.jsp" > <button class="add">ORDER NOW</button>  </a>
+    <div class="contain">
+    <div class="details">
+        <h3 class="not">You have not ordered any products yet</h3>
     </div>
+  <a href="category_list">  <button class="add">ORDER PRODUCTS</button>   </a>
+</div>
     
     <% } else { %>
     
@@ -371,19 +434,19 @@ footer{
 	
 	<div class="price">
 	
-	<p> &#8377 <%= product.get(i).getListOfPrices().get(0).getCurrentPrice() %> </p>
+	<p>&#8377 <%= (int) Math.round(price.get(i).getCurrentPrice()) %> </p>
 	
-	<s class="actprice"> &#8377 <%= product.get(i).getListOfPrices().get(0).getActualPrice() %> </s>
+	<s class="actprice"> &#8377 <%=(int) Math.round(price.get(i).getActualPrice()) %></s>
 	
-	<p class="discount"> <%= product.get(i).getListOfPrices().get(0).getDiscount() %> % off </p>
+	<p class="discount"> <%= (int) Math.round(price.get(i).getDiscount()) %> % off </p>
 	
 		</div>
+		
+		<p> Quantity : <%= order.get(i).getQuantity() %> </p>
+		<P> Total amount :&#8377 <%=(int) Math.round(order.get(i).getQuantity()*price.get(i).getCurrentPrice()) %></P>
 	
 	<div class="buttons">
 	
-        <a href="/tharasworldweb/ordered_products?order_id=<%= order.get(i).getOrderId() %>" >
-        	<button class="view" data-cancel="your_order_id">VIEW PRODUCTS</button> </a>   
-         
          <%
      OrderStatus cancelStatus = (OrderStatus) order.get(i).getOrderStatus(); // Replace with the actual attribute name
 
@@ -484,5 +547,40 @@ footer{
 
     </footer>
 
+
+<script>
+
+//<div class = "arrow" > </div>
+
+const div_arrow = document.createElement("div");
+div_arrow.setAttribute("class", "arrow");
+//console.log(div_arrow);
+
+//<a> link </a>
+
+const a_arrow = document.createElement("a");
+a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+a_arrow.addEventListener("click", function() {
+    window.history.back();
+});
+div_arrow.append(a_arrow);
+//console.log(a_arrow);
+
+//< i >  arrow </i>
+
+const i_arrow = document.createElement("i");
+i_arrow.setAttribute("title", "Back");
+i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+a_arrow.append(i_arrow);
+
+document.querySelector("div.arrows").append(div_arrow); 
+
+
+</script>
+
 </body>
+
+
+
+
 </html>

@@ -52,7 +52,7 @@
                     
                     <div>
                         <label> Age: </label>
-                        <input type="number" id="age" name="age" min="1" minlength="2" maxlength="3" required="true">
+                        <input type="number" id="age" name="age" min="10" max="99" minlength="2" maxlength="3" required="true">
                     </div>
                     
                     <div>
@@ -62,12 +62,13 @@
 
                     <div>
                         <label> Phone number: </label>
-                        <input type="tel" id="phonenumber" name="phone_number" pattern="[6-9]\d{9}" placeholder="+91" required="true">
+                        <input type="tel" id="phonenumber" name="phone_number" pattern="[6-9]\d{9}" maxlength="10" placeholder="+91" required="true">
                     </div>
 
                     <div>
                         <label> Create Password: </label>
-                        <input type="password" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required="true" >
+                        <input type="password" id="password" placeholder="Example@123" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+                        title="Pattern: Password must contain atleast 8 characters including uppercase, lowercase, number and special characters" required="true" >
                         <p> (Pattern: Atleast 8 characters including uppercase, lowercase, number and special characters) </p>
                     </div>
                     

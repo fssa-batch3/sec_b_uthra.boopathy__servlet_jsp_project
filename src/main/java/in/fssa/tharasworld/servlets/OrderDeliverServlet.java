@@ -15,6 +15,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.OrderService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class OrderDeliverServlet
@@ -35,9 +36,7 @@ public class OrderDeliverServlet extends HttpServlet {
 		try {
 			int userId = userIdObject.intValue();
 			UserEntity user = UserService.findById(userId);
-			
-			System.out.println(userId);
-			
+
 			int orderId = (Integer) Integer.parseInt(request.getParameter("order_id"));
 			
 			 OrderService order = new OrderService();
@@ -46,12 +45,8 @@ public class OrderDeliverServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/seller_orderList");
 			dispatcher.forward(request, response);
 		
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ValidationException e) {
-			e.printStackTrace();
+		} catch (ServiceException | ValidationException e) {
+			Logger.error(e);
 		} 
 		
 		

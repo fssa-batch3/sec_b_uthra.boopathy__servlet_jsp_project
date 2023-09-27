@@ -13,6 +13,7 @@ import in.fssa.tharasworld.dto.ProductDetailDTO;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.ProductService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class EditProductServlet
@@ -34,12 +35,8 @@ public class EditProductServlet extends HttpServlet {
 			request.setAttribute("editProduct", product);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_product.jsp");
 			dispatcher.forward(request, response);
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ValidationException e) {
-			e.printStackTrace();
+		} catch (ServiceException | NumberFormatException | ValidationException e) {
+			Logger.error(e);
 		} 
 	}
 

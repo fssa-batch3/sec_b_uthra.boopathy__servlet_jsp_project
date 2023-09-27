@@ -41,16 +41,16 @@
 			<div class="nav">
 				<ul>
 					
-					<li><a href="product_list"> Dress </a></li>
-					<li><a href="product_list"> Jewell </a></li>
-					<li><a href="product_list"> Sandal </a></li>
-					<li><a href="product_list"> Cosmetics </a></li>
-					<li><a href="seller_home_page.jsp"> Seller </a></li>
+					<li><a href="category_list"> Dress </a></li>
+					<li><a href="category_list"> Jewel </a></li>
+					<li><a href="category_list"> Sandal </a></li>
+					<li><a href="category_list"> Cosmetics </a></li>
+					<li><a href="category_list"> Seller </a></li>
 					<!-- <li><a href=""> About Us </a></li> -->
 				</ul>
 			</div>
-			<a href="user/create">
-				<button>Sign up</button>
+			<!-- <a href="user/create">
+				<button>Sign up</button> -->
 			</a> <a href="user/login">
 				<button>Login</button>
 			</a>
@@ -69,17 +69,17 @@
 			<div class="nav">
 				<ul>
 					
-					<li><a href="product_list"> Dress </a></li>
-					<li><a href="product_list"> Jewell </a></li>
-					<li><a href="product_list"> Sandal </a></li>
-					<li><a href="product_list"> Cosmetics </a></li>
-					<li><a href="user/new"> Seller </a></li>
+					<li><a href="category_list"> Dress </a></li>
+					<li><a href="category_list"> Jewel </a></li>
+					<li><a href="category_list"> Sandal </a></li>
+					<li><a href="category_list"> Cosmetics </a></li>
+					<li><a href="user/create"> Seller </a></li>
 					<!-- <li><a href=""> About Us </a></li> -->
 				</ul>
 			</div>
-			<a href="user/create">
+			<!-- <a href="user/create">
 				<button>Sign up</button>
-			</a> <a href="user/login">
+			</a>  --><a href="user/login">
 				<button>Login</button>
 			</a>
 		</div>

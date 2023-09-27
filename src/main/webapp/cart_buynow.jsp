@@ -24,12 +24,26 @@
 <script
 	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
         
+<style>
+
+.arrow {
+    margin: 2rem;
+    font-size: 30px;
+}
+
+.arrow a {
+    color: black;
+}
+
+
+</style>               
         
 </head>
 
 <body>
    
 <%@ include file="/header.jsp"%>
+
 
 <%
 	String error = (String) request.getAttribute("errorMessage");
@@ -53,6 +67,8 @@ UserEntity user1 = UserService.findById(userId.intValue());
 AddressEntity address = AddressService.findByDefault(user1.getId());
 
 %>
+
+<div class="arrows"></div>
 
     <div class="amt">
         Total amount : <p id="amt"> </p>
@@ -78,18 +94,10 @@ AddressEntity address = AddressService.findByDefault(user1.getId());
 				<label> Address: </label>
 				<textarea id="address" name="address" disabled="true"><%
 	 if (address != null) {
- %> <%=address.getAddress()%>
+ %> <%=address.getAddress()%>, <%=address.getPincode() %>, <%=address.getState() %>
 					<%
 					}%>  </textarea>
 			</div>
-			<input type="number" id="pincode" name="pincode"
-				placeholder="Pincode"
-			    value=" <%if (address != null) {%><%=address.getPincode()%><%}%>" 
-				maxlength="6" size="6" disabled> <input type="text"
-				id="state" name="state"
-				value=" <%if (address != null) {%><%=address.getState()%><%}%>"
-				placeholder="State" disabled>
-
 
 
 			<div class="no">
@@ -100,7 +108,7 @@ AddressEntity address = AddressService.findByDefault(user1.getId());
 
 			<div class="cash">
 				<label> Payment: </label> <input type="text" id="payment"
-					name="payment" value="Cash on delivery" required="true">
+					name="payment" value="Cash on delivery" disabled="true">
 				<!-- <select id="payment" required> 
                     <option value="cash_on_delivery"> Cash on delivery </option>
                 </select> -->
@@ -171,6 +179,31 @@ AddressEntity address = AddressService.findByDefault(user1.getId());
 <script>
 
 
+//<div class = "arrow" > </div>
+				 
+				const div_arrow = document.createElement("div");
+				div_arrow.setAttribute("class", "arrow");
+				//console.log(div_arrow);
+				
+				//<a> link </a>
+				
+				const a_arrow = document.createElement("a");
+				a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+				a_arrow.addEventListener("click", function() {
+				    window.history.back();
+				});
+				div_arrow.append(a_arrow);
+				//console.log(a_arrow);
+				
+				//< i >  arrow </i>
+				
+				const i_arrow = document.createElement("i");
+				i_arrow.setAttribute("title", "Back");
+				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+				a_arrow.append(i_arrow);
+				
+				document.querySelector("div.arrows").append(div_arrow); 
+
 let user_id = <%= userId.intValue() %>;
 
 const add_to_cart = JSON.parse(localStorage.getItem("cart"));
@@ -211,15 +244,15 @@ for (let i = 0; i < check_pdt.length; i++) {
     div_details.append(h3);
 
     const p = document.createElement("p");
-    p.innerText = check_pdt[i].current_price;
+    p.innerText = '\u20B9' + Math.round(check_pdt[i].current_price);
     div_details.append(p);
 
     const s = document.createElement("s");
-    s.innerText = check_pdt[i].actual_price;
+    s.innerText = '\u20B9' + Math.round(check_pdt[i].actual_price) ;
     p.append(s);
 
     const b = document.createElement("b");
-    b.innerText = check_pdt[i].discount;
+    b.innerText = Math.round(check_pdt[i].discount) + "%off";
     p.append(b);
 
     const p_qty = document.createElement("p");
@@ -229,7 +262,7 @@ for (let i = 0; i < check_pdt.length; i++) {
 
     const total = document.createElement("p");
     total.setAttribute("class", "tot");
-    total.innerText = "Total amount : " + check_pdt[i].current_price * check_pdt[i].product_quantity;
+    total.innerText = "Total amount : " + '\u20B9' + Math.round(check_pdt[i].current_price) * check_pdt[i].product_quantity;
     p.append(total);
 
     document.querySelector(".left").append(div);
@@ -242,7 +275,7 @@ for (let i = 0; i < check_pdt.length; i++) {
     }
     console.log(total_amt);
 
-    document.getElementById("amt").innerText = `${total_amt}`;
+    document.getElementById("amt").innerText = '\u20B9' + Math.round(total_amt);
 }
 
 
@@ -252,8 +285,11 @@ for (let i = 0; i < check_pdt.length; i++) {
  document.querySelector("button.place").addEventListener("click",(e) => {
 	 e.preventDefault();
 
-	const pdts = JSON.parse(localStorage.getItem("cart"));
+	let pdts = JSON.parse(localStorage.getItem("cart"));
 	console.log(pdts);
+	
+	<% if(address != null) { %> 
+	
 	
 	const addressId = document.getElementById("addressId").value;
 	const phno = document.getElementById("phonenumber").value;
@@ -266,7 +302,8 @@ for (let i = 0; i < check_pdt.length; i++) {
 	      console.log(response.data);
 	      const serverMsg = response.data;
 	      if (serverMsg.trim() == 'success') {
-	        console.log("Successfully Registered");
+	        console.log("Successfully ordered");
+	        	  	  
 	        
 	      } else {
 	        console.log("server msg " + serverMsg);
@@ -277,14 +314,20 @@ for (let i = 0; i < check_pdt.length; i++) {
 	      console.log("error " + error);
 	    });
 	  
-	  window.location.href="http://localhost:8080/tharasworldweb/orders";
-	  
+	  window.location.href="http://localhost:8080/tharasworldweb/category_list";
+	   
 	  pdts = "";
 	  
 	  localStorage.setItem("cart", JSON.stringify(pdts));
+	  
+	  <% } else {%>
+	  
+	  alert("You did not add any address as default");
+	  
+	  <% } %>
 
  } );
-
+ 
 
 
 </script>

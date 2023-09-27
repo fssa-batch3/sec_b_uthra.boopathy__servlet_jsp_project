@@ -34,6 +34,17 @@
 
 	<%@ include file="/header.jsp"%>
 	
+	<div class="arrows"></div>
+
+	<%
+	ProductDetailDTO pdt = (ProductDetailDTO) request.getAttribute("productDetails");
+
+	AddressEntity address = (AddressEntity) request.getAttribute("address");
+
+	UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
+	%>
+
+	
 	<%
 	String error = (String) request.getAttribute("errorMessage");
 	if (error != null && !("".equals(error))) {
@@ -48,14 +59,6 @@
 	}
 	%>
 
-	<%
-	ProductDetailDTO pdt = (ProductDetailDTO) request.getAttribute("productDetails");
-
-	AddressEntity address = (AddressEntity) request.getAttribute("address");
-
-	UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
-	%>
-
 	<div class="left">
 		<div class="images">
 			<img src="<%=pdt.getImg()%>" id="image" alt="photo" height="460px"
@@ -68,12 +71,10 @@
 		<h3 id="name">
 			<%=pdt.getName()%>
 		</h3>
-		<h4>Special price</h4>
 		<p>
-			<strong id="discount_price"> <%=pdt.getListOfPrices().get(0).getCurrentPrice()%>
-			</strong> <s id="original_price"> <%=pdt.getListOfPrices().get(0).getActualPrice()%>
-			</s> <b id="discount_percent"> <%=pdt.getListOfPrices().get(0).getDiscount()%>
-			</b> <b>% off </b>
+			<strong id="discount_price"> &#8377 <%=(int) Math.round(pdt.getListOfPrices().get(0).getCurrentPrice())%>
+			</strong> <s id="original_price"> &#8377 <%=(int) Math.round(pdt.getListOfPrices().get(0).getActualPrice())%></s> 
+			<b id="discount_percent"> <%= (int) Math.round(pdt.getListOfPrices().get(0).getDiscount())%>% off </b>
 		</p>
 
 		<h2 class="per">PERSONAL DETAILS</h2>
@@ -90,20 +91,11 @@
 				<label> Address: </label>
 				<textarea id="address" name="address" disabled="true"> <%
  if (address != null) {
- %> <%=address.getAddress()%>
+ %> <%=address.getAddress()%> <%=address.getPincode()%> <%=address.getState()%>
 					<%
 					}
 					%> </textarea>
 			</div>
-			<input type="number" id="pincode" name="pincode"
-				placeholder="Pincode"
-				value=" <%if (address != null) {%><%=address.getPincode()%><%}%>"
-				maxlength="6" size="6" disabled> <input type="text"
-				id="state" name="state"
-				value=" <%if (address != null) {%><%=address.getState()%><%}%>"
-				placeholder="State" disabled>
-
-
 
 			<div class="no">
 				<label> Phone number: </label> <input type="tel" id="phonenumber"
@@ -119,7 +111,7 @@
 
 			<div class="cash">
 				<label> Payment: </label> <input type="text" id="payment"
-					name="payment" value="Cash on delivery" required="true">
+					name="payment" value="Cash on delivery" disabled="true">
 				<!-- <select id="payment" required> 
                     <option value="cash_on_delivery"> Cash on delivery </option>
                 </select> -->
@@ -188,6 +180,37 @@
 		</div>
 
 	</footer>
+	
+	
+	<script>
+	
+
+	//<div class = "arrow" > </div>
+					 
+					const div_arrow = document.createElement("div");
+					div_arrow.setAttribute("class", "arrow");
+					//console.log(div_arrow);
+					
+					//<a> link </a>
+					
+					const a_arrow = document.createElement("a");
+					a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+					a_arrow.addEventListener("click", function() {
+					    window.history.back();
+					});
+					div_arrow.append(a_arrow);
+					//console.log(a_arrow);
+					
+					//< i >  arrow </i>
+					
+					const i_arrow = document.createElement("i");
+					i_arrow.setAttribute("title", "Back");
+					i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+					a_arrow.append(i_arrow);
+					
+					document.querySelector("div.arrows").append(div_arrow); 
+	
+	</script>
 
 </body>
 </html>

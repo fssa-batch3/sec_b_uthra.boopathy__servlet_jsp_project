@@ -65,9 +65,13 @@ h3{
     font-size: 22px;
     font-weight: normal;
     margin-top: 15px;
-    margin-left: 30px;
-    width: 250px;
+    margin-left: 30px; 
+    text-align: center;
     color: rgb(74, 3, 74);
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
+  	overflow: hidden;    /* Hide any overflowed text */
+  	text-overflow: ellipsis; /* Show ellipsis (...) when text overflows */
+  	width: 200px;
 }
 
 p{

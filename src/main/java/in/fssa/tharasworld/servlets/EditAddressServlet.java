@@ -17,6 +17,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class CreateAddressServlet
@@ -39,27 +40,19 @@ public class EditAddressServlet extends HttpServlet {
 			UserEntity user = UserService.findById(userId);	
 			
 			int addressId = (Integer) Integer.parseInt(request.getParameter("address_id"));
-					
-			System.out.println(addressId);
-			
+								
 			AddressEntity address = AddressService.findByAddressId(addressId);
 			
 			request.setAttribute("editAddress", address);
 			
 			request.setAttribute("addressId", addressId);
-			
-			System.out.println(request.getAttribute("addressId"));
-			
+						
 			request.setAttribute("userId", userId);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_address.jsp");
 			dispatcher.forward(request, response);
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ValidationException e) {
-			e.printStackTrace();
+		} catch (ServiceException | ValidationException e) {
+			Logger.error(e);
 		} 
 	}
 		

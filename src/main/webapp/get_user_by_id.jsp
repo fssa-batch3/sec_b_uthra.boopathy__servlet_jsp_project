@@ -27,6 +27,8 @@
        
 <%@ include file="/header.jsp" %> 
 	
+	
+	<div class="arrows"></div>
 	                
                 <%
 		UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
@@ -45,8 +47,10 @@
                 <h1> PROFILE</h1>
 
                 <div class="avatar">
-                    <img src="<%=request.getContextPath() %>/assets/images/avatar.jpg" alt="photo" height="180px" width="180px">
+                    <img src="https://iili.io/JJ43tX1.png" alt="photo" height="180px" width="180px">
                 </div>
+                
+                <div class="details">
                
                 <div class="name">
                     <label> Name: </label>
@@ -78,13 +82,15 @@
                    <input type="text" id="role" value="<%=user1.getRole()%>" disabled="true">
                 </div>
                 
+                </div>
+                
                 <div >
                 
                  	<a href="delete"><button class="btn-2" type="button"> Delete Account </button>
               
                     <a href="edit"> <button class="btn-1" type="button">   Edit  </button>  </a> 
 
-                    <a href="/tharasworldweb/index"> <button class="btn-3" type="button">  Back </button> </a>
+                    <a href="/tharasworldweb/front_page"> <button class="btn-3" type="button">  Back </button> </a>
 
                 </div> 
                 
@@ -99,6 +105,36 @@
             </form>
        
         </section>
+        
+        <script>
+        
+
+      //<div class = "arrow" > </div>
+      				 
+      				const div_arrow = document.createElement("div");
+      				div_arrow.setAttribute("class", "arrow");
+      				//console.log(div_arrow);
+      				
+      				//<a> link </a>
+      				
+      				const a_arrow = document.createElement("a");
+      				a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+      				a_arrow.addEventListener("click", function() {
+      				    window.history.back();
+      				});
+      				div_arrow.append(a_arrow);
+      				//console.log(a_arrow);
+      				
+      				//< i >  arrow </i>
+      				
+      				const i_arrow = document.createElement("i");
+      				i_arrow.setAttribute("title", "Back");
+      				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+      				a_arrow.append(i_arrow);
+      				
+      				document.querySelector("div.arrows").append(div_arrow); 
+        
+        </script>
 
 </body>
 </html>

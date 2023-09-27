@@ -13,6 +13,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class DeleteProductServlet
@@ -40,11 +41,9 @@ public class DeleteProductServlet extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath() + "/product_list");
 			
-		} catch (ValidationException e) {
-			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
+		} catch (ValidationException | ServiceException e) {
+			Logger.error(e);
+		} 
 	}
 
 

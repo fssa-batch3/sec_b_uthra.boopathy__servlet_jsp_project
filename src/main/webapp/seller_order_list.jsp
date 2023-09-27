@@ -24,12 +24,42 @@
         
  <style>
  
+ .arrow {
+    margin: 2rem;
+    font-size: 30px;
+}
+
+.arrow a {
+    color: black;
+}
+ 
+.contain {
+    border: 1px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    width: 60%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 100px;   
+    margin-left: 200px;
+    padding-left: 4rem;
+    padding-right: 5rem;
+}
+
+.contain h3 {
+    color: black;
+}
+ 
+ 
  .container {
  	display: flex;
  	justify-content: space-evenly;
  	background-color: whitesmoke;
     border-radius: 10px;
-    margin: 100px; 
+    margin: 50px 80px; 
     padding: 20px; 
  }
  
@@ -123,7 +153,9 @@ a {
 <body>
 
 
-	<%@ include file="/header.jsp" %>      
+	<%@ include file="/header.jsp" %>   
+	
+	<div class="arrows"></div>   
 	
 	
 	<% UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
@@ -134,7 +166,9 @@ a {
 	
 		List<OrderEntity> order = (List<OrderEntity>) request.getAttribute("orderList");
 		
-	%>                                                                              
+	%>    
+	
+	<% if(!order.isEmpty()) { %>                                                                          
 
 	
 	<% 
@@ -153,11 +187,11 @@ a {
 	
 	<div class="price">
 	
-	<p> &#8377 <%= product.get(i).getListOfPrices().get(0).getCurrentPrice() %> </p>
+	<p> &#8377 <%= (int) Math.round(product.get(i).getListOfPrices().get(0).getCurrentPrice()) %> </p>
 	
-	<s class="actprice"> &#8377 <%= product.get(i).getListOfPrices().get(0).getActualPrice() %> </s>
+	<s class="actprice"> &#8377 <%= (int) Math.round(product.get(i).getListOfPrices().get(0).getActualPrice()) %> </s>
 	
-	<p class="discount"> <%= product.get(i).getListOfPrices().get(0).getDiscount() %> % off </p>
+	<p class="discount" style="color: green;"> <%= (int) Math.round(product.get(i).getListOfPrices().get(0).getDiscount()) %>%off </p>
 	
 		</div>
 	
@@ -169,25 +203,25 @@ a {
 
     if (cancelStatus == OrderStatus.CANCELLED) {
 %>
-        <button class="cancel" style="display: block;" > ORDER CANCELLED </button>
+        <button class="cancel" style="display: block; background-color: whitesmoke; color: red; font-size: 20px; font-weight: bold;" > ORDER CANCELLED </button>
 <%
     } else if (cancelStatus == OrderStatus.WAITING_LIST) {
 %>
        <a href="/tharasworldweb/accept_order?order_id=<%= order.get(i).getOrderId() %>"> <button type="submit"> ACCEPT </button>  </a>	
 	
-	   <a href="/tharasworldweb/cancel_order?order_id=<%= order.get(i).getOrderId() %>">  <button type="submit"> REJECT </button>  </a>
+	   <a href="/tharasworldweb/reject_order?order_id=<%= order.get(i).getOrderId() %>">  <button type="submit"> REJECT </button>  </a>
 <%
     } else if (cancelStatus == OrderStatus.ON_THE_WAY) {
     	%>
-        <button class="cancel" style="display: block;" > ORDER ACCEPTED </button>
+        <button class="cancel" style="display: block; background-color: whitesmoke; color: green; font-size: 22px; font-weight: bold;" > ORDER ACCEPTED </button>
         
-       <a href="/tharasworldweb/order_delivered?order_id=<%= order.get(i).getOrderId() %>"> <button class="cancel" style="display: block;" > ORDER DELIVERED </button> </a>
+       <a href="/tharasworldweb/order_delivered?order_id=<%= order.get(i).getOrderId() %>"> <button class="cancel" style="display: block;" > DELIVERED </button> </a>
  <%
      } else if (cancelStatus == OrderStatus.DELIVERED) {
     	%>
-        <button class="cancel" style="display: block;" > ORDER ACCEPTED </button>
+      <!--   <button class="cancel" style="display: block;" > ORDER ACCEPTED </button> -->
         
-        <button class="cancel" style="display: block;" > DELIVERED </button> 
+        <button class="cancel" style="display: block; background-color: whitesmoke; color: green; font-size: 22px; font-weight: bold;" > ORDER DELIVERED </button> 
  <%
      } 
 %> 
@@ -214,6 +248,52 @@ a {
 	</div>
 	
 	<% } %>
+	
+	<% } else { %>
+	
+	    <div class="contain">
+    <div class="details">
+        <h3 class="not">You did not received any orders !</h3>
+    </div>
+   
+</div>
+	
+	<% } %>
+
+
+<script>
+
+//<div class = "arrow" > </div>
+
+const div_arrow = document.createElement("div");
+div_arrow.setAttribute("class", "arrow");
+//console.log(div_arrow);
+
+//<a> link </a>
+
+const a_arrow = document.createElement("a");
+a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+a_arrow.addEventListener("click", function() {
+    window.history.back();
+});
+div_arrow.append(a_arrow);
+//console.log(a_arrow);
+
+//< i >  arrow </i>
+
+const i_arrow = document.createElement("i");
+i_arrow.setAttribute("title", "Back");
+i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+a_arrow.append(i_arrow);
+
+document.querySelector("div.arrows").append(div_arrow); 
+
+
+
+</script>
+
 
 </body>
+
+
 </html>

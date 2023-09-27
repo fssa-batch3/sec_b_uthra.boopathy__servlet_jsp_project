@@ -115,7 +115,7 @@ h1{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 100px;   
+    margin-top: 60px;   
     margin-left: 100px;
     padding-left: 5rem;
     padding-right: 5rem;
@@ -202,13 +202,7 @@ button a {
     font-size: 20px;
     text-decoration: none;
 }
-
-h3{
-    font-size: 28px;
-    color: maroon;
-    word-spacing: 10px;
-    margin-top: -20px;
-}    
+ 
 
 p{
     font-size: 23px;
@@ -235,7 +229,7 @@ s{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 60px;
     margin-left: 16rem;
 }
 

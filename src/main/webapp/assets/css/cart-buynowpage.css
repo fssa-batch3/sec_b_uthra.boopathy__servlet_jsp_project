@@ -3,10 +3,21 @@
     font-family: 'Kreon', serif;
 }
 
+
+.arrow {
+    margin: 2rem;
+    font-size: 30px;
+}
+
+.arrow a {
+    color: black;
+}
+
+
 .left{
     width: 50%;
     position: relative;
-    top: 170px;
+    top: 10px;
     left: 150px;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -18,6 +29,7 @@
 .image {
     display: flex;
     flex-direction: row;
+        padding-top: 20px;
 }
 
 .left::-webkit-scrollbar {
@@ -26,7 +38,7 @@
 
 .image img{
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .images img{
@@ -35,7 +47,7 @@
 
 .details {
     margin-left: 2rem;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
 }
 
 p {
@@ -63,7 +75,7 @@ p {
 .amt {
     font-size: 23px;
     position: relative;
-    top: 10rem;
+    top: -20px;
     padding-left: 10rem;
     display: flex;
 }
@@ -78,7 +90,7 @@ p {
     height: 600px;
     width: 500px;
     margin-left: 55rem;
-    margin-top: -22rem;
+    margin-top: -30rem;
     margin-bottom: 15rem;
 }
 
@@ -89,7 +101,7 @@ h2{
 .per{
     font-size: 25px;
     position: relative;
-    top: 60px;
+    top: 10px;
 }
 
 h3{
@@ -109,7 +121,7 @@ h4{
 .right p{
     font-size: 22px;
     position: relative;
-    top: 30px;
+    top: -10px;
     left: 5px;
 }
 
@@ -133,13 +145,13 @@ strong{
 .name{
     font-size: 22px;
     position: relative;
-    top: 90px;
+    top: 30px;
 }
 
 .add{
     font-size: 22px;
     position: relative;
-    top: 110px;
+    top: 50px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -148,35 +160,24 @@ strong{
 .no{
     font-size: 22px;
     position: relative;
-    top: 50px;
+    top: 60px;
 }
 
 .cash{
     font-size: 22px;
     position: relative;
-    top: 80px;
+    top: 90px;
 }
 
 .quantity{
     font-size: 22px;
     position: relative;
-    top: 65px;
-}
-
-select{
-    height: 30px;
-    width: 200px;
-    font-size: 15px;
-    border: 1px solid gray;
-    border-radius: 3px;
-    position: relative;
-    left: 95px;
-    outline: none;
+    top: 170px;
 }
 
 textarea{
-    height: 35px;
-    width: 200px;
+    width: 250px;
+    height: 70px;
     font-size: 15px;
     border: none;
     border-radius: 3px;
@@ -185,29 +186,9 @@ textarea{
     left: 183px;
     outline: none;
     resize: none;
+    overflow: hidden;
 }
 
-#pincode {
-    height: 30px;
-    width: 200px;
-    font-size: 15px;
-    border: none;
-    border-radius: 3px;
-    margin-top: 6rem;
-    margin-left: 5.4rem; 
-    outline: none;
-}
-
-#state {
-    height: 30px;
-    width: 200px;
-    font-size: 15px;
-    border: none;
-    border-radius: 3px;
-    margin-top: 0.5rem;
-    margin-left: 4rem; 
-    outline: none;
-}
 
 input[type="tel"]{
     height: 30px;
@@ -263,7 +244,7 @@ input[type="text"]{
     background-color: purple;
     border-radius: 4px;
     color: white;
-    margin-top: 130px;
+    margin-top: 170px;
     margin-left: 100px;
     cursor: pointer;
     font-size: 18px;

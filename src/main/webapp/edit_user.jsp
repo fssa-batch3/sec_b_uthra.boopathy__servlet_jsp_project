@@ -27,6 +27,8 @@
       
 <%@ include file="/header.jsp" %>  
 
+<div class="arrows"></div>
+
 
 
 <%
@@ -36,8 +38,6 @@
 		
 		%>
 		
-				
-		<% String errorMsg = (String) request.getAttribute("errorMessage"); %>
 
 
 	<%
@@ -49,25 +49,13 @@
 		`<%=error%>
 		`);
 	</script>
-
-	<%
+		<%
 	}
 	%>
 		
-		<script>
-			doucument.getElementById("name").value = "<%= user1.getName()%>";
-			doucument.getElementById("email").value = "<%= user1.getEmail()%>";
-			doucument.getElementById("phonenumber").value = "<%= user1.getPhoneNumber()%>";
-			doucument.getElementById("password").value = "<%= user1.getPassword()%>";
-			doucument.getElementById("age").value = "<%= user1.getAge()%>";	
-			
-			if(address != null){}
-			
-	 		document.getElementById("address").value = "<%=address.getAddress() %>";
-			document.getElementById("pincode").value = "<%= address.getPincode() %>";
-			document.getElementById("state").value = "<%= address.getState() %>" 
-		}
-		</script>
+
+
+
 
 
 <section>
@@ -77,12 +65,12 @@
                 <h1> PROFILE</h1>
 
                 <div class="avatar">
-                    <img src="<%=request.getContextPath() %>/assets/images/avatar.jpg" alt="photo" height="180px" width="180px">
+                    <img src="https://iili.io/JJ43tX1.png" alt="photo" height="180px" width="180px">
                 </div>
                
                 <div class="name">
                     <label> Name: </label>
-                    <input type="text" id="uname" name="name" pattern="^[a-zA-Z ]+$" value=<%= user1.getName() %>>
+                    <input type="text" id="uname" name="name" pattern="^[a-zA-Z ]+$" value="<%= user1.getName() %>">
                 </div>
 
                 <div class="age">
@@ -130,12 +118,16 @@
                     <label> Your Designation:</label>
                     <input type="text" id="des" placeholder="Buyer" value=<%= user1.getRole() %> disabled>
                 </div> 
+
+		
                 
                 <div >
                   	 <a href="/tharasworldweb/user/details">  <button class="btn-1" type="submit">  Save  </button> </a>
                 </div>        
 
             </form>
+            
+            
 
             <a href="/tharasworldweb/user/details">
                 <button class="btn-2" type="submit">  Cancel </button>  
@@ -149,6 +141,35 @@
 </section>
 
 <script>
+
+
+
+//<div class = "arrow" > </div>
+				 
+				const div_arrow = document.createElement("div");
+				div_arrow.setAttribute("class", "arrow");
+				//console.log(div_arrow);
+				
+				//<a> link </a>
+				
+				const a_arrow = document.createElement("a");
+				a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+				a_arrow.addEventListener("click", function() {
+				    window.history.back();
+				});
+				div_arrow.append(a_arrow);
+				//console.log(a_arrow);
+				
+				//< i >  arrow </i>
+				
+				const i_arrow = document.createElement("i");
+				i_arrow.setAttribute("title", "Back");
+				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+				a_arrow.append(i_arrow);
+				
+				document.querySelector("div.arrows").append(div_arrow); 
+
+
 	 /* password show */
     const Password = document.querySelector("#password");
 	const Checkbox = document.querySelector("#show");

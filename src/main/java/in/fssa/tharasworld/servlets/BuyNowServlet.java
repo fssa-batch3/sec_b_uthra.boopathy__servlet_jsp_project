@@ -1,6 +1,7 @@
 package in.fssa.tharasworld.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.OrderService;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class BuyNowServlet
@@ -36,38 +38,47 @@ public class BuyNowServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
 
 		Integer userIdObject = (Integer) session.getAttribute("userId");
 		if (userIdObject == null) {
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/user/login");
-			dispatcher.forward(request, response);
+			out.println("<script>alert('You are not logged in! Please login to buy products')</script>");
+			out.println("<script>window.history.back();</script>");
 
 		} else {
+			
 			try {
+				
 				int userId = userIdObject.intValue();
 				UserEntity user = UserService.findById(userId);
-
-				System.out.println(userId);
-
+				
 				String productId = request.getParameter("pdt_id");
 
 				ProductDetailDTO product = ProductService.findByProductId(Integer.parseInt(productId));
 
 				AddressEntity address = AddressService.findByDefault(userId);
+				
+				if(address!=null) {
 
-				request.setAttribute("productDetails", product);
-				request.setAttribute("address", address);
-				request.setAttribute("userDetails", user);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/buy_now.jsp");
-				dispatcher.forward(request, response);
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (ValidationException e) {
-				e.printStackTrace();
+					request.setAttribute("productDetails", product);
+					request.setAttribute("address", address);
+					request.setAttribute("userDetails", user);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/buy_now.jsp");
+					dispatcher.forward(request, response);
+
+				} else {
+					
+					out.println("<script>alert('You did not add any address')</script>");
+					out.println("<script>window.history.back();</script>");
+					
+				}
+				
+			} catch (ServiceException | ValidationException e) {
+				
+				Logger.error(e);
 			}
+
 		}
 
 	}
@@ -105,12 +116,17 @@ public class BuyNowServlet extends HttpServlet {
 
 			orderService.create(order);
 
-			response.sendRedirect(request.getContextPath() + "/orders");
+			response.sendRedirect(request.getContextPath() + "/category_list");
 
 		} catch (ServiceException | ValidationException e) {
 
-			e.printStackTrace();
-		
+			Logger.error(e);
+			
+			PrintWriter out = response.getWriter();
+			
+			out.println("<script>alert('"+e.getMessage()+"')</script>");
+			out.println("<script>window.history.back();</script>");
+ 		
 		}
 
 	}

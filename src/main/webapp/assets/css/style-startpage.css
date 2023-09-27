@@ -111,6 +111,7 @@ button{
     background-color:purple;
     margin: 80px 40px 0px 0px;
     padding: 5px;
+    cursor: pointer;
 }
 
 a button{

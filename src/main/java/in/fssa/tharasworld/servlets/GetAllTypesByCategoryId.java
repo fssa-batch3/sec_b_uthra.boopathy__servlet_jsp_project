@@ -17,6 +17,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.model.ResponseEntity;
 import in.fssa.tharasworld.service.TypeService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class GetAllTypesByCategoryId
@@ -49,21 +50,8 @@ public class GetAllTypesByCategoryId extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(repsoneJson);
 		} catch (ServiceException | ValidationException | PersistenceException e) {
-			e.printStackTrace();
+			Logger.error(e);
 		}
-		
-//		List<String> products = Arrays.asList("Pencil", "Pen", "Note", "Book");
-
-//		ResponseEntity responseObject = new ResponseEntity();
-//		responseObject.setStatusCode(200);
-//		responseObject.setData(types);
-//		responseObject.setMessage("Product retrieved successfully");
-//		
-//		Gson gson = new Gson();
-//		String repsoneJson = gson.toJson(responseObject);
-//		response.setContentType("application/json");
-//		response.setCharacterEncoding("UTF-8");
-//		response.getWriter().write(repsoneJson);
 		
 	}
 

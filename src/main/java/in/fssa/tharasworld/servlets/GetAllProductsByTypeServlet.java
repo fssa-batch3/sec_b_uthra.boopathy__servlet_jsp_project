@@ -20,6 +20,7 @@ import in.fssa.tharasworld.model.User;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.TypeService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class GetAllProductsByTypeServlet
@@ -47,20 +48,14 @@ public class GetAllProductsByTypeServlet extends HttpServlet {
 					request.setAttribute("ListOfProductsByType", products);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_type.jsp");
 					dispatcher.forward(request, response);
-				} catch (ServiceException e) {
-					e.printStackTrace();
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
-				} catch (ValidationException e) {
-					e.printStackTrace();
+				} catch (ServiceException | NumberFormatException | ValidationException e) {
+					Logger.error(e);
 				} 
 				
 		} else {
 			try {
 				int userId = userIdObject.intValue();
 				User user = UserService.findById(userId);
-				
-				System.out.println(userId);
 
 				String typeId = request.getParameter("type_id");
 				
@@ -70,14 +65,9 @@ public class GetAllProductsByTypeServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/list_products_by_type.jsp");
 				dispatcher.forward(request, response);
 				
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			} catch (ValidationException e) {
-				e.printStackTrace();
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			} catch (ServiceException | NumberFormatException | ValidationException e) {
+				Logger.error(e);
+			} 
 		}		
 		
 	}

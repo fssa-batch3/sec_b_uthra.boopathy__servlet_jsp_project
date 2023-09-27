@@ -35,7 +35,7 @@
 
         <div class="sub-heading">
 
-            <a href="productlist.jsp" class="new_release">
+            <a href="all_products" class="new_release">
                 <strong> NEW RELEASE </strong> 
             </a>
             
@@ -80,17 +80,17 @@
             <div class="offers">
                 <div class = "slide">
                 <div class="image">
-                <a href="productlist.jsp">
+                <a href="all_products">
                     <img src="<%=request.getContextPath()%>/assets/images/diss.jpg" alt="photo" height="500px" width="1200px">
                 </a>
                 </div>
                 <div class="image">
-                    <a href="productlist.jsp">
-                    <img src="<%=request.getContextPath()%>/assets/images/disdress.jpg" alt="photo" height="500px" width="1300px">
+                    <a href="all_products">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/c156d8151242819.630854c614e36.jpg" alt="photo" height="500px" width="1300px">
                 </a>
                 </div>
                 <div class="image">
-                    <a href="productlist.jsp">
+                    <a href="all_products">
                     <img src="<%=request.getContextPath()%>/assets/images/disdress1.jpg" alt="photo" height="500px" width="1300px">
                 </a>
                 </div>
@@ -102,12 +102,12 @@
                     <h3> Lowest Price With Best Quality Products </h3>
                     <div class="dis_img">
                         <div>
-                            <a href="productlist.jsp">
+                            <a href="all_products">
                                 <img src="<%=request.getContextPath()%>/assets/images/sale.jpg" alt="pic" height="200px" width="200px">
                             </a>
                         </div>
                         <div>
-                            <a href="productlist.jsp">
+                            <a href="all_products">
                                 <img src="<%=request.getContextPath()%>/assets/images/fifty.jpg" alt="pic" height="200px" width="200px">
                             </a>
                         </div>
@@ -115,22 +115,22 @@
                 </div>
                 <div class="pics">
                     <div>
-                        <a href="productlist.jsp">
+                        <a href="all_products">
                             <img src="<%=request.getContextPath()%>/assets/images/99.jpg" alt="photo">
                         </a>
                     </div>
                     <div>
-                        <a href="productlist.jsp">
+                        <a href="all_products">
                             <img src="<%=request.getContextPath()%>/assets/images/299.jpg" alt="photo">
                         </a>
                     </div>
                     <div>
-                        <a href="productlist.jsp">
+                        <a href="all_products">
                             <img src="<%=request.getContextPath()%>/assets/images/499.jpg" alt="photo">
                         </a>
                     </div>
                     <div>
-                        <a href="productlist.jsp">
+                        <a href="all_products">
                             <img src="<%=request.getContextPath()%>/assets/images/999.jpg" alt="photo">
                         </a>
                     </div>
@@ -142,20 +142,20 @@
             <div class="bottom"></div>
 
             <div class="counts">
-                <a href="productlist.jsp">
+                <a href="all_products">
                     <img src="<%=request.getContextPath()%>/assets/images/dis jewel.jpg" alt="photo" width="450px">
                 </a>
-                <a href="productlist.jsp">
+                <a href="all_products">
                     <img src="<%=request.getContextPath()%>/assets/images/discos1.jpg" alt="photo" width="240px"> 
                 </a>
-                <a href="productlist.jsp">
+                <a href="all_products">
                     <img src="<%=request.getContextPath()%>/assets/images/disjewel1.jpg" alt="photo" width="450px"> 
                 </a>
             </div>
 
             <div class="category-item">
                 <div class="category-card">
-                    <a href="productlist.jsp"> 
+                    <a href="all_products"> 
                   <div class="title">
                         Flat upto 50% off
                 </div>
@@ -164,7 +164,7 @@
                 </div>
                 
                 <div class="category-card">
-                    <a href="productlist.jsp">
+                    <a href="all_products">
                     <div class="title">
                             Flat upto 50% off
                     </div>
@@ -173,7 +173,7 @@
                 </div>
 
                 <div class="category-card">
-                    <a href="productlist.jsp">
+                    <a href="all_products">
                     <div class="title">
                             Flat upto 50% off
                     </div>
@@ -182,7 +182,7 @@
                   </div>
                 
                   <div class="category-card">
-                    <a href="productlist.jsp">
+                    <a href="all_products">
                     <div class="title">
                             Flat upto 50% off
                     </div>

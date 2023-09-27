@@ -41,14 +41,14 @@
 		<% } %>
 
 
-   <!--       <div class="arrows">
-        <div class="arrow">
+       <div class="arrows">
+        <!-- <div class="arrow">
             <a href="user/edit">
                 <i class="fa-solid fa-arrow-left" title="Back"></i>
             </a>
-        </div>
+        </div> -->
     </div>
- -->
+
         <a href="address/new">
          <button class="add"> ADD ADDRESS </button>
         </a>
@@ -183,5 +183,37 @@
        </div>
 
        </footer>    
+       
+       
+       <script>
+       
+
+     //<div class = "arrow" > </div>
+     				 
+     				const div_arrow = document.createElement("div");
+     				div_arrow.setAttribute("class", "arrow");
+     				//console.log(div_arrow);
+     				
+     				//<a> link </a>
+     				
+     				const a_arrow = document.createElement("a");
+     				a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+     				a_arrow.addEventListener("click", function() {
+     				    window.history.back();
+     				});
+     				div_arrow.append(a_arrow);
+     				//console.log(a_arrow);
+     				
+     				//< i >  arrow </i>
+     				
+     				const i_arrow = document.createElement("i");
+     				i_arrow.setAttribute("title", "Back");
+     				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+     				a_arrow.append(i_arrow);
+     				
+     				document.querySelector("div.arrows").append(div_arrow); 
+       
+       </script>
+       
 </body>
 </html>

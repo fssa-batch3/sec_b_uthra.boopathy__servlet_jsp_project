@@ -14,6 +14,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class DeleteAddressServlet
@@ -31,29 +32,7 @@ public class DeleteAddressServlet extends HttpServlet {
 		
 		try {
 			
-				AddressService addressService = new AddressService();
-				
-//				HttpSession session = request.getSession(false);
-//				
-//				int stringId = (Integer) session.getAttribute("userId");
-				
-//				if (session != null) {
-//				    session.setAttribute("userId", 0);
-//				    Object userIdAttribute = session.getAttribute("userId");
-//				    System.out.println("userIdAttribute: " + userIdAttribute);
-//				    session.invalidate();
-//				}
-//			
-//				if (stringId != null && !stringId.isEmpty()) {
-//					int id = Integer.parseInt(stringId);
-//					userService.delete(id);
-//					response.sendRedirect(request.getContextPath() + "/index.jsp");
-//				}
-
-				
-//			String idParams = request.getParameter("id");
-//			
-//			int id = Integer.parseInt(idParams);
+			AddressService addressService = new AddressService();
 				
 			int addressId = (Integer) Integer.parseInt(request.getParameter("address_id"));
 			
@@ -61,11 +40,9 @@ public class DeleteAddressServlet extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath() + "/address");
 			
-		} catch (ValidationException e) {
-			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
+		} catch (ValidationException | ServiceException e) {
+			Logger.error(e);
+		} 
 		
 		
 	}

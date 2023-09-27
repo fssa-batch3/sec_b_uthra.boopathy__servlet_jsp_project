@@ -47,14 +47,14 @@ public class UserLoginServlet extends HttpServlet {
 			UserEntity user = userService.checkUserExistsWithPhoneNumber(phoneNumber);
 
 			if (user == null) {
-				System.out.println("User not found");
+				Logger.info("User not found");
 			} else if (!BCrypt.checkpw(password, user.getPassword())) {
-				System.out.println("Incorrect Phone number or Password:(");
+				Logger.info("Incorrect Phone number or Password:(");
 				out.println("<script>alert('Incorrect Phone number or Password')</script>");
 				out.println("<script>window.history.back();</script>");
 			} else {
 				int id = user.getId();
-				System.out.println("Login Successfull:)");
+				Logger.info("Login Successfull:)");
 
 				if (user.getRole().equalsIgnoreCase("seller")) {
 
@@ -77,16 +77,7 @@ public class UserLoginServlet extends HttpServlet {
 
 		} catch (Exception e) {
 
-			/*
-			 * PrintWriter outer = response.getWriter(); // Logger.error(e);
-			 * outer.println("<script>alert('"+ e.getMessage() +"');</script>");
-			 * //outer.println(e.getMessage());
-			 * 
-			 * 
-			 * 
-			 * 
-			 * out.println("<script>window.history.back();</script>");
-			 */
+
 			Logger.error(e);
 			System.out.println("getting catch");
 			request.setAttribute("errorMessage", e.getMessage());

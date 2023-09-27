@@ -36,6 +36,8 @@
 
 <%@ include file="/header.jsp" %>  
 
+<div class="arrows"></div>
+
 	<% 
 
 		ProductDetailDTO product = (ProductDetailDTO) request.getAttribute("editProductPrice");
@@ -166,40 +168,36 @@
 
   </section>
 		
-		
-<%-- 
-	<form action="update_price?pdt_id=<%= product.getPdtId() %>" method="post">
-   
-    <label> Image url : <input type="url" id="image" name="img_url" disabled value="<%= product.getImg() %>"> </label>
-    
-    <label> Name : <input type="text" id="name" name="name" disabled value="<%= product.getName() %>"> </label>
-   
-    <label> Type : </label>
-    <select name="type" id="type">
-        <% TypeService typeService = new TypeService();
-           TypeEntity typeName = typeService.findByTypeId(product.getTypeId()); %>
-        <option value="<%= product.getTypeId() %>"> <%= typeName.getTypeName() %> </option>
-        
-    </select>
-    <%
-        List<PriceEntity> prices = product.getListOfPrices();
-        PriceEntity price = prices.get(0);
-    %>
-   
-    <label> Actual price : <input type="number" id="actual_price" name="actual_price" required value="<%= price.getActualPrice() %>"> </label>
-   
-    <label> Current price : <input type="number" id="current_price" name="current_price" required value="<%= price.getCurrentPrice() %>"> </label>
-   
-    <label> Discount : <input type="number" id="discount" name="discount" required value="<%= price.getDiscount() %>"> </label>
-   
-    <label> Description : </label>
-   
-    <textarea rows="5" id="description" name="description" disabled><%= product.getDescription() %></textarea>
-    <a href="product_list"> <button type="submit"> Submit </button> </a>
+ 
+ <script>
+ 
 
-</form>
-
- --%>
+//<div class = "arrow" > </div>
+				 
+				const div_arrow = document.createElement("div");
+				div_arrow.setAttribute("class", "arrow");
+				//console.log(div_arrow);
+				
+				//<a> link </a>
+				
+				const a_arrow = document.createElement("a");
+				a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+				a_arrow.addEventListener("click", function() {
+				    window.history.back();
+				});
+				div_arrow.append(a_arrow);
+				//console.log(a_arrow);
+				
+				//< i >  arrow </i>
+				
+				const i_arrow = document.createElement("i");
+				i_arrow.setAttribute("title", "Back");
+				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+				a_arrow.append(i_arrow);
+				
+				document.querySelector("div.arrows").append(div_arrow); 
+ 
+ </script>
 
 </body>
 </html>

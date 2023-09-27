@@ -18,9 +18,43 @@
 <meta charset="ISO-8859-1">
 <title> Product lists </title>
 
- <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/style-silksareepage.css">
+ <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/style-silksareepage.css">
 
 <style>
+
+
+.contain {
+    border: 1px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    width: 60%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 100px;   
+    margin-left: 200px;
+    padding-left: 4rem;
+    padding-right: 5rem;
+}
+
+.not {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.contain .add {
+    width: 160px;
+    height: 45px;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    border: 0;
+    border-radius: 5px;
+}
 
 .button-container {
     text-align: center;
@@ -49,13 +83,24 @@ button:hover {
 
 <%@ include file="/header.jsp" %> 
 
-<h1> Product List </h1> 
+<div class="arrows"></div>
 
 <a href="product/new"> <button type="submit"> Add products </button>  </a>
 
 <% Set<ProductDetailDTO> product =(Set<ProductDetailDTO>) request.getAttribute("productList"); %>
 
 <section>
+
+<% if(product.isEmpty()) { %>
+
+ <div class="contain">
+    <div class="details">
+        <h2 class="not"> You did not add any products to sell </h2>
+    </div>
+  
+</div>
+
+<% } else { %>
 
 <div class="thumbnail">  
 
@@ -68,9 +113,9 @@ button:hover {
 		<% List<PriceEntity> priceList = products.getListOfPrices(); %>
         <% if (!priceList.isEmpty()) { %>
         <div class="price">
-       	  <p id="original_price"> &#8377 <%= priceList.get(0).getCurrentPrice() %> 
-          <s id="discount_price"> &#8377 <%= priceList.get(0).getActualPrice() %> </s> 
-         <span class="percent"> <%= priceList.get(0).getDiscount() %> %off </span>
+       	  <p id="original_price"> &#8377 <%=(int) Math.round(priceList.get(0).getCurrentPrice())%> 
+          <s id="discount_price">&#8377 <%=(int) Math.round(priceList.get(0).getActualPrice())%></s> 
+         <span class="percent"> <%=(int) Math.round(priceList.get(0).getDiscount())%>%off </span>
          </p>
         </div>
         
@@ -83,7 +128,41 @@ button:hover {
 
 </div>
 
+<% } %>
+
 </section>
 
+
+<script>
+
+//<div class = "arrow" > </div>
+
+const div_arrow = document.createElement("div");
+div_arrow.setAttribute("class", "arrow");
+//console.log(div_arrow);
+
+//<a> link </a>
+
+const a_arrow = document.createElement("a");
+a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+a_arrow.addEventListener("click", function() {
+    window.history.back();
+});
+div_arrow.append(a_arrow);
+//console.log(a_arrow);
+
+//< i >  arrow </i>
+
+const i_arrow = document.createElement("i");
+i_arrow.setAttribute("title", "Back");
+i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+a_arrow.append(i_arrow);
+
+document.querySelector("div.arrows").append(div_arrow); 
+
+
+</script>
+
 </body>
+
 </html>

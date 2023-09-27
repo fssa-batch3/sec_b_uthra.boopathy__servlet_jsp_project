@@ -37,12 +37,7 @@ header div ul {
 	flex-wrap: wrap;
 	flex-direction: row;
 	list-style: none;
-	margin-left: 300px;
-}
-
-header div ul li {
-	padding-top: 35px;
-	padding-left: 30px;
+	margin-left: 100px;
 }
 
 header div ul li a {
@@ -51,7 +46,8 @@ header div ul li a {
 	font-size: 24px;
 }
 
-#count {
+
+/* #count {
 	background-color: white;
 	color: purple;
 	font-size: 20px;
@@ -63,7 +59,7 @@ header div ul li a {
 	text-align: center;
 	font-weight: bold;
 }
-
+ */
 h1 {
 	font-size: 50px;
 	font-weight: normal;
@@ -80,11 +76,38 @@ h1 {
 	height: 70px;
 }
 
-.login {
-	font-size: 25px;
-	color: white;
-	cursor: pointer;
+.nav_dropdown{
+position:relative;
+top:10px;
+right: 15pc;
 }
+.login_dropdown_list{
+position:absolute;
+
+background-color: black;
+box-shadow:0 4px 16px rgb(0 0 0 /20%);
+min-width:240px;
+transform:translate(-30px);
+}
+
+.login_drop_li{
+border-bottom: 1px solid black;
+font-size:14px;
+}
+.login {
+    display: flex;
+    margin-top: 20px;
+    padding: 0px 20px; 
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    }
+    .none{
+    display:none;
+    }
+   .login:hover .nav_dropdown{
+   	display:block;
+   }
 </style>
 </head>
 <body>
@@ -106,7 +129,7 @@ h1 {
 		<h1> Thara's World </h1>
 		  <div class="nav">
 		     <ul> 
-		        <li><a href = "/tharasworldweb/user/new"><span class="login"> Sign up </span> </a> </li>
+		        <!-- <li><a href = "/tharasworldweb/user/new"><span class="login"> Sign up </span> </a> </li> -->
 		        <li> <a href= "/tharasworldweb/user/login"><span class="login"> Login </span> </a></li>
 		      </ul>
 		  </div>
@@ -127,28 +150,42 @@ h1 {
 			src="https://iili.io/HybH2KN.png" alt="logo" />
 		</a>
 		<h1>Thara's World</h1>
-		<div class="nav">
-			<ul>
+		<div style="margin-left: 40rem;">
+		<div class="login">
+		<div class="login">
+		<a href="/tharasworldweb/user/details"><i id="profile" class="fa-solid fa-circle-user" style="color:white;"></i></a>
+		<!-- <a href="/tharasworldweb/cart"><i class="fa-sharp fa-solid fa-cart-shopping" style="color:white;"></i></a> -->
+		</div>
+		<div style="margin-top: 20px; padding: 0px 20px; ">
+		<a href="/tharasworldweb/wishlist"><i class="fa-sharp fa-solid fa-heart" style="color:white;"></i></a>
+		</div>
+		<div style="margin-top: 20px; padding: 0px 20px; ">
+		<a href="/tharasworldweb/cart"><i class="fa-sharp fa-solid fa-cart-shopping" style="color:white;"></i></a>
+		<!-- <a href="/tharasworldweb/user/details"><i id="profile" class="fa-solid fa-circle-user" style="color:white;"></i></a> -->
+				<div class="nav_dropdown none" style="width: 70px;">
+				 	<ul  class="login_dropdown_list">
+						
+							<li class="login_drop_li" style="margin-left: 6px;">
+								<a href="/tharasworldweb/user/details"> View profile </a>
+							</li>
+							<li class="login_drop_li" style="margin-left: -0.8rem;">
+								<a href="/tharasworldweb/product_list"> <span class="login" id="logout"> My products </span>
+								 </a> </li>
+							<li class="login_drop_li" style=" margin-left: -11px;">
+								<a href="/tharasworldweb/seller_orderList"> <span class="login" id="logout"> Orders </span> 
+								</a> </li>
+							<li class="login_drop_li" style="margin-left: -10px;">
+								<a href="/tharasworldweb/orders"> <span class="login" id="logout"> My Orders </span>
+								 </a> </li>
+							<li class="login_drop_li" style="margin-left: -11px;">
+								<a href="/tharasworldweb/user/logout"> <span class="login" id="logout"> Log out </span> 
+								</a> </li>
+						</ul>
+					</div> 	
+		</div>
+		</div>
 			
-				 <li><a href="/tharasworldweb/cart.jsp"><i
-						class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
-				<li><a href="/tharasworldweb/wishlist.jsp"><i class="fa-sharp fa-solid fa-heart"></i></a></li> 
-				<li><a href="/tharasworldweb/orders"><i class="fa-solid fa-bag-shopping"></i></a></li> 
-				<li><a href="/tharasworldweb/user/details"><i id="profile"
-						class="fa-solid fa-circle-user"></i> </a></li>
-						
-						<li><a href="/tharasworldweb/product_list"> <span class="login"
-						id="logout"> My products </span> </a> </li>
-						
-				<li><a href="/tharasworldweb/seller_orderList"> <span class="login"
-						id="logout"> Orders </span> </a> </li>
-				
-				<li><a href="/tharasworldweb/user/logout"> <span class="login"
-						id="logout"> Log out </span> </a> </li>
-						
-						
-				
-			</ul>
+
 		</div>
 
 	</header>
@@ -161,18 +198,32 @@ h1 {
 			src="https://iili.io/HybH2KN.png" alt="logo" />
 		</a>
 		<h1>Thara's World</h1>
-		<div class="nav">
-			<ul>
-				 <li><a href="/tharasworldweb/cart.jsp"><i
-						class="fa-sharp fa-solid fa-cart-shopping"></i> </a></li>
-				 <li><a href="/tharasworldweb/wishlist.jsp"><i class="fa-sharp fa-solid fa-heart"></i></a></li> 
-				<li><a href="/tharasworldweb/orders"><i class="fa-solid fa-bag-shopping"></i></a></li> 
-				<li><a href="/tharasworldweb/user/details"><i id="profile"
-						class="fa-solid fa-circle-user"></i> </a></li>
-				<li><a href="/tharasworldweb/user/logout"> <span class="login"
-						id="logout"> Log out </span></li>
-				</a>
-			</ul>
+		<div style="margin-left: auto;">
+		<div class="login">
+		<div class="login">
+		<a href="/tharasworldweb/cart"><i class="fa-sharp fa-solid fa-cart-shopping" style="color:white;"></i></a>
+		</div>
+		<div class="login">
+		<a href="/tharasworldweb/wishlist"><i class="fa-sharp fa-solid fa-heart" style="color:white;"></i></a>
+		</div>
+		<div class="login">
+		<a href="/tharasworldweb/user/details"><i id="profile" class="fa-solid fa-circle-user" style="color:white;"></i></a>
+				<div class="nav_dropdown none">
+				 	<ul  class="login_dropdown_list">
+						<li></li>
+							<li class="login_drop_li"><a href="/tharasworldweb/user/details"> View profile </a>
+							<li class="login_drop_li"><a href="/tharasworldweb/seller_orderList"> <span class="login"
+								id="logout"> Orders </span> </a> </li>
+							<li class="login_drop_li"><a href="/tharasworldweb/orders"> <span class="login"
+								id="logout"> My Orders </span> </a> </li>
+							<li class="login_drop_li"><a href="/tharasworldweb/user/logout"> <span class="login"
+								id="logout"> Log out </span> </a> </li>
+						</ul>
+					</div> 	
+		</div>
+		</div>
+			
+
 		</div>
 
 	</header>
@@ -183,4 +234,15 @@ h1 {
 	<% } %> 
 	
 </body>
+
+ <script>
+
+ document.querySelector("#logout").addEventListener("click", (e) => {
+	 if(window.confirm ("Are you sure to logout ?")){
+		 window.location.href="/tharasworldweb/user/logout";
+	 }
+ });
+
+</script> 
+
 </html>

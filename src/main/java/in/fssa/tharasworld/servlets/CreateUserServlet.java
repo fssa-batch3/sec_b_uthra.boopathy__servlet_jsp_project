@@ -44,39 +44,30 @@ public class CreateUserServlet extends HttpServlet {
 		try {
 		
 		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
+			Logger.info("Name cannot be null or empty");
 		} else {
 			user.setName(request.getParameter("name"));
 		}
 		
 		if(request.getParameter("email") == null || request.getParameter("email").isEmpty()) {
-			System.out.println("Email cannot be null or empty");
+			Logger.info("Email cannot be null or empty");
 		} else {
 			user.setEmail(request.getParameter("email"));
 		}
-		
-//		if(Long.parseLong(request.getParameter("phone_number"))<=0) {
-//			System.out.println("Invalid phone number");
-//		} else {
+
 			user.setPhoneNumber(Long.parseLong(request.getParameter("phone_number")));
-//		}
 		
 		if(request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
+			Logger.info("Name cannot be null or empty");
 		} else {
 			user.setPassword(request.getParameter("password"));
 		}
 		
-//		if(Integer.parseInt(request.getParameter("phone_number"))<=12) {
-//			System.out.println("Invalid age");
-//		} else {
 			user.setAge(Integer.parseInt(request.getParameter("age")));
-//		}
+
 	
 		user.setRole(request.getParameter("role"));
-		
-		System.out.println(user.toString());
-		
+				
 		UserService userService = new UserService();
 		userService.create(user);
 		

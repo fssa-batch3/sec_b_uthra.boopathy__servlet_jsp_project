@@ -18,65 +18,17 @@
     <body>
  
 	<%@ include file="/header.jsp" %> 
-<!-- 
+
         <div class="arrows">
-        
-        <div class="arrow">
-    <a href="#">
-        <i title="Back" class="fa-solid fa-arrow-left"></i>
-    </a>
-</div> -->
-        
+      
         </div>
         
        
 
         <section>
         
-       <%--   <div class="container">
-    <img src="<%= request.getContextPath() %>/assets/images/silk12.jpg" alt="photo" height="200px" width="180px">
-    <div class="details">
-        <h3 id="name"> product name </h3>
-        <div>
-            <p id="original_price"> 564 </p>
-            <s id="discount_price"> 353 </s>
-            <span class="percent"> 43 </span>
-        </div>
-<!--         <div class="size">
-            <p class="size">Size : check_pdt[k].size</p>
-        </div> -->
-        <div class="quantity">
-            <p>Quantity</p>
-            <input class="quantity" type="number" value="check_pdt[k].product_quantity" id="product_quantity" min="1" max="10" data-remove="check_pdt[k].product_id" data-size="check_pdt[k].size">
-        </div>
-
-    </div>
-            <div class=button>
-        <button class="remove" data-remove="check_pdt[k].product_id" type="submit">REMOVE</button>
-       <!--  <button class="wish" data-remove="check_pdt[k].product_id" type="submit">WISHLIST</button> -->
-        </div>
-</div>  --%>
 
         </section>
-        
-                 <div class="total">
-    <div class="sum">
-        <p>SUMMARY :</p>
-    </div>
-    <div class="sub">
-        <p>SUB TOTAL :</p>
-        <p>DELIVERY CHARGE :</p>
-        <p>TOTAL AMOUNT :</p>
-    </div>
-    <div class="amt">
-        <p id="totalvalue">YOUR_TOTAL_VALUE</p>
-        <p>FREE</p>
-        <p class="total_amt"id="totalamt">YOUR_TOTAL_VALUE</p>
-    </div>
-    <div>
-        <button class="buy" type="submit">BUY NOW</button>
-    </div>
-</div>
 
         <footer>
             <div class="top">
@@ -131,59 +83,71 @@
        
         <script>
         
+        
+
+      //<div class = "arrow" > </div>
+      				 
+      				const div_arrow = document.createElement("div");
+      				div_arrow.setAttribute("class", "arrow");
+      				//console.log(div_arrow);
+      				
+      				//<a> link </a>
+      				
+      				const a_arrow = document.createElement("a");
+      				a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+      				a_arrow.addEventListener("click", function() {
+      				    window.history.back();
+      				});
+      				div_arrow.append(a_arrow);
+      				//console.log(a_arrow);
+      				
+      				//< i >  arrow </i>
+      				
+      				const i_arrow = document.createElement("i");
+      				i_arrow.setAttribute("title", "Back");
+      				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
+      				a_arrow.append(i_arrow);
+      				
+      				document.querySelector("div.arrows").append(div_arrow); 
+        
         <% HttpSession session3 = request.getSession(); %>
         <% Integer userId = (Integer) session3.getAttribute("userId"); %>
         
         let user_id = <%= userId.intValue() %>;
         
-        const add_to_cart = JSON.parse(localStorage.getItem("cart"));
+        const add_to_cart = JSON.parse(localStorage.getItem("cart")) || [];
+       
+        const check_pdt = add_to_cart.filter((e) => e.buyer_id == user_id);
         
-        if(add_to_cart!=null){
-
-        const check_pdt = add_to_cart.filter((e) => e.buyer_id === user_id);
-        
-        if (check_pdt.length === 0) {
+     /*    if (check_pdt.length == 0) {
 
         	  // <div class = products >
-
-        	  const div_container = document.createElement("div");
-        	  div_container.setAttribute("class", "contain");
-
-        	  // <div class="details"></div>
-
-        	  const div_details = document.createElement("div");
-        	  div_details.setAttribute("class", "details");
-        	  div_container.append(div_details);
-
-        	  const h3_title = document.createElement("h3");
-        	  h3_title.setAttribute("class", "not");
-        	  h3_title.innerText = "You have not added any products yet";
-        	  div_details.append(h3_title);
-
-        	  const button = document.createElement("button");
-        	  button.setAttribute("class", "add");
-        	  button.innerText = "ADD PRODUCTS";
-        	  div_container.append(button);
-
-        	  document.querySelector("section").append(div_container);
+				
+				const div_container = document.createElement("div");
+				div_container.setAttribute("class", "container");
+				
+				const h3_title = document.createElement("h3");
+				h3_title.setAttribute("class", "not");
+				h3_title.innerText = "You have not added any products yet";
+				div_container.append(h3_title);
+				
+				const button = document.createElement("button");
+				button.setAttribute("class", "add");
+				button.innerText = "ADD PRODUCTS";
+				div_container.append(button);
+				
+				document.querySelector("section").append(div_container);
+	
 
         	  // add products
 
         	document.querySelector("button.add").addEventListener("click",() => {
-        	  window.location.href = "/tharasworldweb/productlist.jsp";
-        	})
+        	  window.location.href = "/tharasworldweb/category_list";
+        	});
 
-        	} else {
+        	}  else { */
 
         		for (let k = 0; k < check_pdt.length; k++) {
-
-
-        		 /*  const match_pdt = all.find((id) => id.product_uuid === check_pdt[k].product_id);
-        		console.log(match_pdt); 
-
-        		   const size_list = JSON.parse(localStorage.getItem("product_size_details"));
-        		 
-        		  const ck_size = size_list.find((o) => o.product_uuid === check_pdt[k].product_id && o.size === check_pdt[k].size) */
 
         		  // <div class = products >
 
@@ -221,21 +185,21 @@
 
         		  const p_org = document.createElement("p");
         		  p_org.setAttribute("id", "original_price");
-        		  p_org.innerText = check_pdt[k].current_price;
+        		  p_org.innerText = '\u20B9' +  Math.round(check_pdt[k].current_price);
         		  div.append(p_org);
 
         		  // <s> </s>
 
         		  const s = document.createElement("s");
         		  s.setAttribute("id", "discount_price");
-        		  s.innerText = check_pdt[k].actual_price;
+        		  s.innerText = '\u20B9' + Math.round(check_pdt[k].actual_price);
         		  div.append(s);
 
         		  // <span> </span>
 
         		  const span = document.createElement("span");
         		  span.setAttribute("class", "percent");
-        		  span.innerText = check_pdt[k].discount;
+        		  span.innerText = Math.round(check_pdt[k].discount)+"%ff";
         		  div.append(span);
 
         		  // < div class = "quantity" > </div>
@@ -282,11 +246,26 @@
         		  document.querySelector("section").append(div_container);
         		}
  
-        		}
-        } else {
-        	
-        	
-        	const div_container = document.createElement("div");
+        		/* } */
+        
+        
+        //// summary create element
+
+        let total = 0;
+
+     /*    const check_pdt = add_to_cart.filter((e) => e.buyer_id == user_id);
+        console.log(check_pdt); */
+        
+        for (let l = 0; l < check_pdt.length; l++) {
+          total += check_pdt[l].current_price * check_pdt[l].product_quantity;
+        }
+
+        console.log(total);
+
+         if (check_pdt.length <= 0) {
+        	// <div class = products >
+
+      	  const div_container = document.createElement("div");
       	  div_container.setAttribute("class", "contain");
 
       	  // <div class="details"></div>
@@ -310,42 +289,90 @@
       	  // add products
 
       	document.querySelector("button.add").addEventListener("click",() => {
-      	  window.location.href = "/tharasworldweb/productlist.jsp";
+      	  window.location.href = "/tharasworldweb/category_list";
       	})
-        	
         }
-        
-        
-        //// summary create element
-
-        let total = 0;
-
-        const check_pdt = add_to_cart.filter((e) => e.buyer_id == user_id);
-        console.log(check_pdt);
-        
-        for (let l = 0; l < check_pdt.length; l++) {
-          total += check_pdt[l].current_price * check_pdt[l].product_quantity;
-        }
-
-        console.log(total);
-
-        if (total == 0) {
+        else { 
           const div_total = document.createElement("div");
           div_total.setAttribute("class", "total");
-          div_total.setAttribute("style", "display: none;");
-       
-        } else {
-         
-        const div_total = document.createElement("div");
-       	div_total.setAttribute("class", "total");
           
-       	const totalValueElement = document.getElementById("totalvalue");
-       	
-        totalValueElement.textContent = total;
+        const div = document.createElement("div");
+        div.setAttribute("class", "sum");
+        div_total.append(div)
+
+        const summary = document.createElement("p");
+        summary.innerText = "SUMMARY :";
+        div.append(summary);
+
+        // <div>
+
+        const div_price = document.createElement("div");
+        div_price.setAttribute("class", "sub");
+        div_total.append(div_price);
+
+        // <p>
+
+        const p_sub = document.createElement("p");
+        p_sub.innerText = "SUB TOTAL :";
+        div_price.append(p_sub);
+
+        // <p>
+
+        const p_del = document.createElement("p");
+        p_del.innerText = "DELIVERY CHARGE :";
+        p_sub.append(p_del);
+
+        // <p>
+
+        const p_t_a = document.createElement("p");
+        p_t_a.innerText = "TOTAL AMOUNT :";
+        p_del.append(p_t_a);
+
+        //  <div> <div>
+
+        const div_amt = document.createElement("div");
+        div_amt.setAttribute("class", "amt");
+        div_total.append(div_amt);
+
+        // <p>
+
+        let p_amt = document.createElement("p");
+        p_amt.innerText = '\u20B9' + Math.round(total);
+        div_amt.append(p_amt);
+
+        // <p>
+
+        const p_free = document.createElement("p");
+        p_free.innerText = "FREE";
+        p_amt.append(p_free);
+
+        // <p>
+
+        p_amt = document.createElement("p");
+        p_amt.setAttribute("class", "total_amt");
+        p_amt.innerText = '\u20B9' + Math.round(total);
+        p_free.append(p_amt);
+
+        // <div>
+
+        const div_btn = document.createElement("div");
+        div_total.append(div_btn);
+
+        // < button class = "buy" > </button>
+
+        const button_buy = document.createElement("button");
+        button_buy.setAttribute("class", "buy");
+        button_buy.innerText = "BUY NOW";
+        div_btn.append(button_buy);
+
+        document.querySelector("section").append(div_total);
         
-		const totalAmtElement = document.getElementById("totalamt");
-       	
-        totalAmtElement.textContent = total;
+        
+        document.querySelector("button.buy").addEventListener("click",() => {
+        	
+        	  window.location.href = "/tharasworldweb/cart_buynow.jsp";
+        	});   
+               
         
         }
         
@@ -449,11 +476,11 @@
 
               all_products.splice(indexOfProduct, 1); 
 
-             /*  const cart_count = JSON.parse(localStorage.getItem("cart_count"));
+              const cart_count = JSON.parse(localStorage.getItem("cart_count"));
 
               const cart_length = cart_count-1;
 
-              localStorage.setItem("cart_count", JSON.stringify(cart_length)); */
+              localStorage.setItem("cart_count", JSON.stringify(cart_length));
 
               localStorage.setItem("cart", JSON.stringify(all_products));
             }
@@ -516,11 +543,6 @@ product.forEach((check) => {
     });
 });
 
-        
-document.querySelector("button.buy").addEventListener("click",() => {
-	  window.location.href = "/tharasworldweb/cart_buynow.jsp";
-	} )        
-       
         
         </script>
        

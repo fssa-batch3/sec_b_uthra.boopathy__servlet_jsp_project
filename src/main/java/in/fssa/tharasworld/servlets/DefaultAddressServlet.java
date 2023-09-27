@@ -11,6 +11,7 @@ import in.fssa.tharasworld.entity.AddressEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.AddressService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class DefaultAddressServlet
@@ -41,11 +42,9 @@ public class DefaultAddressServlet extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath() + "/address");
 			
-		} catch (ValidationException e) {
-			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
+		} catch (ValidationException | ServiceException e) {
+			Logger.error(e);
+		} 
 		
 		
 	}

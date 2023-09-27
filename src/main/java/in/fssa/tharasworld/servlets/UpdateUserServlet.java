@@ -16,6 +16,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class UpdateUserServlet
@@ -39,22 +40,20 @@ public class UpdateUserServlet extends HttpServlet {
 		try {
 		
 		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
+			Logger.info("Name cannot be null or empty");
 		} else {
 			user.setName(request.getParameter("name"));
 		}
-		
+/*		
 		if(request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
+			Logger.info("Name cannot be null or empty");
 		} else {
 			user.setPassword(request.getParameter("password"));
-		}
+		} */
 		
 		user.setAge(Integer.parseInt(request.getParameter("age")));
 	
 		user.setRole(request.getParameter("role"));
-		
-		System.out.println(user.toString());
 		
 		HttpSession session = request.getSession();
 		
@@ -69,7 +68,7 @@ public class UpdateUserServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/category_list");
 		
 		} catch (ValidationException | ServiceException e) {
-			e.printStackTrace();
+			Logger.error(e);
 			request.setAttribute("errorMessage", e.getMessage());
 			   
 			request.setAttribute("editUser", returnUser);

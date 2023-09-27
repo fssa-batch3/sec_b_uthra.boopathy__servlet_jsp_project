@@ -19,6 +19,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class FindByUserIdServlet
@@ -31,13 +32,6 @@ public class FindByUserIdServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//				RequestDispatcher rd = request.getRequestDispatcher("/get_user_by_id.jsp");
-//				rd.forward(request, response);
-		
-		
-		
-		// String userId = request.getParameter("id");
 		
 		try {
 			
@@ -49,22 +43,14 @@ public class FindByUserIdServlet extends HttpServlet {
 			
 			AddressEntity address = AddressService.findByDefault(userId);
 	   
-	//		UserEntity user = UserService.findById(Integer.parseInt(userId));
-
 			request.setAttribute("userDetails", user);
 			request.setAttribute("address", address);
-			
-			System.out.println(address);
-			
+						
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/get_user_by_id.jsp");
 			dispatcher.forward(request, response);
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ValidationException e) {
-			e.printStackTrace();
-		} 
+		} catch (ServiceException | ValidationException e) {
+			Logger.error(e);
+		}
 
 	}
 

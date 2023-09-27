@@ -9,28 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.fssa.tharasworld.entity.UserEntity;
-import in.fssa.tharasworld.exception.ServiceException;
-import in.fssa.tharasworld.exception.ValidationException;
-import in.fssa.tharasworld.service.UserService;
-
 /**
- * Servlet implementation class NewUserServlet
+ * Servlet implementation class CartServlet
  */
-@WebServlet("/user/new")
-public class NewUserServlet extends HttpServlet {
+@WebServlet("/cart")
+public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/add_user.jsp");
+RequestDispatcher rd = request.getRequestDispatcher("/cart.jsp");
 		
 		rd.forward(request, response);
 
 	}
+
 }
-	

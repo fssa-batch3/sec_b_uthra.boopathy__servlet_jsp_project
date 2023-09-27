@@ -17,6 +17,7 @@ import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.model.User;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 
 /**
@@ -35,10 +36,7 @@ public class CreateProductServlet extends HttpServlet {
 		Integer userIdObject = (Integer) request.getSession().getAttribute("userId");
 		
 		int userId = userIdObject.intValue();
-		
-		System.out.println(userId);
-		
-		
+
 		ProductDetailDTO product = new ProductDetailDTO();
 		
 		try {
@@ -46,7 +44,7 @@ public class CreateProductServlet extends HttpServlet {
 			product.setImg(request.getParameter("img_url"));
 		
 		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
+			Logger.info("Name cannot be null or empty");
 		} else {
 			product.setName(request.getParameter("name"));
 		}
@@ -61,19 +59,21 @@ public class CreateProductServlet extends HttpServlet {
 				
 		PriceEntity price = new PriceEntity(); 
 		
-		price.setActualPrice(Double.parseDouble(request.getParameter("actual_price")));
+		double actualPrice = (Double.parseDouble(request.getParameter("actual_price")));
 		
-		Double currenPrice = Double.parseDouble(request.getParameter("actual_price"))-(Double.parseDouble(request.getParameter("actual_price")) * Double.parseDouble(request.getParameter("discount")))/100;
+		double discount = Double.parseDouble(request.getParameter("discount"));
+		
+		price.setActualPrice(actualPrice);
+		
+		Double currenPrice = actualPrice -(actualPrice * discount)/100;
 		
 		price.setCurrentPrice(currenPrice);
 		
-		price.setDiscount(Double.parseDouble(request.getParameter("discount")));
+		price.setDiscount(discount);
 		
 		prices.add(price);
 		
 		product.setListOfPrices(prices);
-		
-		System.out.println(product.toString());
 		
 		ProductService productService = new ProductService();
 		productService.create(product);
@@ -81,7 +81,7 @@ public class CreateProductServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/product_list");
 		
 		} catch (ValidationException | ServiceException e) {
-			e.printStackTrace();
+			Logger.error(e);
 			request.setAttribute("errorMessage", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/add_product.jsp");
 			

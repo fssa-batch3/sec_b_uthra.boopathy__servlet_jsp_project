@@ -23,6 +23,7 @@ import in.fssa.tharasworld.service.OrderService;
 import in.fssa.tharasworld.service.PriceService;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class MyOrdersServlet
@@ -37,15 +38,13 @@ public class MyOrdersServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		
 		Integer userIdObject = (Integer) session.getAttribute("userId");
 		
 		try {
 			int userId = userIdObject.intValue();
 			UserEntity user = UserService.findById(userId);
-			
-			System.out.println(userId);
 
 			List<OrderEntity> order = OrderService.findOrdersByUserId(userId);
 			
@@ -58,8 +57,6 @@ public class MyOrdersServlet extends HttpServlet {
 				priceList.add(price);
 			}
 			
-			
-//			System.out.println(order);
 			
 			List<AddressEntity> addressList = new ArrayList<>();
 			
@@ -92,12 +89,8 @@ public class MyOrdersServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/my_orders.jsp");
 			dispatcher.forward(request, response);
 		
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ValidationException e) {
-			e.printStackTrace();
+		} catch (ServiceException | ValidationException e) {
+			Logger.error(e);
 		} 
 		
 	}

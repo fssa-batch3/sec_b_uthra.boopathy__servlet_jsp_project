@@ -16,6 +16,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class CreateAddressServlet
@@ -39,19 +40,19 @@ public class CreateAddressServlet extends HttpServlet {
 		try {
 		
 		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
+			Logger.info("Name cannot be null or empty");
 		} else {
 			address.setName(request.getParameter("name"));
 		}
 		
 		if(request.getParameter("address") == null || request.getParameter("address").isEmpty()) {
-			System.out.println("Address cannot be null or empty");
+			Logger.info("Address cannot be null or empty");
 		} else {
 			address.setAddress(request.getParameter("address"));
 		}
 		
 		if(request.getParameter("state") == null || request.getParameter("state").isEmpty()) {
-			System.out.println("Address cannot be null or empty");
+			Logger.info("Address cannot be null or empty");
 		} else {
 			address.setState(request.getParameter("state"));
 		}
@@ -60,16 +61,15 @@ public class CreateAddressServlet extends HttpServlet {
 			
 			address.setUserId(userId);
 	
-		
-		System.out.println(address.toString());
-
 		AddressService addressService = new AddressService();
 		addressService.create(address);
 		
 		response.sendRedirect(request.getContextPath()+"/address");
 		
 		} catch (ValidationException | ServiceException e) {
-			e.printStackTrace();
+
+			Logger.error(e);
+
 			request.setAttribute("errorMessage", e.getMessage());
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/add_address.jsp");

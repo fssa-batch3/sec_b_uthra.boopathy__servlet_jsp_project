@@ -16,6 +16,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.AddressService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class NewAddressServlet
@@ -37,9 +38,7 @@ public class UpdateAddressServlet extends HttpServlet {
 		AddressEntity returnAddress = null;
 		
 		 int addressId = Integer.parseInt(request.getParameter("id"));
-		 
-		 System.out.println(addressId);
-		
+
 		try {
 		
 		HttpSession session = request.getSession();
@@ -68,7 +67,7 @@ public class UpdateAddressServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/address");
 		
 		} catch (ValidationException | ServiceException e) {
-			e.printStackTrace();
+			Logger.error(e);
 			request.setAttribute("errorMessage", e.getMessage());			   
 			request.setAttribute("editAddress", returnAddress);
 			request.setAttribute("userId", userId);

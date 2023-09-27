@@ -9,50 +9,56 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import in.fssa.tharasworld.entity.CategoryEntity;
+import in.fssa.tharasworld.dto.ProductDetailDTO;
 import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
-import in.fssa.tharasworld.model.User;
-import in.fssa.tharasworld.service.CategoryService;
+import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
 import in.fssa.tharasworld.util.Logger;
 
 /**
- * Servlet implementation class GetAllCategories
+ * Servlet implementation class ListAllProductsForUsers
  */
-@WebServlet("/category_list")
-public class GetAllCategoriesServlet extends HttpServlet {
+@WebServlet("/all_products")
+public class ListAllProductsForUsers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Integer userIdObject = (Integer) request.getSession().getAttribute("userId");
-		if (userIdObject == null) {
+		Integer userIdObject = (Integer) request.getSession().getAttribute("userId");	
+		
+		if(userIdObject == null) {
 			try {
-				Set<CategoryEntity> category = CategoryService.findAll();
-				request.setAttribute("categoryList", category);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/front_page.jsp");
+				
+				Set<ProductDetailDTO> product = ProductService.findAll();
+				request.setAttribute("productList", product);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/productlist.jsp");
 				dispatcher.forward(request, response);
+				
 			} catch (ServiceException e) {
 				Logger.error(e);
-			}
+			} 
 			
 		} else {
+		
+			int userId = userIdObject.intValue();
+			
+			UserEntity user;
 			try {
-				int userId = userIdObject.intValue();
-				UserService userService = new UserService();
-				User user = userService.findById(userId);
-				Set<CategoryEntity> category = CategoryService.findAll();
-				request.setAttribute("categoryList", category);
+				user = UserService.findById(userId);
+				
+				Set<ProductDetailDTO> product = ProductService.findAll();
+				request.setAttribute("productList", product);
 				request.setAttribute("userDetails", user);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/front_page.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/productlist.jsp");
 				dispatcher.forward(request, response);
+				
 			} catch (ServiceException | ValidationException e) {
 				Logger.error(e);
 			} 

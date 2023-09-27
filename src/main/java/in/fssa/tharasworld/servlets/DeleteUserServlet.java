@@ -12,6 +12,7 @@ import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class DeleteUserServlet
@@ -43,26 +44,14 @@ public class DeleteUserServlet extends HttpServlet {
 				    session.invalidate();
 				}
 			
-//				if (stringId != null && !stringId.isEmpty()) {
-//					int id = Integer.parseInt(stringId);
-//					userService.delete(id);
-//					response.sendRedirect(request.getContextPath() + "/index.jsp");
-//				}
-
-				
-//			String idParams = request.getParameter("id");
-//			
-//			int id = Integer.parseInt(idParams);
 			
 			userService.delete(stringId); 
 			
 			response.sendRedirect(request.getContextPath() + "/index");
 			
-		} catch (ValidationException e) {
-			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
+		} catch (ValidationException | ServiceException e) {
+			Logger.error(e);
+		} 
 		
 	}
 

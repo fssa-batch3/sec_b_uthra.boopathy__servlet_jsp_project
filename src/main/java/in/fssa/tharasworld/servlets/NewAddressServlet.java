@@ -14,6 +14,7 @@ import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class NewAddressServlet
@@ -36,9 +37,7 @@ public class NewAddressServlet extends HttpServlet {
 		Integer userId = (Integer) session.getAttribute("userId");
 			
 			UserEntity user = UserService.findById(userId);
-			
-			System.out.println(user.toString());
-			
+
 			request.setAttribute("userDetails", user);
 			
 			request.setAttribute("userId", userId);
@@ -50,7 +49,7 @@ public class NewAddressServlet extends HttpServlet {
 		
 		} catch (ServiceException | ValidationException e) {
 
-			e.printStackTrace();
+			Logger.error(e);
 		
 		}
 

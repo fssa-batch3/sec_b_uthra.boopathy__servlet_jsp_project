@@ -16,6 +16,7 @@ import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.model.User;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class FindProductByIdISellerServlet
@@ -40,12 +41,8 @@ HttpSession session = request.getSession();
 				request.setAttribute("productDetails", product);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/find_by_product_id_seller.jsp");
 				dispatcher.forward(request, response);
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (ValidationException e) {
-				e.printStackTrace();
+			} catch (ServiceException | NumberFormatException | ValidationException e) {
+				Logger.error(e);
 			} 
 				
 		} else {
@@ -53,8 +50,6 @@ HttpSession session = request.getSession();
 				int userId = userIdObject.intValue();
 				User user = UserService.findById(userId);
 				
-				System.out.println(userId);
-
 				String productId = request.getParameter("pdt_id");
 				
 				ProductDetailDTO product = ProductService.findByProductId(Integer.parseInt(productId));
@@ -62,12 +57,8 @@ HttpSession session = request.getSession();
 				request.setAttribute("userDetails", user);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/find_by_product_id_seller.jsp");
 				dispatcher.forward(request, response);
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (ValidationException e) {
-				e.printStackTrace();
+			} catch (ServiceException | NumberFormatException | ValidationException e) {
+				Logger.error(e);
 			} 
 		}
 	}

@@ -16,6 +16,7 @@ import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.PriceService;
 import in.fssa.tharasworld.service.ProductService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class UpdateProductPriceServlet
@@ -60,7 +61,8 @@ public class UpdateProductPriceServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/product_list");
 		
 		} catch (ValidationException | ServiceException e) {
-			e.printStackTrace();
+
+			Logger.error(e);
 			
 			request.setAttribute("errorMessage", e.getMessage());
 			

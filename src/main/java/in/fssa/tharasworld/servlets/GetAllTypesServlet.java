@@ -24,6 +24,7 @@ import in.fssa.tharasworld.service.CategoryService;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.TypeService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 
 /**
@@ -51,22 +52,13 @@ public class GetAllTypesServlet extends HttpServlet {
 				request.setAttribute("types", types);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/type_list.jsp");
 				dispatcher.forward(request, response);
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (ValidationException e) {
-				e.printStackTrace();
-			} catch (PersistenceException e) {
-				e.printStackTrace();
-			}
-			
+			} catch (ServiceException | NumberFormatException | ValidationException | PersistenceException e) {
+				Logger.error(e);
+			} 
 		} else {
 			try {
 				int userId = userIdObject.intValue();
 				User user = UserService.findById(userId);
-				
-				System.out.println(userId);
 
 				String categoryId = request.getParameter("category_id");
 				
@@ -76,15 +68,9 @@ public class GetAllTypesServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/type_list.jsp");
 				
 				dispatcher.forward(request, response);
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			} catch (ValidationException e) {
-				e.printStackTrace();
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (PersistenceException e) {
-				e.printStackTrace();
-			}
+			} catch (ServiceException | NumberFormatException | ValidationException | PersistenceException e) {
+				Logger.error(e);
+			} 
 		}
 
 	}

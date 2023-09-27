@@ -14,6 +14,7 @@ import in.fssa.tharasworld.entity.ProductEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
 import in.fssa.tharasworld.service.ProductService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class UpdateProductServlet
@@ -40,14 +41,14 @@ public class UpdateProductServlet extends HttpServlet {
 			product.setImg(request.getParameter("img_url"));
 		
 		if(request.getParameter("name") == null || request.getParameter("name").isEmpty()) {
-			System.out.println("Name cannot be null or empty");
+			Logger.info("Name cannot be null or empty");
 		} else {
 			product.setName(request.getParameter("name"));
 		}
 		
 
 		if(request.getParameter("description") == null || request.getParameter("description").isEmpty()) {
-			System.out.println("Description cannot be null or empty");
+			Logger.info("Description cannot be null or empty");
 		} else {
 			product.setDescription(request.getParameter("description"));
 		}
@@ -71,7 +72,8 @@ public class UpdateProductServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath()+"/product_list");
 		
 		} catch (ValidationException | ServiceException e) {
-			e.printStackTrace();
+
+			Logger.error(e);
 			
 			request.setAttribute("errorMessage", e.getMessage());
 			

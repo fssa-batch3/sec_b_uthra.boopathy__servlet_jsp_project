@@ -71,7 +71,7 @@ if (error != null) {
 	  </div>
 
       <p>
-        Create new account <a href="new"> Sign up </a>
+        Create new account <a href="create"> Sign up </a>
       </p>
 
       <div>

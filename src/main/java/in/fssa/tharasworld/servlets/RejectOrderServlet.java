@@ -1,7 +1,6 @@
 package in.fssa.tharasworld.servlets;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,19 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import in.fssa.tharasworld.entity.AddressEntity;
 import in.fssa.tharasworld.entity.UserEntity;
 import in.fssa.tharasworld.exception.ServiceException;
 import in.fssa.tharasworld.exception.ValidationException;
-import in.fssa.tharasworld.service.AddressService;
+import in.fssa.tharasworld.service.OrderService;
 import in.fssa.tharasworld.service.UserService;
 import in.fssa.tharasworld.util.Logger;
 
 /**
- * Servlet implementation class EditUserServlet
+ * Servlet implementation class RejectOrderServlet
  */
-@WebServlet("/user/edit")
-public class EditUserServlet extends HttpServlet {
+@WebServlet("/reject_order")
+public class RejectOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -31,29 +29,30 @@ public class EditUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+HttpSession session = request.getSession();
+		
+		Integer userIdObject = (Integer) session.getAttribute("userId");
 		
 		try {
-
-			HttpSession session = request.getSession();
-			
-			Integer userId = (Integer) session.getAttribute("userId");
-			
+			int userId = userIdObject.intValue();
 			UserEntity user = UserService.findById(userId);
-	       
-			AddressEntity address = AddressService.findByDefault(userId);
-						
-			request.setAttribute("address", address);
-						
-			request.setAttribute("editUser", user);
+
+			int orderId = (Integer) Integer.parseInt(request.getParameter("order_id"));
 			
-			request.setAttribute("userId", userId);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_user.jsp");
-			dispatcher.forward(request, response);
+			 OrderService order = new OrderService();
+			 order.cancelOrder(orderId);
+			 
+				 
+				 RequestDispatcher dispatcher = request.getRequestDispatcher("/seller_orderList");
+					dispatcher.forward(request, response);
+
+		
 		} catch (ServiceException | ValidationException e) {
 			Logger.error(e);
 		} 
+		
+		
 	}
-
 
 }

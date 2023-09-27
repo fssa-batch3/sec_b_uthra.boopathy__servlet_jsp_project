@@ -25,6 +25,7 @@ import in.fssa.tharasworld.service.OrderService;
 import in.fssa.tharasworld.service.PriceService;
 import in.fssa.tharasworld.service.ProductService;
 import in.fssa.tharasworld.service.UserService;
+import in.fssa.tharasworld.util.Logger;
 
 /**
  * Servlet implementation class SellerOrderListServlet
@@ -46,12 +47,8 @@ public class SellerOrderListServlet extends HttpServlet {
 			int userId = userIdObject.intValue();
 			UserEntity user = UserService.findById(userId);
 			
-			System.out.println(userId);
-
 			List<OrderEntity> order = OrderService.findOrdersBySellerId(userId);
-			
-//			System.out.println(order);
-			
+						
 			List<AddressEntity> addressList = new ArrayList<>();
 			
 			for(OrderEntity s : order) {
@@ -81,12 +78,8 @@ public class SellerOrderListServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/seller_order_list.jsp");
 			dispatcher.forward(request, response);
 		
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ValidationException e) {
-			e.printStackTrace();
+		} catch (ServiceException | ValidationException e) {
+			Logger.error(e);
 		} 
 		
 		

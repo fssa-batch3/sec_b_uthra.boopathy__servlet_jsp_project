@@ -24,7 +24,7 @@
 
 	<%@ include file="/header.jsp"%>
 
-	<!-- <div class="arrows"></div> -->
+	 <div class="arrows"></div> 
 
 	<section>
 		<div class="thumbnail"></div>
@@ -85,7 +85,7 @@
 
 	<script>
 				//<div class = "arrow" > </div>
-				/* 
+				 
 				const div_arrow = document.createElement("div");
 				div_arrow.setAttribute("class", "arrow");
 				//console.log(div_arrow);
@@ -93,7 +93,10 @@
 				//<a> link </a>
 				
 				const a_arrow = document.createElement("a");
-				a_arrow.setAttribute("href", "#");
+				a_arrow.setAttribute("href", "javascript:void(0);"); // Use "javascript:void(0);" to make it non-clickable
+				a_arrow.addEventListener("click", function() {
+				    window.history.back();
+				});
 				div_arrow.append(a_arrow);
 				//console.log(a_arrow);
 				
@@ -104,7 +107,7 @@
 				i_arrow.setAttribute("class", "fa-solid fa-arrow-left");
 				a_arrow.append(i_arrow);
 				
-				document.querySelector("div.arrows").append(div_arrow); */
+				document.querySelector("div.arrows").append(div_arrow); 
 				
 				<%HttpSession session3 = request.getSession();%>
 				<%Integer userId = (Integer) session3.getAttribute("userId");%>
@@ -123,27 +126,27 @@
 				
 				//<div class = products >
 				
-				const div_container = document.createElement("div");
-				div_container.setAttribute("class", "container");
-				
-				const h3_title = document.createElement("h3");
-				h3_title.setAttribute("class", "not");
-				h3_title.innerText = "You have not added any products yet";
-				div_container.append(h3_title);
-				
-				const button = document.createElement("button");
-				button.setAttribute("class", "add");
-				button.innerText = "ADD PRODUCTS";
-				div_container.append(button);
-				
-				document.querySelector("section").append(div_container);
-				
-				
-				// order products
-				
-				document.querySelector("button.add").addEventListener("click",() => {
-				window.location.href = "/tharasworldweb/productlist.jsp";
-				})
+					const div_container = document.createElement("div");
+					div_container.setAttribute("class", "container");
+					
+					const h3_title = document.createElement("h3");
+					h3_title.setAttribute("class", "not");
+					h3_title.innerText = "You have not added any products yet";
+					div_container.append(h3_title);
+					
+					const button = document.createElement("button");
+					button.setAttribute("class", "add");
+					button.innerText = "ADD PRODUCTS";
+					div_container.append(button);
+					
+					document.querySelector("section").append(div_container);
+		
+
+	        	  // add products
+
+	        	document.querySelector("button.add").addEventListener("click",() => {
+	        	  window.location.href = "/tharasworldweb/category_list";
+	        	});
 				 
 				
 				}  else {
