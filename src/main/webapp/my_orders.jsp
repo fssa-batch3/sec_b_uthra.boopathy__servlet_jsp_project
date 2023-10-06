@@ -385,7 +385,7 @@ footer{
     <% } else { %>
     
     <% 
-		for (int i = 0; i < order.size(); i++) {
+		for (int i = order.size()-1; i >=0 ; i--) {
 	 %>
     
     <div class="container">
