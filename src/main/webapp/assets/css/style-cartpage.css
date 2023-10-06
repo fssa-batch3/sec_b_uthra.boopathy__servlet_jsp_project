@@ -3,69 +3,6 @@
     font-family: 'Kreon', serif;
 }
 
-header{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: 	purple;
-    height: 100px;
-    position: sticky;
-    top: 0px;
-    z-index: 10;
-}
-
-header div ul{
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin-left: 550px;
-}
-
-header div ul li{
-    padding-top: 40px;
-    padding-left: 30px;
-}
-
-.nav a{
-     text-decoration: none;
-     color: white;
-     font-size: 24px;
-}
-
-#count {
-    background-color: white;
-    color: purple;
-    font-size: 20px;
-    border-radius: 50%;
-    height: 20px;
-    width: 22px;
-    margin-top: -44px;
-    margin-left: 17px;
-    text-align: center;
-    font-weight: bold;
-}
-
-h1{
-    font-size: 50px;
-    font-weight: normal;
-    padding-left: 60px;
-    padding-top: 20px;
-    color: white;
-}
-
-.logo{
-    height: 70px;
-    width: 70px;
-    margin-top: 15px;
-    margin-left: 50px;
-    border-radius: 50px;
-}
-
-.login{
-    font-size: 25px;
-    color: white;
-    cursor: pointer;
-}
-
 .arrow {
     margin: 2rem;
     font-size: 30px;

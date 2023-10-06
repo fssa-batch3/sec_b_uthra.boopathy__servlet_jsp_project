@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    font-family: 'Kreon', serif;
+}
 
 .arrow {
     margin: 2rem;
@@ -8,79 +12,81 @@
     color: black;
 }
 
-section{
+
+
+.details {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    flex-direction: column;
+}
+
+section{
     align-content: center;
-    margin-top: 100px;
+    margin-top: 70px;
     margin-left: 350px;
+    margin-right: 350px;
     margin-bottom: 200px;
     border: 1px solid gray;
     border-radius: 10px;
-    height: 900px;
-    width: 800px;
+    padding: 30px 30px;
+    width: 700px;
+    height: 400px;
     box-shadow: 2px 4px 8px 2px rgba(6, 6, 6, 0.2), 3px 6px 20px 3px rgba(0, 0, 0, 0.19);
 }
 
-section h1{
+section h2 {
     color: black;
     font-weight: bold;
-    font-size: 55px;
-    margin-left: 35px;
+    font-size: 40px;
+    margin-left: 0px;
 }
 
-section img{
-    position: relative;
-    left: 110px;
-    top: 30px;
+.form {
+    margin-left: 100px;
 }
 
-.btn-2 a{
-    text-decoration: none;
-    color: white;
+.avatar img {
+    margin-top: 50px;
 }
 
 .name{
     font-weight: 200px;
     font-size: 20px;
-    position: relative;
-    top: 60px;
 }
 
 .age{
     font-weight: 200px;
     font-size: 20px;
     position: relative;
-    top: 95px;
+    top: 12px;
 }
 
 .add{
     font-weight: 200px;
     font-size: 20px;
     position: relative;
-    top: 120px;
+    top: 20px;
 }
 
 .des{
     font-weight: 200px;
     font-size: 20px;
     position: relative;
-    top: 200px;
+    top: 40px;
 }
 
 .no{
     font-weight: 200px;
     font-size: 20px;
     position: relative;
-    top: 155px;
+    top: 15px;
 }
 
 .mail{
     font-weight: 200px;
     font-size: 20px;
     position: relative;
-    top: 175px;
+    top: 20px;
 }
 
 input[type="email"]{
@@ -89,7 +95,7 @@ input[type="email"]{
     width: 225px;
     font-size: 20px;
     position: relative;
-    left: 98px;
+    left: 100px;
     outline: none;
     background-color: white;
 }
@@ -100,7 +106,7 @@ input[type="text"]{
     border: none;
     font-size: 20px;
     position: relative;
-    left: 125px;
+    left: 130px;
     background-color: white;
 }
 
@@ -121,19 +127,34 @@ input[id="age"]{
     font-size: 20px;
     border: none;
     position: relative;
-    left: 140px;
+    left: 147px;
     outline: none;
 }
 
-input[id="role"]{
-    height: 30px;
-    width: 200px;
+
+input[id="address"]{
+    height: 70px;
+    width: 218px;
     border: none;
-    font-size: 20px;
+    border-radius: 3px;
     position: relative;
-    left: 100px;
-    background-color: white;
+    left: 20px;
+    outline: none;
+    font-size: 17px;
+
 }
+
+input[id="des"]{
+    height: 30px;
+    width: 218px;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    left: 40px;
+    outline: none;
+    font-size: 17px;
+}
+
 
 textarea{
     height: 35px;
@@ -152,23 +173,12 @@ textarea{
     margin-left: 165px;   
 }
 
-#gender{
-    border: none;
-    position: relative;
-    left: 110px;
-}
-
-select{
-    height: 37px;
-    width: 205px;
-    font-size: 20px;
-}
 
 .btn-1{
     font-size: 18px;
     position: relative;
-    left: 100px;
-    top: 250px;
+    left: 350px;
+    top: 70px;
     align-content: space-between;
     border-radius: 5px;
     border: 1px solid purple;
@@ -187,8 +197,8 @@ select{
 .btn-2{
     font-size: 18px;
     position: relative;
-    left: 20px;
-    top: 250px;
+    left: 300px;
+    top: 70px;
     align-content: space-between;
     border-radius: 5px;
     border: 1px solid gray;
@@ -201,8 +211,8 @@ select{
 .btn-3{
     font-size: 18px;
     position: relative;
-    left: 180px;
-    top: 250px;
+    left: 250px;
+    top: 70px;
     align-content: space-between;
     border-radius: 5px;
     border: 1px solid gray;
@@ -210,12 +220,6 @@ select{
     height: 35px;
     width: 100px;
     cursor: pointer;
-}
-
-#des{
-    border: none;
-    position: relative;
-    left: 35px;
 }
 
 .menu{

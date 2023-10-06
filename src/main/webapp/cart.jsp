@@ -199,7 +199,7 @@
 
         		  const span = document.createElement("span");
         		  span.setAttribute("class", "percent");
-        		  span.innerText = Math.round(check_pdt[k].discount)+"%ff";
+        		  span.innerText = Math.round(check_pdt[k].discount) + "%off";
         		  div.append(span);
 
         		  // < div class = "quantity" > </div>

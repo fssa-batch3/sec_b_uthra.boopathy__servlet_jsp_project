@@ -70,7 +70,7 @@
    <a href="edit_pdt_price?pdt_id=<%= product.getPdtId() %>"> <button class="buy">Edit Price 
    <i class="fa-solid fa-pen-to-square"></i>  </button> </a>
    
-   <a href="delete?pdt_id=<%= product.getPdtId() %>"> <button class="wish"> Delete 
+   <a href="delete?pdt_id=<%= product.getPdtId() %>"> <button class="wish" id="delete"> Delete 
     <i class="fa-solid fa-trash"  style="color:white; 
 	position: relative;left: 0.5rem; font-size: 20px; "></i>  </button> </a>
     
@@ -88,6 +88,21 @@
 	}
 	%>
 
+                <script>
+
+    const delBtn = document.getElementById("delete");
+    
+    delBtn.addEventListener("click", function(event){
+    	
+    	const confirmation = confirm("Are you sure to delete this product?");
+    	
+    	if (!confirmation) {
+	        event.preventDefault();
+	    }
+    	
+    });
+    
+	</script>
 
 <script>
 

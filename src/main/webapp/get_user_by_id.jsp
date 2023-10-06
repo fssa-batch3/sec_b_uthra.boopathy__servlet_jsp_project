@@ -29,8 +29,8 @@
 	
 	
 	<div class="arrows"></div>
-	                
-                <%
+	
+	                <%
 		UserEntity user1 = (UserEntity) request.getAttribute("userDetails");
                 
         AddressEntity address = (AddressEntity) request.getAttribute("address");
@@ -38,20 +38,28 @@
 			if (user1 != null) {
 		%>
 
-      <!--   <div class="arrows"></div> -->
-
         <section>
 
             <form role="form">
             
-                <h1> PROFILE</h1>
+                 <h2> PROFILE</h2> 
 
-                <div class="avatar">
+                <div class="details">
+                
+                <div>
+
+                  <div class="avatar">
                     <img src="https://iili.io/JJ43tX1.png" alt="photo" height="180px" width="180px">
                 </div>
-                
-                <div class="details">
-               
+
+                </div>
+
+                <div class="form">
+
+                <!-- <div class="avatar">
+                    <img src="../../assets/images/avatar.jpg" alt="photo" height="180px" width="180px">
+                </div>
+                -->
                 <div class="name">
                     <label> Name: </label>
                     <input type="text" id="uname" value="<%=user1.getName() %>" disabled="true">
@@ -63,9 +71,20 @@
                 </div>
 
                 <div class="add">
-                    <label> Residential address: </label>
-                    <textarea id="address" disabled="true"><% if(address!=null){ %><%= address.getAddress() %> , <%= address.getPincode() %> , <%= address.getState() %><% } %></textarea>
-                    </div>
+                    <label> Residential address: </label><% if(address!=null){ %>
+                    <input type="text" id="address" disabled="true" value="<%= address.getAddress() %> , <%= address.getPincode() %> , <%= address.getState()%>">
+                    <% } %>  
+                </div>
+
+                <!-- <div class="pin">
+                  <label> Pincode: </label> 
+                  <input type="number" id="pincode" maxlength="6">  
+              </div>
+
+              <div class="state">
+                   <label> State: </label> 
+                  <input type="text" id="state">  
+              </div> -->
                 
                 <div class="no">
                     <label> Contact number: </label>
@@ -79,21 +98,33 @@
 
                 <div class="des">
                     <label> Your Designation:</label>
-                   <input type="text" id="role" value="<%=user1.getRole()%>" disabled="true">
+
+                    <input type="text" id="des" value="<%=user1.getRole()%>" disabled="true">
+
+                    <!-- <select id="des" disabled="true">
+                        <option> Buyer </option>
+                        <option> Seller </option>
+                        <option> Both </option>
+                    </select> -->
                 </div>
-                
-                </div>
+
+              </div>
+
+            </div>
                 
                 <div >
-                
-                 	<a href="delete"><button class="btn-2" type="button"> Delete Account </button>
+                    <a href="delete"><button class="btn-2" type="button" id="delete"> Delete Account </button>
               
                     <a href="edit"> <button class="btn-1" type="button">   Edit  </button>  </a> 
 
-                    <a href="/tharasworldweb/front_page"> <button class="btn-3" type="button">  Back </button> </a>
+                    <!-- <button class="btn-3" type="button">  Back </button> -->
 
-                </div> 
-                
+                </div>        
+
+            </form>
+       
+        </section>
+               
                 	<%
 	} else {
 	%>
@@ -105,6 +136,22 @@
             </form>
        
         </section>
+        
+                <script>
+
+    const delBtn = document.getElementById("delete");
+    
+    delBtn.addEventListener("click", function(event){
+    	
+    	const confirmation = confirm("Are you sure to delete your account?");
+    	
+    	if (!confirmation) {
+	        event.preventDefault();
+	    }
+    	
+    });
+    
+	</script>
         
         <script>
         

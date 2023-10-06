@@ -137,6 +137,7 @@ a {
  	color: white;
 	font-size: 17px; 
 	margin-left: 50px;	
+	cursor: pointer;
  }
 
 .userdetail {
@@ -207,9 +208,9 @@ a {
 <%
     } else if (cancelStatus == OrderStatus.WAITING_LIST) {
 %>
-       <a href="/tharasworldweb/accept_order?order_id=<%= order.get(i).getOrderId() %>"> <button type="submit"> ACCEPT </button>  </a>	
+       <a href="/tharasworldweb/accept_order?order_id=<%= order.get(i).getOrderId() %>"> <button type="submit" id="accept"> ACCEPT </button>  </a>	
 	
-	   <a href="/tharasworldweb/reject_order?order_id=<%= order.get(i).getOrderId() %>">  <button type="submit"> REJECT </button>  </a>
+	   <a href="/tharasworldweb/reject_order?order_id=<%= order.get(i).getOrderId() %>">  <button type="submit" id="cancel"> REJECT </button>  </a>
 <%
     } else if (cancelStatus == OrderStatus.ON_THE_WAY) {
     	%>
@@ -259,6 +260,39 @@ a {
 </div>
 	
 	<% } %>
+	
+
+	          <script>      
+	                
+    const delBtn = document.getElementById("cancel");
+    
+    delBtn.addEventListener("click", function(event){
+    	
+    	const confirmation = confirm("Are you sure to cancel the order?");
+    	
+    	if (!confirmation) {
+	        event.preventDefault();
+	    }
+    	
+    });
+    
+	</script>
+	
+		<script>
+
+	const acceptBtn = document.getElementById("accept");
+	                
+	acceptBtn.addEventListener("click", function(event){
+	                	
+	const confirmation = confirm("Are you sure to accept the order?");
+	                	
+	if (!confirmation) {
+	       event.preventDefault();
+	}
+	                	
+	});
+	
+	</script>
 
 
 <script>

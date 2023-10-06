@@ -181,6 +181,7 @@ a {
  	color: white;
 	font-size: 17px; 
 	margin-left: 50px;	
+	cursor: pointer;
  }
 
 .userdetail {
@@ -434,11 +435,11 @@ footer{
 	
 	<div class="price">
 	
-	<p>&#8377 <%= (int) Math.round(price.get(i).getCurrentPrice()) %> </p>
+	<p>&#8377 <%= (int) Math.round(price.get(i).getCurrentPrice())%> </p>
 	
-	<s class="actprice"> &#8377 <%=(int) Math.round(price.get(i).getActualPrice()) %></s>
+	<s class="actprice"> &#8377 <%=(int) Math.round(price.get(i).getActualPrice())%></s>
 	
-	<p class="discount"> <%= (int) Math.round(price.get(i).getDiscount()) %> % off </p>
+	<p class="discount"> <%= (int) Math.round(price.get(i).getDiscount())%>%off </p>
 	
 		</div>
 		

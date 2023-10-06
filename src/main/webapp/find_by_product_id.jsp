@@ -206,34 +206,40 @@
     /////  wishlist
     
     
-    const wish_products = document.querySelector("button.wish");
-
-wish_products.addEventListener("click", () => {
-    <% if (userId == null) { %>
-    alert("You are not logged in");
-    <% } else { %>
+   const wishlist_products = document.querySelector("button.wish");
     
-    <% if(userId.intValue() == product.getSellerId()){ %>
+    <% Integer userid = (Integer) session3.getAttribute("userId"); %>
     
-    alert("Seller and buyer cannot be the same person");
-    
-    <% } else { %>
+    wishlist_products.addEventListener("click", () => {
+        <% if (userid == null) { %>
+            alert("You are not logged in");
+            console.log("add to cart array");
+            
+        <% } else { %>
+            
+        let user_id = <%= userId.intValue()%>;
+        
+        <% if(userId.intValue() == product.getSellerId()){ %>
+        
+        alert("Seller and buyer cannot be the same person");
+        
+        <% } else { %>
 
 
-    // Get the existing wishlist or create an empty array if it doesn't exist
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    console.log(wishlist);
-
-    let id = <%= product.getListOfPrices().get(0).getPriceId() %>;
-
-    const exist =
-        wishlist.length &&
-        wishlist.some((data) => data.price_id == id && data.buyer_id == user_id);
-
-    if (exist) {
-        alert("This product has already been added");
-    } else {
-        alert("This product is added to your wishlist.");
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        console.log(wishlist);
+        let id = <%= product.getListOfPrices().get(0).getPriceId() %>;
+        
+        const exist =
+        	wishlist.length &&
+            JSON.parse(localStorage.getItem("wishlist")).some(
+                (data) => data.price_id == id && data.buyer_id == user_id 
+            );
+        
+        if (exist) {
+            alert("This product has already been added");
+        } else {
+            alert("This product is added to your wishlist.");
 
         let productName = '<%= product.getName() %>';
         let imageUrl = '<%= product.getImg() %>';

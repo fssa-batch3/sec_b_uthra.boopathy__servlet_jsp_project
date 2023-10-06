@@ -203,7 +203,7 @@
 				
 				const p_org = document.createElement("p");
 				p_org.setAttribute("id", "original_price");
-				p_org.innerText = check_pdt[j].current_price;
+				p_org.innerText = '\u20B9' + Math.round(check_pdt[j].current_price);
 				h3_title.append(p_org);
 				
 				// <p> </p>
@@ -215,14 +215,14 @@
 				
 				const s = document.createElement("s");
 				s.setAttribute("id", "discount_price");
-				s.innerText = check_pdt[j].actual_price;
+				s.innerText = '\u20B9' + Math.round(check_pdt[j].actual_price);
 				p_org.append(s);
 				
 				// <span> </span>
 				
 				const span = document.createElement("span");
 				span.setAttribute("class", "percent");
-				span.innerText = check_pdt[j].discount;
+				span.innerText = Math.round(check_pdt[j].discount) + "%off";
 				p_org.append(span);
 				
 				document.querySelector("div.thumbnail").append(div_products);
